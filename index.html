@@ -82,7 +82,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .gps-field input:focus{border-color:var(--pfrda-saffron);box-shadow:0 0 0 2px rgba(232,100,10,.12)}
 .gps-sync-dot{width:7px;height:7px;border-radius:50%;background:var(--pfrda-saffron);animation:blink 2s infinite;flex-shrink:0}
 .gps-divider{width:1px;height:28px;background:var(--light);flex-shrink:0;margin:0 4px}
-@media(max-width:768px){.gps-inner{padding:6px 12px;gap:5px}.gps-field{min-width:58px}}
+@media(max-width:768px){.gps-inner{padding:6px 12px;gap:5px}.gps-field{min-width:58px}}@media(max-width:480px){.gps-inner{gap:4px 6px;padding:5px 8px}.gps-field{min-width:52px}.gps-field label{font-size:7.5px}.gps-field input{font-size:10px;padding:3px 4px}.gps-badge{font-size:9px;padding:3px 7px}.gps-divider{display:none}.hdr-subtitle{display:none}}
 .tab{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:11px 15px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--font)}
 .tab:hover{color:rgba(255,255,255,.92);background:rgba(232,100,10,.12)}
 .tab.active{color:#fff;border-bottom-color:var(--pfrda-saffron);background:rgba(232,100,10,.15)}
@@ -256,6 +256,41 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .src-input{background:var(--bg2);border:1.5px solid var(--light);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:12px;padding:7px 9px;outline:none;transition:border-color .2s;min-width:0;flex:1}
 .src-input:focus{border-color:var(--teal2)}
 .src-ret{width:76px;flex:0 0 76px !important}
+/* Advanced panel per source */
+.src-adv-btn{flex-shrink:0;background:none;border:1.5px solid var(--light);border-radius:6px;padding:4px 8px;font-size:10px;font-weight:700;color:var(--faint);cursor:pointer;transition:all .2s;white-space:nowrap}
+.src-adv-btn:hover,.src-adv-btn.open{border-color:var(--purple);color:var(--purple);background:var(--purple-dim)}
+.src-adv-panel{display:none;width:100%;background:linear-gradient(135deg,rgba(91,33,182,.03),rgba(91,33,182,.06));border:1.5px solid rgba(91,33,182,.15);border-radius:var(--r-sm);padding:13px 15px;margin-top:4px;margin-bottom:6px}
+.src-adv-panel.open{display:block}
+.src-adv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin-bottom:10px}
+.src-adv-field{display:flex;flex-direction:column;gap:3px}
+.src-adv-field label{font-size:9.5px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.5px}
+.src-adv-field input,.src-adv-field select{background:#fff;border:1.5px solid rgba(91,33,182,.2);border-radius:5px;color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 9px;outline:none;transition:border-color .2s;width:100%}
+.src-adv-field input:focus,.src-adv-field select:focus{border-color:var(--purple)}
+.src-adv-hint{font-size:9.5px;color:var(--faint);line-height:1.5;margin-top:2px}
+.src-breaks-area{margin-top:8px;border-top:1px solid rgba(91,33,182,.12);padding-top:8px}
+.src-breaks-title{font-size:9.5px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.src-break-row{display:flex;gap:7px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.src-break-row input{background:#fff;border:1.5px solid rgba(91,33,182,.2);border-radius:5px;color:var(--text);font-family:var(--mono);font-size:11.5px;padding:5px 8px;outline:none;width:90px}
+.src-break-row label{font-size:10px;color:var(--muted);white-space:nowrap}
+.src-break-del{background:none;border:none;cursor:pointer;color:var(--coral);font-size:14px;padding:2px 5px;border-radius:4px;transition:background .15s}
+.src-break-del:hover{background:var(--coral-dim)}
+.src-lumps-area{margin-top:8px;border-top:1px solid rgba(91,33,182,.12);padding-top:8px}
+.src-lumps-title{font-size:9.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.src-lump-row{display:flex;gap:7px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.src-lump-row input{background:#fff;border:1.5px solid rgba(184,134,11,.25);border-radius:5px;color:var(--text);font-family:var(--mono);font-size:11.5px;padding:5px 8px;outline:none}
+.src-lump-row input.lump-amt{width:130px}
+.src-lump-row input.lump-age{width:80px}
+.src-lump-del{background:none;border:none;cursor:pointer;color:var(--coral);font-size:14px;padding:2px 5px;border-radius:4px;transition:background .15s}
+.src-lump-del:hover{background:var(--coral-dim)}
+.src-add-btn{font-size:10px;font-weight:700;padding:4px 10px;border-radius:5px;border:1.5px dashed;cursor:pointer;background:none;transition:all .2s}
+.src-add-break{border-color:rgba(91,33,182,.3);color:var(--purple)}.src-add-break:hover{background:var(--purple-dim)}
+.src-add-lump{border-color:rgba(184,134,11,.35);color:var(--gold)}.src-add-lump:hover{background:var(--gold-dim)}
+/* Simulation badge on results */
+.sim-badge{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,var(--purple-dim),rgba(91,33,182,.15));border:1px solid rgba(91,33,182,.25);color:var(--purple);font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:20px;margin-left:8px}
+.src-status-pill{display:inline-block;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:4px;vertical-align:middle}
+.src-status-limited{background:rgba(232,100,10,.12);color:var(--orange)}
+.src-status-break{background:rgba(220,38,38,.1);color:var(--coral)}
+.src-status-glide{background:rgba(91,33,182,.12);color:var(--purple)}
 /* STRAT CARDS */
 .strat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin:14px 0}
 @media(max-width:600px){.strat-grid{grid-template-columns:1fr}}
@@ -361,7 +396,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="gps-divider"></div>
     <div class="gps-field"><label title="Your current age">Current Age</label><input type="number" id="gps-age" value="32" min="18" max="70" data-gs="age"></div>
     <div class="gps-field"><label title="Your planned retirement age">Target Retire</label><input type="number" id="gps-ret" value="60" min="30" max="85" data-gs="ret"></div>
-    <div class="gps-field"><label title="Planning horizon age — how long your plan should cover. Conservative: use 90–92. Half of all people outlive their expected lifespan! Must be greater than Target Retire.">Plan To Age</label><input type="number" id="gps-le" value="90" min="60" max="100" data-gs="le" oninput="const rv=parseInt(this.value),rr=parseInt(document.getElementById('gps-ret').value);this.style.borderColor=(rv&&rr&&rv<=rr)?'#DC2626':'';"></div>
+    <div class="gps-field"><label title="Planning horizon age — how long your plan should cover. Conservative: use 90–95. At 60, you have 25%+ chance of living to 95. Half of all people outlive their expected lifespan! Must be greater than Target Retire.">Plan To Age</label><input type="number" id="gps-le" value="90" min="60" max="100" data-gs="le" oninput="const rv=parseInt(this.value),rr=parseInt(document.getElementById('gps-ret').value);this.style.borderColor=(rv&&rr&&rv<=rr)?'#DC2626':'';"></div>
     <div class="gps-divider"></div>
     <div class="gps-field" style="min-width:96px"><label title="Current accumulated NPS balance only — enter EPF/MF balances separately in Module 3">NPS Balance (₹)</label><input type="number" id="gps-cc" value="500000" step="10000" data-gs="cc"></div>
     <div class="gps-field" style="min-width:96px"><label title="Monthly amount you contribute to NPS only — not EPF, SIP, or other instruments">NPS Contrib/mo (₹)</label><input type="number" id="gps-mc" value="15000" step="500" data-gs="mc"></div>
@@ -369,7 +404,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="gps-divider"></div>
     <div class="gps-field" style="min-width:90px"><label title="Current monthly household expenses in today's rupees">Monthly Exp (₹)</label><input type="number" id="gps-exp" value="40000" step="5000" data-gs="exp"></div>
     <div class="gps-field"><label title="Expected price inflation rate">Inflation %</label><input type="number" id="gps-inf" value="6" step="0.5" min="1" max="15" data-gs="inf"></div>
-    <div class="gps-field"><label title="Expected blended portfolio return — used in Goal Finder & Health Check">Expected Return %</label><input type="number" id="gps-rr" value="10" step="0.5" min="1" max="20" data-gs="rr"></div>
+    <div class="gps-field"><label title="Expected blended portfolio return — used in Goal Finder & Health Check">Expected Return %</label><input type="number" id="gps-rr" value="10" step="0.5" min="1" max="15" data-gs="rr"></div>
     <div style="font-size:9px;color:var(--faint);line-height:1.6;margin-left:8px;flex-shrink:0;max-width:110px;background:rgba(232,100,10,.07);border:1px solid rgba(232,100,10,.15);border-radius:6px;padding:5px 8px"><span style="color:var(--pfrda-saffron);font-weight:700">⚡ Live Sync</span><br>Changes instantly update all 9 modules</div>
   </div>
 </div>
@@ -379,7 +414,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 <!-- DISCLAIMER BANNER -->
 <div class="disclaimer-banner" style="background:linear-gradient(90deg,rgba(10,35,66,.04),rgba(10,35,66,.02));border-bottom:1px solid var(--light);padding:6px 32px;font-size:10.5px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
   <span style="font-size:12px;flex-shrink:0">📋</span>
-  <span><strong style="color:var(--navy)">Illustrative projections only.</strong> Assumes constant returns; actual market returns vary annually. NPS withdrawals: 60% lump sum is tax-free, annuity income taxed at slab. Equity LTCG &gt;₹1.25L taxed @12.5%. <strong style="color:var(--coral)">Consult a SEBI-registered financial advisor before investing.</strong></span>
+  <span><strong style="color:var(--navy)">Illustrative projections only.</strong> Assumes constant returns; actual market returns vary annually. NPS withdrawals: 60% lump sum is tax-free, annuity income taxed at slab. Equity LTCG &gt;₹1.25L taxed @12.5%. <strong style="color:var(--coral)">Consult a SEBI-registered financial advisor before investing.</strong> For NPS-specific queries, contact your PoP or PFRDA Subscriber helpline: <strong>1800-222-080</strong> (toll-free).</span>
 </div>
 
 <div class="main">
@@ -394,7 +429,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div>
       <div class="card bt-teal">
         <div class="card-title" data-t="m1ct1">📊 Your NPS Profile</div>
-        <div class="card-desc" data-t="m1cd1">Enter your details. Results update when you click Calculate. Annuity % is editable from 40–100% — PFRDA mandates minimum 40% annuity purchase at NPS exit.</div>
+        <div class="card-desc" data-t="m1cd1">Enter your details. Results update when you click Calculate. Annuity % is editable from 20–100% — PFRDA mandates minimum 20% annuity purchase at NPS exit (amended 2024; 40% was the old rule).</div>
         <div class="ig">
           <div class="if"><label data-t="l_age">Current Age</label><input type="number" id="m1-age" value="32" min="18" max="75"></div>
           <div class="if"><label data-t="l_ret">Retirement Age</label><input type="number" id="m1-ret" value="60" min="30" max="85"></div>
@@ -403,7 +438,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
           <div class="if"><label data-t="l_su">Annual Step-up (%)</label><input type="number" id="m1-su" value="5" min="0" max="25"></div>
           <div class="if"><label data-t="l_inf">Inflation Rate (% p.a.)</label><input type="number" id="m1-inf" value="6" min="1" max="15"></div>
           <div class="if"><label data-t="l_exp">Current Monthly Expenses (₹, today's value)</label><input type="number" id="m1-exp" value="40000" step="5000"><span class="hint">Enter in today's rupees — automatically inflated to retirement date</span></div>
-          <div class="if"><label data-t="l_le">Plan To Age <span style="font-size:9px;color:var(--amber);font-weight:600">📌 Use 90–92 for conservative planning</span></label><input type="number" id="m1-le" value="90" min="60" max="100"><span class="hint">50% of people outlive their expected lifespan — plan to age 90+ for safety</span></div>
+          <div class="if"><label data-t="l_le">Plan To Age <span style="font-size:9px;color:var(--amber);font-weight:600">📌 📌 Use 90–95 for conservative planning</span></label><input type="number" id="m1-le" value="90" min="60" max="100"><span class="hint">50% of people outlive their expected lifespan — plan to age 90–95 for safety. Conditional life expectancy at 60 is ~81, but tail risk extends to 95+</span></div>
           <div class="if"><label data-t="l_fund">Fund / Asset Mix</label>
             <select id="m1-fund" onchange="m1FundChange()">
               <option value="lc75" data-t="f75">LC-75 Aggressive (~12%)</option>
@@ -412,20 +447,20 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
               <option value="custom" data-t="fcustom">Custom Return</option>
             </select>
           </div>
-          <div class="if" id="m1-custom-row" style="display:none"><label data-t="l_cr">Custom Return (% p.a.)</label><input type="number" id="m1-cr" value="10" min="1" max="20"></div>
+          <div class="if" id="m1-custom-row" style="display:none"><label data-t="l_cr">Custom Return (% p.a.)</label><input type="number" id="m1-cr" value="10" min="1" max="15"></div>
         </div>
         <div class="divider"><span data-t="div_corpus_split">Corpus Split at Retirement</span></div>
         <div class="ig2">
           <div class="if">
             <label data-t="l_apct">Annuity Allocation %</label>
-            <div class="sl-row"><input type="range" id="m1-apct" min="40" max="100" value="40" step="5" oninput="updSl('m1-apct','m1-apct-v')"><span class="sl-val" id="m1-apct-v">40%</span></div>
-            <div style="font-size:9.5px;color:#C2410C;margin-top:3px">⚖️ PFRDA mandates minimum 40% annuity purchase at NPS exit (before age 75).</div>
+            <div class="sl-row"><input type="range" id="m1-apct" min="20" max="100" value="40" step="5" oninput="updSl('m1-apct','m1-apct-v')"><span class="sl-val" id="m1-apct-v">40%</span></div>
+            <div style="font-size:9.5px;color:#C2410C;margin-top:3px">⚖️ PFRDA minimum 20% annuity (amended 2024; was 40% before). Below 40% = higher lump sum but less guaranteed income.</div>
             <span class="hint" data-t="h_apct">Your chosen allocation to guaranteed pension</span>
           </div>
           <div class="if">
             <label data-t="l_ar">Annuity Rate (% p.a.)</label>
-            <div class="sl-row"><input type="range" id="m1-ar" min="3" max="10" value="6" step="0.25" oninput="updSl('m1-ar','m1-ar-v')"><span class="sl-val" id="m1-ar-v">6%</span></div>
-            <span class="hint" data-t="h_ar">Check current rates with your annuity provider</span>
+            <div class="sl-row"><input type="range" id="m1-ar" min="3" max="9" value="6" step="0.25" oninput="updSl('m1-ar','m1-ar-v')"><span class="sl-val" id="m1-ar-v">6%</span></div>
+            <span class="hint" data-t="h_ar">Current NPS ASP rates (LIC/SBI Life/HDFC Life): ~6.0–6.5% for a 60-yr male (life annuity, Feb 2026). Max capped at 9%.</span><span class="hint" style="display:block;margin-top:4px;color:var(--muted)">ℹ️ NPS charges: FMC 0.09% p.a. + CRA ~₹80/yr + POP 0.25% on contributions (one-time). Net return is ~0.09% lower than gross fund CAGR.</span>
           </div>
         </div>
         <div class="btn-row">
@@ -507,6 +542,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 
     <div class="cw">
       <div class="cw-title"><span>📈</span> <span data-t="ch1_t">Corpus Growth — Three Scenarios with Uncertainty Band</span></div>
+      <div style="font-size:10.5px;color:var(--muted);margin-bottom:6px;padding:6px 10px;background:rgba(14,166,143,.05);border-radius:6px;border-left:3px solid var(--teal2)">📖 <strong>How to read:</strong> The <strong>middle (orange)</strong> line is your most likely outcome (moderate returns). The <strong>blue band</strong> (conservative) and <strong>green band</strong> (aggressive) show the range of plausible outcomes based on fund choice. The gap between them widens over time — this is the power of compounding at different rates.</div>
       <canvas id="chart-m1-growth" height="260"></canvas>
     </div>
     <div class="two-col" style="margin-top:14px">
@@ -546,13 +582,13 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="if"><label data-t="l_mc_cur">Current Monthly Contribution (₹)</label><input type="number" id="m2-mc" value="15000" step="500"></div>
         <div class="if"><label data-t="l_su">Annual Step-up (%)</label><input type="number" id="m2-su" value="5" min="0" max="25"></div>
         <div class="if"><label data-t="l_inf">Inflation Rate (%)</label><input type="number" id="m2-inf" value="6" min="1" max="15"></div>
-        <div class="if"><label data-t="l_rr">Expected Return (%)</label><input type="number" id="m2-rr" value="10" step="0.5"></div>
+        <div class="if"><label data-t="l_rr">Expected Return (%)</label><input type="number" id="m2-rr" value="10" step="0.5" min="1" max="15"></div>
         <div class="if">
           <label data-t="l_apct">Annuity Allocation %</label>
-          <div class="sl-row"><input type="range" id="m2-apct" min="40" max="100" value="40" step="5" oninput="updSl('m2-apct','m2-apct-v')"><span class="sl-val" id="m2-apct-v">40%</span></div>
-          <div style="font-size:9.5px;color:#C2410C;margin-top:3px">⚖️ PFRDA mandates minimum 40% annuity purchase at exit.</div>
+          <div class="sl-row"><input type="range" id="m2-apct" min="20" max="100" value="40" step="5" oninput="updSl('m2-apct','m2-apct-v')"><span class="sl-val" id="m2-apct-v">40%</span></div>
+          <div style="font-size:9.5px;color:#C2410C;margin-top:3px">⚖️ PFRDA minimum 20% annuity (amended 2024; was 40% before). Max lump sum = 80% of corpus.</div>
         </div>
-        <div class="if"><label data-t="l_ar">Annuity Rate (% p.a.)</label><input type="number" id="m2-ar" value="6" step="0.25" min="3" max="12"></div>
+        <div class="if"><label data-t="l_ar">Annuity Rate (% p.a.)</label><input type="number" id="m2-ar" value="6" step="0.25" min="3" max="9"></div>
       </div>
       <div class="btn-row">
         <button type="button" class="btn" style="background:linear-gradient(135deg,var(--gold2),var(--gold))" onclick="calcM2()" data-t="btn_calc">Find My Goal →</button>
@@ -568,6 +604,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="two-col" style="margin-top:14px">
       <div class="cw" style="margin-top:0">
         <div class="cw-title"><span>🎯</span> <span data-t="ch2a_t">Pension Adequacy</span></div>
+        <div style="font-size:10.5px;color:var(--muted);margin-bottom:8px;padding:6px 10px;background:rgba(184,134,11,.06);border-radius:6px;border-left:3px solid var(--gold)">📖 <strong>How to read:</strong> The arc shows how well your current plan meets your pension goal. <strong style="color:#15803D">Green (right)</strong> = goal met or exceeded. <strong style="color:#D97706">Amber (middle)</strong> = partially funded. <strong style="color:#DC2626">Red (left)</strong> = significant gap. The % figure is your current plan's projected pension as a share of your target pension.</div>
         <div class="arc-wrap">
           <svg width="200" height="120" viewBox="0 0 200 120">
             <defs><linearGradient id="arcG" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -610,41 +647,243 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
   </div>
   <div class="card bt-purple">
     <div class="card-title" data-t="m3ct">🧩 All Retirement Assets</div>
-    <div class="card-desc" data-t="m3cd">Enter current balance, monthly contribution, and expected return for each. All return rates are editable. <span style="color:var(--amber);font-weight:600">Note:</span> Monthly contributions are assumed flat (no step-up) for non-NPS sources — this may slightly understate EPF/SIP corpus if your salary grows. All projected figures are in <strong>nominal future rupees</strong>.</div>
-    <div style="display:grid;grid-template-columns:1fr 2fr 80px;gap:8px;margin-bottom:8px;padding:0 4px">
+    <div class="card-desc" data-t="m3cd">Enter balance, monthly contribution and return for each asset. Click <strong style="color:var(--purple)">⚙ Advanced</strong> on any row to set step-up/down, contribution end age, breaks, glide path, and one-time lump sum additions. All projections use a <strong>year-by-year simulation</strong> — far more accurate than simple formulas.</div>
+    <div style="display:grid;grid-template-columns:26px 104px 1fr 76px 72px;gap:8px;margin-bottom:8px;padding:0 4px;align-items:center">
+      <div></div>
       <div style="font-size:9.5px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.8px" data-t="col_asset">Asset</div>
-      <div style="font-size:9.5px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.8px" data-t="col_balance">Balance (₹) + Monthly Contribution (₹)</div>
-      <div style="font-size:9.5px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.8px" data-t="col_return">Return %</div>
+      <div style="font-size:9.5px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.8px" data-t="col_balance">Balance (₹) · Monthly (₹)</div>
+      <div style="font-size:9.5px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.8px" data-t="col_return">Ret%</div>
+      <div style="font-size:9.5px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.5px">Adv.</div>
     </div>
     <div id="m3-sources">
-      <div class="src-row"><div class="src-icon">🏛️</div><div class="src-name-wrap"><div class="src-name" data-t="src_nps">NPS</div><div class="src-type" style="color:var(--purple)" data-t="src_nps_t">Market-linked</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-nps-b" value="500000" placeholder="Balance"><input class="src-input" type="number" id="s-nps-m" value="15000" placeholder="Monthly"></div><input class="src-input src-ret" type="number" id="s-nps-r" value="10" step="0.5"></div>
-      <div class="src-row"><div class="src-icon">🏢</div><div class="src-name-wrap"><div class="src-name" data-t="src_epf">EPF / Gratuity</div><div class="src-type" style="color:var(--green)" data-t="src_epf_t">Guaranteed</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-epf-b" value="300000" placeholder="Balance"><input class="src-input" type="number" id="s-epf-m" value="4500" placeholder="Monthly"></div><input class="src-input src-ret" type="number" id="s-epf-r" value="8.25" step="0.25"></div>
-      <div class="src-row"><div class="src-icon">📮</div><div class="src-name-wrap"><div class="src-name" data-t="src_ppf">PPF</div><div class="src-type" style="color:var(--green)" data-t="src_ppf_t">Guaranteed</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-ppf-b" value="100000" placeholder="Balance"><input class="src-input" type="number" id="s-ppf-m" value="2000" placeholder="Monthly"></div><input class="src-input src-ret" type="number" id="s-ppf-r" value="7.1" step="0.1"></div>
-      <div class="src-row"><div class="src-icon">📈</div><div class="src-name-wrap"><div class="src-name">Mutual Funds</div><div class="src-type" style="color:var(--purple)">Market-linked</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-mf-b" value="150000" placeholder="Balance"><input class="src-input" type="number" id="s-mf-m" value="3000" placeholder="Monthly SIP"></div><input class="src-input src-ret" type="number" id="s-mf-r" value="12" step="0.5"></div>
-      <div class="src-row"><div class="src-icon">📊</div><div class="src-name-wrap"><div class="src-name">Stocks / Equity</div><div class="src-type" style="color:#8B5CF6">Market-linked</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-stk-b" value="0" placeholder="Balance"><input class="src-input" type="number" id="s-stk-m" value="0" placeholder="Monthly"></div><input class="src-input src-ret" type="number" id="s-stk-r" value="13" step="0.5"></div>
-      <div class="src-row"><div class="src-icon">🏠</div><div class="src-name-wrap"><div class="src-name" data-t="src_prop">Property (Investable)</div><div class="src-type" style="color:var(--orange)" data-t="src_prop_t">Market-linked</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-prop-b" value="0" placeholder="Value"><input class="src-input" type="number" id="s-prop-m" value="0" placeholder="Rental/mo"></div><input class="src-input src-ret" type="number" id="s-prop-r" value="7" step="0.5"></div>
-      <div class="src-row"><div class="src-icon">🏦</div><div class="src-name-wrap"><div class="src-name" data-t="src_fd">FD / Bonds</div><div class="src-type" style="color:var(--green)" data-t="src_fd_t">Guaranteed</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-fd-b" value="50000" placeholder="Balance"><input class="src-input" type="number" id="s-fd-m" value="0" placeholder="Monthly"></div><input class="src-input src-ret" type="number" id="s-fd-r" value="7" step="0.25"></div>
-      <div class="src-row"><div class="src-icon">🥇</div><div class="src-name-wrap"><div class="src-name">Gold / Commodities</div><div class="src-type" style="color:#D97706">Market-linked</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-gold-b" value="0" placeholder="Balance"><input class="src-input" type="number" id="s-gold-m" value="0" placeholder="Monthly"></div><input class="src-input src-ret" type="number" id="s-gold-r" value="8" step="0.5"></div>
-      <div class="src-row"><div class="src-icon">🌐</div><div class="src-name-wrap"><div class="src-name">International / Crypto</div><div class="src-type" style="color:#EC4899">Market-linked (High Risk)</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-intl-b" value="0" placeholder="Balance"><input class="src-input" type="number" id="s-intl-m" value="0" placeholder="Monthly"></div><input class="src-input src-ret" type="number" id="s-intl-r" value="12" step="0.5"></div>
-      <div class="src-row"><div class="src-icon">💼</div><div class="src-name-wrap"><div class="src-name" data-t="src_oth">Other Savings</div><div class="src-type" style="color:var(--faint)" data-t="src_oth_t">Mixed</div></div><div class="src-inputs"><input class="src-input" type="number" id="s-oth-b" value="0" placeholder="Balance"><input class="src-input" type="number" id="s-oth-m" value="0" placeholder="Monthly"></div><input class="src-input src-ret" type="number" id="s-oth-r" value="7" step="0.5"></div>
+      <!-- NPS -->
+      <div class="src-row" id="srcrow-nps">
+        <div class="src-icon">🏛️</div>
+        <div class="src-name-wrap"><div class="src-name" data-t="src_nps">NPS</div><div class="src-type" style="color:var(--purple)" data-t="src_nps_t">Market-linked</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-nps-b" value="500000" placeholder="Balance"><input class="src-input" type="number" id="s-nps-m" value="15000" placeholder="Monthly"></div>
+        <input class="src-input src-ret" type="number" id="s-nps-r" type="number" value="10" step="0.5" min="1" max="15">
+        <button class="src-adv-btn" onclick="toggleAdv('nps')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-nps">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-nps-su" value="5" step="0.5" min="-50" max="50" placeholder="e.g. 5 or -5"><div class="src-adv-hint">+5% → contribution grows 5%/yr · −5% → shrinks · 0 = flat</div></div>
+            <div class="src-adv-field"><label>Contribute Until Age (blank = retire)</label><input type="number" id="s-nps-until" placeholder="e.g. 55 — then corpus compounds only" min="18" max="80"></div>
+            <div class="src-adv-field"><label>Glide Path — Switch Return % at Age</label><input type="number" id="s-nps-g-age" placeholder="e.g. 55" min="18" max="80"><div class="src-adv-hint">Switch to conservative return at this age</div></div>
+            <div class="src-adv-field"><label>Return After Glide Path (%)</label><input type="number" id="s-nps-g-ret" placeholder="e.g. 7" step="0.5" min="0" max="25"></div>
+          </div>
+          <div class="src-breaks-area">
+            <div class="src-breaks-title">⏸ Contribution Breaks (e.g. career sabbatical)</div>
+            <div id="breaks-nps"></div>
+            <button class="src-add-btn src-add-break" onclick="addBreak('nps')">+ Add Break</button>
+          </div>
+          <div class="src-lumps-area">
+            <div class="src-lumps-title">💰 One-Time Lump Sum Additions</div>
+            <div id="lumps-nps"></div>
+            <button class="src-add-btn src-add-lump" onclick="addLump('nps')">+ Add Lump Sum</button>
+          </div>
+        </div>
+      </div>
+      <!-- EPF -->
+      <div class="src-row" id="srcrow-epf">
+        <div class="src-icon">🏢</div>
+        <div class="src-name-wrap"><div class="src-name" data-t="src_epf">EPF / Gratuity</div><div class="src-type" style="color:var(--green)" data-t="src_epf_t">Guaranteed</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-epf-b" value="300000" placeholder="Balance"><input class="src-input" type="number" id="s-epf-m" value="4500" placeholder="Monthly"></div>
+        <input class="src-input src-ret" type="number" id="s-epf-r" type="number" value="8.25" step="0.25" min="1" max="9.5" title="EPF rate is government-set. Typically 8–8.5%">
+        <button class="src-adv-btn" onclick="toggleAdv('epf')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-epf">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-epf-su" value="0" step="0.5" min="-50" max="50"></div>
+            <div class="src-adv-field"><label>Contribute Until Age</label><input type="number" id="s-epf-until" placeholder="blank = retire"><div class="src-adv-hint">EPF stops when you leave employment</div></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-epf-g-age" placeholder="optional"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-epf-g-ret" placeholder="optional" step="0.5"></div>
+          </div>
+          <div class="src-breaks-area"><div class="src-breaks-title">⏸ Breaks</div><div id="breaks-epf"></div><button class="src-add-btn src-add-break" onclick="addBreak('epf')">+ Add Break</button></div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Lump Sums</div><div id="lumps-epf"></div><button class="src-add-btn src-add-lump" onclick="addLump('epf')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- PPF -->
+      <div class="src-row" id="srcrow-ppf">
+        <div class="src-icon">📮</div>
+        <div class="src-name-wrap"><div class="src-name" data-t="src_ppf">PPF</div><div class="src-type" style="color:var(--green)" data-t="src_ppf_t">Guaranteed</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-ppf-b" value="100000" placeholder="Balance"><input class="src-input" type="number" id="s-ppf-m" value="2000" placeholder="Monthly"></div>
+        <input class="src-input src-ret" type="number" id="s-ppf-r" type="number" value="7.1" step="0.1" min="1" max="8.5" title="PPF rate is government-set. Typically 7.1–7.5%">
+        <button class="src-adv-btn" onclick="toggleAdv('ppf')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-ppf">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-ppf-su" value="0" step="0.5" min="-50" max="50"></div>
+            <div class="src-adv-field"><label>Contribute Until Age</label><input type="number" id="s-ppf-until" placeholder="blank = retire"><div class="src-adv-hint">PPF matures at 15 yrs — plan stop accordingly</div></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-ppf-g-age" placeholder="optional"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-ppf-g-ret" placeholder="optional" step="0.5"></div>
+          </div>
+          <div class="src-breaks-area"><div class="src-breaks-title">⏸ Breaks</div><div id="breaks-ppf"></div><button class="src-add-btn src-add-break" onclick="addBreak('ppf')">+ Add Break</button></div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Lump Sums</div><div id="lumps-ppf"></div><button class="src-add-btn src-add-lump" onclick="addLump('ppf')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- Mutual Funds -->
+      <div class="src-row" id="srcrow-mf">
+        <div class="src-icon">📈</div>
+        <div class="src-name-wrap"><div class="src-name">Mutual Funds</div><div class="src-type" style="color:var(--purple)">Market-linked</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-mf-b" value="150000" placeholder="Balance"><input class="src-input" type="number" id="s-mf-m" value="3000" placeholder="Monthly SIP"></div>
+        <input class="src-input src-ret" type="number" id="s-mf-r" type="number" value="12" step="0.5" min="1" max="18">
+        <button class="src-adv-btn" onclick="toggleAdv('mf')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-mf">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-mf-su" value="10" step="0.5" min="-50" max="50"><div class="src-adv-hint">SIPs typically step up with salary growth</div></div>
+            <div class="src-adv-field"><label>Contribute Until Age</label><input type="number" id="s-mf-until" placeholder="blank = retire"><div class="src-adv-hint">e.g. stop MF SIP at 50, switch to safer assets</div></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-mf-g-age" placeholder="e.g. 55"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-mf-g-ret" placeholder="e.g. 8" step="0.5"></div>
+          </div>
+          <div class="src-breaks-area"><div class="src-breaks-title">⏸ Breaks</div><div id="breaks-mf"></div><button class="src-add-btn src-add-break" onclick="addBreak('mf')">+ Add Break</button></div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Lump Sums</div><div id="lumps-mf"></div><button class="src-add-btn src-add-lump" onclick="addLump('mf')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- Stocks -->
+      <div class="src-row" id="srcrow-stk">
+        <div class="src-icon">📊</div>
+        <div class="src-name-wrap"><div class="src-name">Stocks / Equity</div><div class="src-type" style="color:#8B5CF6">Market-linked</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-stk-b" value="0" placeholder="Balance"><input class="src-input" type="number" id="s-stk-m" value="0" placeholder="Monthly"></div>
+        <input class="src-input src-ret" type="number" id="s-stk-r" type="number" value="13" step="0.5" min="1" max="18">
+        <button class="src-adv-btn" onclick="toggleAdv('stk')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-stk">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-stk-su" value="0" step="0.5" min="-50" max="50"></div>
+            <div class="src-adv-field"><label>Contribute Until Age</label><input type="number" id="s-stk-until" placeholder="blank = retire"></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-stk-g-age" placeholder="optional"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-stk-g-ret" placeholder="optional" step="0.5"></div>
+          </div>
+          <div class="src-breaks-area"><div class="src-breaks-title">⏸ Breaks</div><div id="breaks-stk"></div><button class="src-add-btn src-add-break" onclick="addBreak('stk')">+ Add Break</button></div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Lump Sums</div><div id="lumps-stk"></div><button class="src-add-btn src-add-lump" onclick="addLump('stk')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- Property -->
+      <div class="src-row" id="srcrow-prop">
+        <div class="src-icon">🏠</div>
+        <div class="src-name-wrap"><div class="src-name" data-t="src_prop">Property (Investable)</div><div class="src-type" style="color:var(--orange)" data-t="src_prop_t">Market-linked</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-prop-b" value="0" placeholder="Value"><input class="src-input" type="number" id="s-prop-m" value="0" placeholder="Rental/mo"></div>
+        <input class="src-input src-ret" type="number" id="s-prop-r" type="number" value="7" step="0.5" min="0" max="15">
+        <button class="src-adv-btn" onclick="toggleAdv('prop')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-prop">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Rental Growth (% p.a.)</label><input type="number" id="s-prop-su" value="0" step="0.5" min="-50" max="50"><div class="src-adv-hint">Annual rental income growth rate</div></div>
+            <div class="src-adv-field"><label>Rental Until Age</label><input type="number" id="s-prop-until" placeholder="blank = retire"></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-prop-g-age" placeholder="optional"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-prop-g-ret" placeholder="optional" step="0.5"></div>
+          </div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Property Sale / One-time (Lump Sum)</div><div id="lumps-prop"></div><button class="src-add-btn src-add-lump" onclick="addLump('prop')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- FD/Bonds -->
+      <div class="src-row" id="srcrow-fd">
+        <div class="src-icon">🏦</div>
+        <div class="src-name-wrap"><div class="src-name" data-t="src_fd">FD / Bonds</div><div class="src-type" style="color:var(--green)" data-t="src_fd_t">Guaranteed</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-fd-b" value="50000" placeholder="Balance"><input class="src-input" type="number" id="s-fd-m" value="0" placeholder="Monthly"></div>
+        <input class="src-input src-ret" type="number" id="s-fd-r" type="number" value="7" step="0.25" min="1" max="10">
+        <button class="src-adv-btn" onclick="toggleAdv('fd')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-fd">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-fd-su" value="0" step="0.5" min="-50" max="50"></div>
+            <div class="src-adv-field"><label>Contribute Until Age</label><input type="number" id="s-fd-until" placeholder="blank = retire"></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-fd-g-age" placeholder="optional"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-fd-g-ret" placeholder="optional" step="0.5"></div>
+          </div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Lump Sums (e.g. FD maturity re-investment)</div><div id="lumps-fd"></div><button class="src-add-btn src-add-lump" onclick="addLump('fd')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- Gold -->
+      <div class="src-row" id="srcrow-gold">
+        <div class="src-icon">🥇</div>
+        <div class="src-name-wrap"><div class="src-name">Gold / Commodities</div><div class="src-type" style="color:#D97706">Market-linked</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-gold-b" value="0" placeholder="Balance"><input class="src-input" type="number" id="s-gold-m" value="0" placeholder="Monthly"></div>
+        <input class="src-input src-ret" type="number" id="s-gold-r" type="number" value="8" step="0.5" min="0" max="15">
+        <button class="src-adv-btn" onclick="toggleAdv('gold')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-gold">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-gold-su" value="0" step="0.5" min="-50" max="50"></div>
+            <div class="src-adv-field"><label>Contribute Until Age</label><input type="number" id="s-gold-until" placeholder="e.g. 40 — invest gold only for 5 yrs"><div class="src-adv-hint">e.g. invest in gold for 5 years then stop</div></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-gold-g-age" placeholder="optional"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-gold-g-ret" placeholder="optional" step="0.5"></div>
+          </div>
+          <div class="src-breaks-area"><div class="src-breaks-title">⏸ Breaks</div><div id="breaks-gold"></div><button class="src-add-btn src-add-break" onclick="addBreak('gold')">+ Add Break</button></div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Lump Sums</div><div id="lumps-gold"></div><button class="src-add-btn src-add-lump" onclick="addLump('gold')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- International Funds / REITs -->
+      <div class="src-row" id="srcrow-intl">
+        <div class="src-icon">🌐</div>
+        <div class="src-name-wrap"><div class="src-name">Intl. Funds / REITs</div><div class="src-type" style="color:#EC4899">Market-linked (SEBI-regulated)</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-intl-b" value="0" placeholder="Balance"><input class="src-input" type="number" id="s-intl-m" value="0" placeholder="Monthly"></div>
+        <input class="src-input src-ret" type="number" id="s-intl-r" type="number" value="12" step="0.5" min="1" max="18">
+        <button class="src-adv-btn" onclick="toggleAdv('intl')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-intl">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-intl-su" value="0" step="0.5" min="-50" max="50"></div>
+            <div class="src-adv-field"><label>Contribute Until Age</label><input type="number" id="s-intl-until" placeholder="blank = retire"></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-intl-g-age" placeholder="optional"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-intl-g-ret" placeholder="optional" step="0.5"></div>
+          </div>
+          <div class="src-breaks-area"><div class="src-breaks-title">⏸ Breaks</div><div id="breaks-intl"></div><button class="src-add-btn src-add-break" onclick="addBreak('intl')">+ Add Break</button></div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Lump Sums</div><div id="lumps-intl"></div><button class="src-add-btn src-add-lump" onclick="addLump('intl')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- Other -->
+      <div class="src-row" id="srcrow-oth">
+        <div class="src-icon">💼</div>
+        <div class="src-name-wrap"><div class="src-name" data-t="src_oth">Other Savings</div><div class="src-type" style="color:var(--faint)" data-t="src_oth_t">Mixed</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-oth-b" value="0" placeholder="Balance"><input class="src-input" type="number" id="s-oth-m" value="0" placeholder="Monthly"></div>
+        <input class="src-input src-ret" type="number" id="s-oth-r" type="number" value="7" step="0.5" min="0" max="18">
+        <button class="src-adv-btn" onclick="toggleAdv('oth')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-oth">
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-oth-su" value="0" step="0.5" min="-50" max="50"></div>
+            <div class="src-adv-field"><label>Contribute Until Age</label><input type="number" id="s-oth-until" placeholder="blank = retire"></div>
+            <div class="src-adv-field"><label>Glide Path Switch Age</label><input type="number" id="s-oth-g-age" placeholder="optional"></div>
+            <div class="src-adv-field"><label>Return After Switch (%)</label><input type="number" id="s-oth-g-ret" placeholder="optional" step="0.5"></div>
+          </div>
+          <div class="src-breaks-area"><div class="src-breaks-title">⏸ Breaks</div><div id="breaks-oth"></div><button class="src-add-btn src-add-break" onclick="addBreak('oth')">+ Add Break</button></div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 Lump Sums</div><div id="lumps-oth"></div><button class="src-add-btn src-add-lump" onclick="addLump('oth')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
+      <!-- SCSS — Senior Citizen Savings Scheme -->
+      <div class="src-row" id="srcrow-scss">
+        <div class="src-icon">🏅</div>
+        <div class="src-name-wrap"><div class="src-name">SCSS <span style="font-size:9.5px;color:var(--green);font-weight:700">Post-Ret.</span></div><div class="src-type" style="color:var(--green)">Guaranteed (8.2%)</div></div>
+        <div class="src-inputs"><input class="src-input" type="number" id="s-scss-b" value="0" placeholder="Lump sum invested"><input class="src-input" type="number" id="s-scss-m" value="0" placeholder="0 (quarterly payout)"></div>
+        <input class="src-input src-ret" type="number" id="s-scss-r" type="number" value="8.2" step="0.1" min="1" max="9" title="SCSS rate is government-set. Currently 8.2%">
+        <button class="src-adv-btn" onclick="toggleAdv('scss')">⚙ Adv</button>
+        <div class="src-adv-panel" id="adv-scss">
+          <div style="font-size:10.5px;color:var(--green);font-weight:600;margin-bottom:8px">🏅 SCSS — Senior Citizen Savings Scheme: Govt-backed, 8.2% p.a. (quarterly payouts), max ₹30L/person (₹60L joint). 5-year term, renewable. Available from age 60 (55 for VRS). Interest is taxable; TDS if interest &gt;₹50K/yr. Enter the lump sum you plan to invest in SCSS at retirement — it provides stable quarterly income as guaranteed income floor.</div>
+          <div class="src-adv-grid">
+            <div class="src-adv-field"><label>Step-up / Step-down (% p.a.)</label><input type="number" id="s-scss-su" value="0" step="0.5" min="-50" max="50"><div class="src-adv-hint">Usually 0 — SCSS pays out, not compound</div></div>
+            <div class="src-adv-field"><label>Invest At Age (Lump Sum)</label><input type="number" id="s-scss-g-age" placeholder="e.g. 60 = at retirement"></div>
+            <div class="src-adv-field"><label>Return After Renewal (%)</label><input type="number" id="s-scss-g-ret" placeholder="e.g. 7.5 if rate drops" step="0.1"></div>
+          </div>
+          <div class="src-lumps-area"><div class="src-lumps-title">💰 SCSS Lump Sum Investment (at retirement)</div><div id="lumps-scss"></div><button class="src-add-btn src-add-lump" onclick="addLump('scss')">+ Add Lump Sum</button></div>
+        </div>
+      </div>
     </div>
     <div class="divider"><span data-t="div_params">Planning Parameters</span></div>
     <div class="ig3">
-      <div class="if"><label data-t="l_age">Current Age</label><input type="number" id="m3-age" value="32"></div>
-      <div class="if"><label data-t="l_ret">Retirement Age</label><input type="number" id="m3-ret" value="60"></div>
-      <div class="if"><label data-t="l_le">Life Expectancy</label><input type="number" id="m3-le" value="90"></div>
+      <div class="if"><label data-t="l_age">Current Age</label><input type="number" id="m3-age" value="32" min="18" max="70"></div>
+      <div class="if"><label data-t="l_ret">Retirement Age</label><input type="number" id="m3-ret" value="60" min="30" max="85"></div>
+      <div class="if"><label data-t="l_le">Life Expectancy</label><input type="number" id="m3-le" value="90" min="60" max="100"></div>
       <div class="if"><label data-t="l_exp">Monthly Expenses (₹ today)</label><input type="number" id="m3-exp" value="40000" step="5000"></div>
       <div class="if"><label data-t="l_inf">Inflation (%)</label><input type="number" id="m3-inf" value="6"></div>
-      <div class="if"><label data-t="l_apct">Annuity % of NPS</label><div class="sl-row"><input type="range" id="m3-apct" min="40" max="100" value="40" step="5" oninput="updSl('m3-apct','m3-apct-v')"><span class="sl-val" id="m3-apct-v">40%</span></div>
-      <div style="font-size:9.5px;color:#C2410C;margin-top:2px">⚖️ PFRDA min 40%.</div></div>
-      <div class="if"><label data-t="l_ar">NPS Annuity Rate (% p.a.)<span style="font-size:9.5px;font-weight:400;color:var(--faint);display:block">Consistent with Module 1. Check with your annuity provider.</span></label><input type="number" id="m3-ar" value="6" step="0.25" min="3" max="12"></div>
-      <div class="if"><label>Post-Ret. Drawdown Return (%)<span style="font-size:9.5px;font-weight:400;color:var(--faint);display:block">Used for EPF/PPF/FD annual withdrawal calc. Default 7%.</span></label><input type="number" id="m3-post-ret-r" value="7" step="0.5" min="1" max="15"></div>
+      <div class="if"><label data-t="l_apct">Annuity % of NPS</label><div class="sl-row"><input type="range" id="m3-apct" min="20" max="100" value="40" step="5" oninput="updSl('m3-apct','m3-apct-v')"><span class="sl-val" id="m3-apct-v">40%</span></div>
+      <div style="font-size:9.5px;color:#C2410C;margin-top:2px">⚖️ PFRDA min 20% (amended 2024). Max lump sum = 80% of corpus.</div></div>
+      <div class="if"><label data-t="l_ar">NPS Annuity Rate (% p.a.)<span style="font-size:9.5px;font-weight:400;color:var(--faint);display:block">Consistent with Module 1. Check with your annuity provider.</span></label><input type="number" id="m3-ar" value="6" step="0.25" min="3" max="9"></div>
+      <div class="if"><label>Post-EPS Pension (₹/mo at retirement) <span style="font-size:9px;color:var(--green);font-weight:700;padding:1px 5px;background:rgba(22,163,74,.1);border-radius:4px">EPFO</span></label>
+          <input type="number" id="m3-eps" value="0" min="0" max="7500" step="500" placeholder="0">
+          <span class="hint">EPFO Employee Pension Scheme: (pensionable salary × service yrs) ÷ 70. Max ₹7,500/mo for 35yr service @ ₹15K wage. Enter 0 if not applicable or already on NPS.</span></div>
+        <div class="if"><label title="Gratuity = 15 × last drawn monthly salary × years of service ÷ 26. Max ₹20L tax-free under Payment of Gratuity Act.">Gratuity at Retirement (₹) <span style="font-size:9px;color:#D97706;font-weight:700;padding:1px 5px;background:rgba(217,119,6,.1);border-radius:4px">LUMP SUM</span></label>
+          <input type="number" id="m3-gratuity" value="0" min="0" max="2000000" step="50000" placeholder="0">
+          <span class="hint">15 × last monthly salary × years of service ÷ 26. Max ₹20L tax-free. Added as lump sum to your retirement corpus.</span></div>
+        <div class="if"><label>Ret. Drawdown Return (%)<span style="font-size:9.5px;font-weight:400;color:var(--faint);display:block">Used for EPF/PPF/FD annual withdrawal calc. Default 7%.</span></label><input type="number" id="m3-post-ret-r" value="7" step="0.5" min="1" max="15"></div>
     </div>
     <div class="btn-row">
       <button type="button" class="btn" style="background:linear-gradient(135deg,var(--purple),#8B5CF6)" onclick="calcM3()" data-t="btn_calc">Analyse Portfolio →</button>
       <button type="button" class="btn-s" onclick="resetM3()" data-t="btn_reset">Reset</button>
       <button type="button" class="btn-next" onclick="pushToM5();switchTab(4)" data-t="btn_push_m5">Push to Risk Dashboard →</button>
       <button type="button" class="btn-next" onclick="pushToM4();switchTab(3)" style="background:linear-gradient(135deg,var(--orange),#F59E0B)" data-t="btn_push_m4">Push to Annuity Optimizer →</button>
+      <button type="button" class="btn-next" onclick="pushToM9();switchTab(8)" style="background:linear-gradient(135deg,var(--blue),#3B82F6)">Push to Health Check (M9) →</button>
     </div>
   </div>
   <div id="m3-results" style="display:none">
@@ -652,7 +891,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <strong>📖 Score Guide:</strong>
       <span style="display:inline-block;margin:0 8px"><strong style="color:var(--teal)">PSI</strong> = Guaranteed income ÷ Expenses. Higher = safer floor. Target ≥ 75%.</span>·
       <span style="display:inline-block;margin:0 8px"><strong style="color:var(--purple)">RSR</strong> = Total income ÷ Expenses. Target ≥ 100%.</span>·
-      <span style="display:inline-block;margin:0 4px;color:var(--muted);font-size:10.5px">⚠️ All income figures are in today-inflated nominal rupees — real purchasing power erodes with inflation. See Module 5 for full stress-tested risk scores.</span>
+      <span style="display:inline-block;margin:0 4px;color:var(--muted);font-size:10.5px">⚠️ All income figures are in nominal rupees. Real purchasing power erodes with inflation. See Module 5 for full stress-tested risk scores.</span>
+      <div style="margin-top:8px;padding:7px 10px;background:#fffbeb;border-left:3px solid #f59e0b;border-radius:5px;font-size:10.5px;color:#92400e">
+        <strong>💰 Tax reminder:</strong> NPS annuity income is <strong>fully taxable at your slab rate</strong>. EPF/PPF are tax-free. SCSS interest is taxable (₹50K senior citizen deduction under 80TTB). FD interest is taxable as income. Post-tax guaranteed income may be 20–30% lower than shown — factor this into your planning.
+      </div>
     </div>
     <div class="rg" id="m3-rg"></div>
 
@@ -677,6 +919,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
             <th style="padding:10px 13px;font-size:9.5px;color:var(--navy);text-align:right;border-bottom:1.5px solid var(--light);font-weight:700">At Retirement</th>
             <th style="padding:10px 13px;font-size:9.5px;color:var(--green);text-align:right;border-bottom:1.5px solid var(--light);font-weight:700">Growth Multiple</th>
             <th style="padding:10px 13px;font-size:9.5px;color:var(--faint);text-align:right;border-bottom:1.5px solid var(--light);font-weight:700">% of Total</th>
+            <th style="padding:10px 13px;font-size:9.5px;color:var(--purple);text-align:left;border-bottom:1.5px solid var(--light);font-weight:700">⚡ Simulation Settings</th>
           </tr></thead>
           <tbody id="m3-asset-tbody"></tbody>
           <tfoot id="m3-asset-tfoot"></tfoot>
@@ -685,7 +928,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <!-- Growth Chart -->
       <div id="m3-growth-chart" style="display:none">
         <div class="cw" style="margin-top:0;background:transparent;border:none;padding:0">
-          <div style="font-size:10px;color:var(--faint);margin-bottom:6px">📌 Market-linked assets (NPS, MF, Equity) include your GPS step-up rate. Fixed instruments (EPF, PPF, FD) use flat monthly contributions.</div>
+          <div style="font-size:10px;color:var(--faint);margin-bottom:6px">📌 Each line uses year-by-year simulation — reflecting your step-up, contribution end age, breaks, glide path, and lump sums exactly as configured. <span style="color:var(--purple)">Open ⚙ Adv</span> on any row above to customise.</div>
           <canvas id="chart-m3-growth" height="280"></canvas>
         </div>
       </div>
@@ -707,7 +950,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 
     <div class="two-col" style="margin-top:14px">
       <div class="cw" style="margin-top:0"><div class="cw-title"><span>🥧</span> <span data-t="ch3a_t">Asset Allocation</span></div><canvas id="chart-m3-donut" height="240"></canvas></div>
-      <div class="cw" style="margin-top:0"><div class="cw-title"><span>📊</span> <span data-t="ch3b_t">Guaranteed vs Market-Linked Income (₹ Nominal · Market income depletes with corpus)</span></div><canvas id="chart-m3-stack" height="240"></canvas>
+      <div class="cw" style="margin-top:0"><div class="cw-title"><span>📊</span> <span data-t="ch3b_t">Guaranteed vs Market-Linked Income (₹ Nominal · Market income depletes with corpus)</span></div>
+        <div style="font-size:10.5px;color:var(--muted);margin-bottom:6px;padding:6px 10px;background:rgba(10,124,110,.05);border-radius:6px;border-left:3px solid var(--teal2)">📖 <strong>How to read:</strong> <strong style="color:var(--green)">Green</strong> = guaranteed income (annuity, EPF, FD — stable floor). <strong style="color:var(--purple)">Stacked bar</strong> = market-linked income (NPS lump sum, MF, equity — grows but can deplete). A taller green portion = safer retirement.</div>
+        <canvas id="chart-m3-stack" height="240"></canvas>
         <div id="m3-crossover-note" style="display:none;font-size:11.5px;line-height:1.7;padding:9px 13px;margin-top:8px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;border-left:4px solid #f97316"></div>
       </div>
     </div>
@@ -742,7 +987,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="card-desc" data-t="m4cd">All allocation percentages are fully editable. No mandatory rules locked in — explore freely.</div>
       <div class="ig">
         <div class="if"><label data-t="l_corpus">Retirement Corpus (₹)</label><input type="number" id="m4-corp" value="10000000" step="100000"></div>
-        <div class="if"><label data-t="l_ar">Annuity Rate (% p.a.)</label><input type="number" id="m4-ar" value="6" step="0.25" min="3" max="12"></div>
+        <div class="if"><label data-t="l_ar">Annuity Rate (% p.a.)</label><input type="number" id="m4-ar" value="6" step="0.25" min="3" max="9"></div>
         <div class="if"><label data-t="l_lr">Lump Sum Return (% p.a.)</label><input type="number" id="m4-lr" value="8" step="0.5"></div>
         <div class="if"><label data-t="l_inf">Inflation Rate (%)</label><input type="number" id="m4-inf" value="6"></div>
         <div class="if"><label data-t="l_ret_age">Retirement Age</label><input type="number" id="m4-ret" value="60"></div>
@@ -758,8 +1003,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="divider"><span data-t="div_custom_split">Custom Balanced Split</span></div>
       <div class="if">
         <label data-t="l_apct">Your Annuity % (for Balanced strategy)</label>
-        <div class="sl-row"><input type="range" id="m4-apct" min="40" max="100" value="40" step="5" oninput="updSl('m4-apct','m4-apct-v')"><span class="sl-val" id="m4-apct-v">40%</span></div>
-        <div style="font-size:9.5px;color:#C2410C;margin-top:3px">⚖️ PFRDA mandates minimum 40% annuity purchase at NPS exit.</div>
+        <div class="sl-row"><input type="range" id="m4-apct" min="20" max="100" value="40" step="5" oninput="updSl('m4-apct','m4-apct-v')"><span class="sl-val" id="m4-apct-v">40%</span></div>
+        <div style="font-size:9.5px;color:#C2410C;margin-top:3px">⚖️ PFRDA minimum 20% annuity (amended 2024; was 40% before). Max lump sum is 80% of corpus.</div>
+        <div style="font-size:9.5px;color:#B45309;margin-top:4px;background:#fffbeb;border-left:3px solid #f59e0b;padding:4px 8px;border-radius:4px">💰 <strong>Tax note:</strong> Annuity income is taxed at your slab rate every year. Lump sum: 60% is tax-free; any withdrawal up to 80% total is now permitted (PFRDA 2024). Plan your split with post-tax income in mind.</div>
       </div>
       <div class="btn-row">
         <button type="button" class="btn" style="background:linear-gradient(135deg,var(--orange),#F59E0B)" onclick="calcM4()" data-t="btn_calc">Compare Strategies →</button>
@@ -769,6 +1015,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div id="m4-ph"><div class="placeholder"><div class="ph-icon">🏦</div><p data-t="ph4">Enter corpus details and click <strong>Compare Strategies</strong> to see all four options.</p></div></div>
   </div>
   <div id="m4-results" style="display:none">
+    <div style="background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:11px;color:#92400e;line-height:1.7">
+      <strong>💰 Tax Impact on These Strategies:</strong> Annuity income (all strategies) is <strong>fully taxable at your income slab rate</strong> every year — factor in 20–30% tax reduction for realistic net income. Lump sum: 60% tax-free; PFRDA 2024 allows up to 80% total withdrawal. SWP income from market-linked corpus: equity LTCG above ₹1.25L taxed @12.5%; debt fund gains at slab. Strategies shown are <strong>pre-tax</strong>.
+    </div>
     <div class="strat-grid" id="m4-strats"></div>
     <div class="cw"><div class="cw-title"><span>📊</span> <span data-t="ch4a_t">Monthly Income — Year 1, Year 10, Year 20 by Strategy</span></div><canvas id="chart-m4-income" height="270"></canvas></div>
     <div class="two-col" style="margin-top:14px">
@@ -787,13 +1036,17 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
   </div>
   <div class="card bt-coral">
     <div class="card-title" data-t="m5ct">⚡ Risk Assessment Inputs</div>
-    <div class="card-desc" data-t="m5cd">Auto-populated from Module 3 when you use "Push to Risk Dashboard". Edit any field independently.</div>
+    <div class="card-desc" data-t="m5cd">Auto-populated from Module 3 when you use "Push to Risk Dashboard". Or use the quick-fill buttons below, then edit any field independently.</div>
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+      <button type="button" onclick="pullM5fromM3()" style="font-size:11px;font-weight:700;padding:6px 12px;border-radius:6px;border:1.5px solid var(--purple);background:var(--purple-dim);color:var(--purple);cursor:pointer">↙ Pull from Corpus Integrator (M3)</button>
+      <button type="button" onclick="pullM5fromM1()" style="font-size:11px;font-weight:700;padding:6px 12px;border-radius:6px;border:1.5px solid var(--teal2);background:var(--teal-dim);color:var(--teal);cursor:pointer">↙ Pull NPS-only from NPS Simulator (M1)</button>
+    </div>
     <div class="ig">
       <div class="if"><label data-t="l_corpus">Total Retirement Corpus (₹)</label><input type="number" id="m5-corp" value="10000000" step="100000"></div>
       <div class="if"><label data-t="l_gi">Guaranteed Annual Income (₹)</label><input type="number" id="m5-gi" value="240000" step="10000"><span class="hint" data-t="h_gi">Annuity + EPF pension + FD interest</span></div>
       <div class="if"><label data-t="l_ti">Total Annual Income (₹)</label><input type="number" id="m5-ti" value="600000" step="10000"><span class="hint" data-t="h_ti">All sources combined</span></div>
       <div class="if"><label data-t="l_exp">Annual Expenses at Retirement (₹)</label><input type="number" id="m5-exp" value="480000" step="10000"></div>
-      <div class="if"><label data-t="l_pr">Post-Retirement Return (%)</label><input type="number" id="m5-pr" value="7" step="0.5"></div>
+      <div class="if"><label data-t="l_pr">Post-Retirement Return (%)</label><input type="number" id="m5-pr" value="7" step="0.5" min="0.5" max="15"></div>
       <div class="if"><label data-t="l_inf">Inflation Rate (%)</label><input type="number" id="m5-inf" value="6"></div>
       <div class="if"><label data-t="l_le">Life Expectancy</label><input type="number" id="m5-le" value="90"></div>
       <div class="if"><label data-t="l_ret_age">Retirement Age</label><input type="number" id="m5-ret" value="60"></div>
@@ -910,7 +1163,21 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     </div>
 
     <div class="two-col" style="margin-top:14px">
-      <div class="cw" style="margin-top:0;background:#fff;border:1px solid var(--light)"><div class="cw-title"><span>🕸️</span> <span data-t="ch5a_t">6-Dimension Retirement Health Radar</span></div><canvas id="chart-m5-radar" height="270"></canvas></div>
+      <div class="cw" style="margin-top:0;background:#fff;border:1px solid var(--light)">
+        <div class="cw-title"><span>🕸️</span> <span data-t="ch5a_t">6-Dimension Retirement Health Radar</span></div>
+        <div style="background:linear-gradient(135deg,rgba(10,35,66,.03),rgba(20,50,96,.05));border:1.5px solid rgba(10,35,66,.12);border-left:4px solid var(--teal2);border-radius:var(--r-sm);padding:12px 14px;margin-bottom:12px;font-size:11.5px;line-height:1.7;color:var(--text)">
+          <strong>📖 How to read this chart:</strong> Each axis (0–10) scores one aspect of your retirement health. The <strong style="color:var(--teal)">teal area</strong> is your score; the <strong style="color:var(--pfrda-saffron)">orange dashed line</strong> is the 8/10 target. Aim to fill as much of the hexagon as possible.
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-top:8px;font-size:10.5px;">
+            <span>📥 <strong>Income Adequacy</strong> — RSR: total income vs expenses</span>
+            <span>⏳ <strong>Longevity Coverage</strong> — years corpus survives under stress</span>
+            <span>🛡️ <strong>Inflation Shield</strong> — guaranteed floor + growth hedge</span>
+            <span>📉 <strong>Sequence Risk</strong> — SWR: vulnerability to early-retirement crash</span>
+            <span>💧 <strong>Liquidity</strong> — share of market-linked (flexible) income</span>
+            <span>🔀 <strong>Diversification</strong> — balance between guaranteed + market income</span>
+          </div>
+        </div>
+        <canvas id="chart-m5-radar" height="270"></canvas>
+      </div>
     <div class="cw"><div class="cw-title"><span>💥</span> <span data-t="ch5b_t">Market Shock Test — Base vs −40% Crash in Year 1</span></div>
       <div style="font-size:10.5px;color:var(--muted);margin-bottom:8px;padding:6px 10px;background:rgba(220,32,32,.05);border-radius:6px;border-left:3px solid #DC2626">⚠️ <strong>Sequence-of-Returns Risk:</strong> A market crash in your first year of retirement is the most damaging scenario — you sell units at a low price to fund expenses, permanently reducing your corpus base. This chart shows how your corpus diverges between normal and shocked conditions over your full retirement horizon.</div>
       <canvas id="chart-m5-shock" height="270"></canvas></div>
@@ -940,7 +1207,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="if" style="margin-bottom:9px"><label data-t="l_cc">Current Corpus (₹)</label><input type="number" id="sca-cc" value="500000"></div>
       <div class="if" style="margin-bottom:9px"><label data-t="l_mc">Monthly Contrib (₹)</label><input type="number" id="sca-mc" value="15000"></div>
       <div class="if" style="margin-bottom:9px"><label data-t="l_su">Step-up (%)</label><input type="number" id="sca-su" value="5"></div>
-      <div class="if" style="margin-bottom:9px"><label data-t="l_ret_rate">Return Rate (%)</label><input type="number" id="sca-r" value="10"></div>
+      <div class="if" style="margin-bottom:9px"><label data-t="l_ret_rate">Return Rate (%)</label><input type="number" id="sca-r" value="10" min="1" max="15"></div>
       <div class="if"><label data-t="l_inf">Inflation (%)</label><input type="number" id="sca-inf" value="6"></div>
     </div>
     <div class="compare-col">
@@ -951,7 +1218,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="if" style="margin-bottom:9px"><label data-t="l_cc">Current Corpus (₹)</label><input type="number" id="scb-cc" value="200000"></div>
       <div class="if" style="margin-bottom:9px"><label data-t="l_mc">Monthly Contrib (₹)</label><input type="number" id="scb-mc" value="15000"></div>
       <div class="if" style="margin-bottom:9px"><label data-t="l_su">Step-up (%)</label><input type="number" id="scb-su" value="5"></div>
-      <div class="if" style="margin-bottom:9px"><label data-t="l_ret_rate">Return Rate (%)</label><input type="number" id="scb-r" value="10"></div>
+      <div class="if" style="margin-bottom:9px"><label data-t="l_ret_rate">Return Rate (%)</label><input type="number" id="scb-r" value="10" min="1" max="15"></div>
       <div class="if"><label data-t="l_inf">Inflation (%)</label><input type="number" id="scb-inf" value="6"></div>
     </div>
     <div class="compare-col">
@@ -962,7 +1229,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="if" style="margin-bottom:9px"><label data-t="l_cc">Current Corpus (₹)</label><input type="number" id="scc-cc" value="50000"></div>
       <div class="if" style="margin-bottom:9px"><label data-t="l_mc">Monthly Contrib (₹)</label><input type="number" id="scc-mc" value="8000"></div>
       <div class="if" style="margin-bottom:9px"><label data-t="l_su">Step-up (%)</label><input type="number" id="scc-su" value="5"></div>
-      <div class="if" style="margin-bottom:9px"><label data-t="l_ret_rate">Return Rate (%)</label><input type="number" id="scc-r" value="10"></div>
+      <div class="if" style="margin-bottom:9px"><label data-t="l_ret_rate">Return Rate (%)</label><input type="number" id="scc-r" value="10" min="1" max="15"></div>
       <div class="if"><label data-t="l_inf">Inflation (%)</label><input type="number" id="scc-inf" value="6"></div>
     </div>
   </div>
@@ -1006,7 +1273,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
   <div class="sec-hd">
     <span class="sec-tag tag-teal" style="background:rgba(109,40,217,.10);color:var(--purple);border:1px solid rgba(109,40,217,.2)">Module 07 · Fund &amp; Tax Optimisation</span>
     <h2 style="font-family:var(--serif);font-size:23px;color:var(--navy);margin-bottom:4px">NPS Fund Allocation Optimizer</h2>
-    <p style="font-size:12.5px;color:var(--muted);max-width:620px;line-height:1.65">Compare Active Choice (you decide E/C/G split) vs Auto Choice (LC lifecycle funds). See projected corpus, tax savings under 80C+80CCD(1B), and the optimal strategy for your age.</p>
+    <p style="font-size:12.5px;color:var(--muted);max-width:620px;line-height:1.65">Compare Active Choice (you decide E/C/G split) vs Auto Choice (LC lifecycle funds). See projected corpus, tax savings under 80C+80CCD(1B) (old regime) or 80CCD(2) only (new regime), and the optimal strategy for your age.</p>
   </div>
   <div class="two-col">
     <div class="card" style="border-top:3px solid var(--purple)">
@@ -1018,14 +1285,29 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="if"><label>Current NPS Corpus (₹)</label><input type="number" id="m7-cc" value="500000" step="10000"></div>
         <div class="if"><label>Monthly Contribution (₹)</label><input type="number" id="m7-mc" value="15000" step="500"></div>
         <div class="if"><label>Annual Step-up (%)</label><input type="number" id="m7-su" value="5" min="0" max="20"></div>
-        <div class="if"><label>Annual Income (₹) — for tax calc</label><input type="number" id="m7-income" value="1200000" step="50000"></div>
+        <div class="if"><label>Annual Income (₹) — for tax calc</label><input type="number" id="m7-income" value="1200000" step="50000" min="0"></div>
         <div class="if"><label>Tax Slab (%)</label>
           <select id="m7-slab" style="background:var(--bg2);border:1.5px solid var(--light);border-radius:var(--r-xs);color:var(--text);font-family:var(--mono);font-size:13px;padding:8px 11px;width:100%;outline:none">
             <option value="5">5%</option><option value="10">10%</option><option value="15">15%</option>
             <option value="20">20%</option><option value="30" selected>30%</option>
           </select>
         </div>
+        <div class="if"><label>Tax Regime</label>
+          <select id="m7-regime" style="background:var(--bg2);border:1.5px solid var(--light);border-radius:var(--r-xs);color:var(--text);font-family:var(--mono);font-size:13px;padding:8px 11px;width:100%;outline:none">
+            <option value="old" selected>Old Regime (80C + 80CCD(1B) allowed)</option>
+            <option value="new">New Regime (only 80CCD(2) allowed)</option>
+          </select>
+          <span class="hint" style="color:#C2410C">⚖️ Under the new tax regime, 80C and 80CCD(1B) deductions are NOT available. Only employer NPS (80CCD(2)) remains deductible.</span><span class="hint" style="color:#1D4ED8;margin-top:3px;display:block">ℹ️ <strong>FY 2025-26 note:</strong> The New Tax Regime is now the <strong>default regime</strong> for individuals. If you haven't opted out, you are likely on the New Regime.</span>
+        </div>
         <div class="if"><label title="EPF, LIC, ELSS, PPF, home loan principal etc. — reduces NPS 80C room">Other 80C Investments/yr (₹)</label><input type="number" id="m7-other80c" value="100000" step="10000" placeholder="EPF+LIC+ELSS etc."></div>
+        <div class="if" style="margin-bottom:8px"><label>Employer Type <span style="font-size:9px;color:var(--green);font-weight:700">80CCD(2) cap</span></label>
+          <select id="m7-emp-type" style="background:var(--bg2);border:1.5px solid var(--light);border-radius:var(--r-xs);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 9px;width:100%;outline:none">
+            <option value="govt">Central/State Govt or PSU (cap: 14% of basic)</option>
+            <option value="private" selected>Private Sector (cap: 10% of basic)</option>
+          </select>
+          <span class="hint">PFRDA rule: 80CCD(2) deduction is capped at <strong>14% of basic salary</strong> for govt employees and <strong>10% of basic salary</strong> for private sector. Calculator enforces this automatically.</span>
+        </div>
+        <div class="if"><label title="Employer's contribution to your NPS Tier-I under Section 80CCD(2) — deductible under both regimes, capped at 14% of basic salary (govt) or 10% (private). Calculator enforces this cap.">Employer NPS Contrib/yr (₹) <span style="font-size:9px;color:var(--green);font-weight:700">80CCD(2)</span></label><input type="number" id="m7-emp-nps" value="0" step="10000" placeholder="14% of basic salary e.g. 168000"><span class="hint" style="color:var(--green)">Deductible under 80CCD(2) — unlimited, works even in new tax regime. Enter 14% × annual basic salary if your employer offers this.</span></div>
       </div>
       <div class="divider"><span>Active Choice — E / C / G Allocation</span></div>
       <div style="background:var(--bg2);border-radius:var(--r-sm);padding:14px;margin-bottom:14px">
@@ -1066,7 +1348,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <!-- Tax benefit card -->
     <div class="card" style="border-top:3px solid var(--gold);margin-top:16px">
       <div class="card-title">💰 NPS Tax Benefit Calculator</div>
-      <div class="card-desc">Section 80C allows up to ₹1.5L deduction (shared with EPF, LIC, ELSS etc.). Section 80CCD(1B) gives an <em>additional exclusive</em> deduction of up to ₹50K for NPS — independent of 80C. Based on your <em>employee's own NPS contribution</em> only; employer's contribution under 80CCD(2) is separate and unlimited.</div>
+      <div class="card-desc">Three deduction sections: <strong>80C</strong> (₹1.5L shared with EPF/LIC/ELSS/PPF — <em>old regime only</em>), <strong>80CCD(1B)</strong> (extra ₹50K exclusive to NPS — <em>old regime only</em>), and <strong style="color:var(--green)">80CCD(2)</strong> (employer's NPS contribution — deductible under <strong>both regimes</strong>, capped at 14% of basic salary). Note: 80CCD(1) is further limited to 10% of gross salary — the calculator enforces this cap automatically. Select your tax regime above to see the correct deductions.</div>
       <div id="m7-tax-grid" class="rg" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr))"></div>
     </div>
 
@@ -1085,7 +1367,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         </tr></thead>
         <tbody id="m7-tbody"></tbody>
       </table>
-      <div style="padding:10px 18px;font-size:10px;color:var(--faint)">* Monthly pension = (corpus × 40% annuity allocation) × (annuity rate ÷ 12). Default: 40% allocation @ 6% p.a. Adjust in Module 1 for personalised values.</div>
+      <div style="padding:10px 18px;font-size:10px;color:var(--faint)">* Monthly pension = (corpus × annuity allocation %) × (annuity rate ÷ 12). Uses Module 1 values if set; defaults to 40% allocation @ 6% p.a. Adjust in Module 1 for personalised values.</div>
     </div>
 
     <div class="cw" style="margin-top:14px">
@@ -1126,7 +1408,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="if"><label>Retirement Age</label><input type="number" id="m8-ret" value="60" min="40" max="80"></div>
         <div class="if"><label>Life Expectancy</label><input type="number" id="m8-le" value="90" min="60" max="105"></div>
         <div class="if"><label>Monthly Expenses Today (₹)</label><input type="number" id="m8-exp" value="50000" step="5000"></div>
-        <div class="if"><label>Medical Expense / Month (₹)</label><input type="number" id="m8-med" value="10000" step="1000"></div>
+        <div class="if"><label>Medical Expense / Month (₹)</label><input type="number" id="m8-med" value="15000" step="1000"></div>
         <div class="if"><label>General Inflation (% p.a.)</label><input type="number" id="m8-inf" value="6" step="0.5" min="1" max="15"></div>
         <div class="if"><label>Medical Inflation (% p.a.) <span style="font-size:9px;color:var(--coral)">India avg ~12–15%</span></label><input type="number" id="m8-minf" value="12" step="0.5" min="1" max="20"></div>
         <div class="if"><label>Post-Retirement Return (% p.a.)</label><input type="number" id="m8-ret-r" value="7" step="0.5" min="0" max="15"></div>
@@ -1141,7 +1423,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       </div>
       <div class="btn-row">
         <button type="button" class="btn" style="background:linear-gradient(135deg,var(--coral),#F97316)" onclick="calcM8()">Simulate →</button>
-        <button type="button" class="btn-s" onclick="resetM8()">Reset</button>
+        <button type="button" class="btn-s" onclick="resetM8()">↺ Reset</button>
+            <button type="button" class="btn" style="background:#DC2626;color:#fff;border:none;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer" onclick="runCrashStress()" title="Simulates 40% market crash in Year 1 of retirement — worst-case sequence of returns">🔴 Crash at Retirement</button>
       </div>
     </div>
     <div id="m8-right-ph"><div class="placeholder"><div class="ph-icon">⏳</div><p>Enter corpus details and click <strong>Simulate</strong> to see your retirement runway.</p></div></div>
@@ -1152,8 +1435,20 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div id="m8-banner" style="border-radius:var(--r-sm);padding:18px 22px;margin-bottom:16px;text-align:center;font-size:15px;font-weight:700;line-height:1.8"></div>
     <div class="rg" id="m8-rg" style="grid-template-columns:repeat(auto-fill,minmax(175px,1fr))"></div>
 
+    <!-- Monte Carlo Panel -->
+    <div class="card bt-purple" style="margin-top:14px">
+      <div class="card-title">🎲 Monte Carlo Simulation — Probability of Success</div>
+      <div class="card-desc">Runs 1,000 simulations with randomised annual returns (same mean, realistic volatility) to show the <strong>probability your corpus survives your full retirement</strong>. A single deterministic path can mislead — this shows the full range of possible outcomes.</div>
+      <div id="m8-mc-results">
+        <div class="three-col" style="margin-bottom:14px" id="m8-mc-scores"></div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:6px;padding:6px 10px;background:rgba(91,33,182,.05);border-radius:6px;border-left:3px solid var(--purple)">📖 <strong>How to read:</strong> Each faint line = one simulated retirement. <strong style="color:var(--teal)">Teal band</strong> = median outcome. <strong style="color:var(--green)">Green</strong> = 90th percentile (lucky returns). <strong style="color:var(--coral)">Red</strong> = 10th percentile (poor returns). Lines that hit zero = corpus depleted. Aim for <strong>P(success) ≥ 80%</strong> for a robust plan.</div>
+        <canvas id="chart-m8-mc" height="280"></canvas>
+      </div>
+    </div>
+
     <div class="cw" style="margin-top:14px">
       <div class="cw-title"><span>📉</span> Corpus Drawdown — Year by Year (with Medical Inflation Overlay)</div>
+      <div style="font-size:10.5px;color:var(--muted);margin-bottom:8px;padding:6px 10px;background:rgba(220,32,32,.05);border-radius:6px;border-left:3px solid var(--coral)">📖 <strong>How to read:</strong> The line shows your corpus balance each year. A <strong>steeper decline</strong> means higher spending vs returns. When it hits zero, your money runs out — the year this happens is your "runway limit". The highlighted point shows when (or if) corpus is depleted.</div>
       <canvas id="chart-m8-draw" height="290"></canvas>
     </div>
     <div class="two-col" style="margin-top:14px">
@@ -1201,6 +1496,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="card" style="border-top:3px solid var(--blue)">
       <div class="card-title">🏥 Financial Safety Net Inputs</div>
       <div class="card-desc">Enter your current financial situation. The health check uses industry thumb-rules and flags gaps instantly.</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+        <button type="button" onclick="pullM9fromM3()" style="font-size:11px;font-weight:700;padding:6px 12px;border-radius:6px;border:1.5px solid var(--purple);background:var(--purple-dim);color:var(--purple);cursor:pointer">↙ Pull Total Corpus from Corpus Integrator (M3)</button>
+        <button type="button" onclick="pullM9fromM1()" style="font-size:11px;font-weight:700;padding:6px 12px;border-radius:6px;border:1.5px solid var(--teal2);background:var(--teal-dim);color:var(--teal);cursor:pointer">↙ Pull NPS Corpus from NPS Simulator (M1)</button>
+      </div>
       <div class="ig">
         <div class="if"><label>Current Age</label><input type="number" id="m9-age" value="32" min="18" max="70"></div>
         <div class="if"><label>Planned Retirement Age</label><input type="number" id="m9-ret" value="60" min="30" max="80"></div>
@@ -1209,8 +1508,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="if"><label>Current Emergency Fund (₹)</label><input type="number" id="m9-ef" value="200000" step="10000"></div>
         <div class="if"><label>Term Insurance Cover (₹)</label><input type="number" id="m9-term" value="5000000" step="500000"></div>
         <div class="if"><label>Health Insurance Cover (₹ total sum insured)</label><input type="number" id="m9-health" value="500000" step="100000"></div>
-        <div class="if"><label>Current NPS + All Savings (₹)</label><input type="number" id="m9-savings" value="500000" step="50000"></div>
-        <div class="if"><label>Expected Return on Savings (%)</label><input type="number" id="m9-rr" value="10" step="0.5"></div>
+        <div class="if"><label>Current NPS + All Savings (₹) <span style="font-size:9.5px;font-weight:400;color:var(--faint);display:block">Use Pull buttons above to auto-fill from M1 or M3</span></label><input type="number" id="m9-savings" value="500000" step="50000"></div>
+        <div class="if"><label>Expected Return on Savings (%)</label><input type="number" id="m9-rr" value="10" step="0.5" min="1" max="15"></div>
         <div class="if"><label>Annual Step-up on Savings (%)</label><input type="number" id="m9-su" value="5" step="1" min="0" max="25"><span class="hint">Annual % increase in monthly saving — synced from User Profile</span></div>
         <div class="if"><label>Inflation Rate (% p.a.)</label><input type="number" id="m9-inf" value="6" step="0.5"></div>
       </div>
@@ -1230,12 +1529,43 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div id="m9-checks"></div>
     </div>
 
+    <!-- Partial Withdrawal Info -->
+    <div style="background:#EFF8F6;border:1px solid rgba(10,124,110,.3);border-left:4px solid #0A7C6E;border-radius:10px;padding:13px 16px;margin-bottom:16px;font-size:11.5px;line-height:1.7;color:#1A2B3C">
+      <div style="font-weight:700;color:#0A7C6E;margin-bottom:6px;font-size:12.5px">📤 NPS Partial Withdrawal Rights (PFRDA)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 20px">
+        <div><strong>How many times?</strong> Up to <strong>3 times</strong> during your NPS account tenure</div>
+        <div><strong>How much?</strong> Up to <strong>25% of your own contributions</strong> (not employer contributions, not returns)</div>
+        <div><strong>When eligible?</strong> After completing <strong>3 years</strong> of NPS membership</div>
+        <div><strong>Minimum gap?</strong> At least <strong>5 years</strong> between each partial withdrawal</div>
+        <div style="grid-column:1/-1"><strong>Permitted purposes:</strong> Higher education, marriage of children, purchase/construction of residential house, treatment of critical illness (self/spouse/children/parents), disability (≥75%), skill development, venture/start-up funding</div>
+        <div style="grid-column:1/-1"><strong style="color:#15803D">Tax status:</strong> Partial withdrawals from NPS are <strong>tax-free</strong> (exempt since Finance Act 2017 amendment)</div>
+      </div>
+      <div style="margin-top:8px;font-size:10.5px;color:#5A6E82">💡 Partial withdrawals reduce your final corpus — use only for genuine emergencies. Consult your NPS PoP (Point of Presence) or visit <strong>enps.nsdl.com</strong> to initiate.</div>
+      <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:10.5px;color:#4B5563">
+        <div><strong style="color:#0A7C6E">⏳ Deferred Annuity:</strong> You can defer annuity purchase up to age 75 (extended from 60). Your NPS corpus continues to grow in the interim. Useful if you have other income sources at 60.</div>
+        <div><strong style="color:#0A7C6E">🔓 NPS Tier-II:</strong> A voluntary, flexible savings account — no lock-in, withdraw anytime. Not eligible for 80C deduction (except Govt employees under NPS Tier-II Tax Saver Scheme). Useful as a liquid buffer alongside Tier-I.</div>
+      </div>
+    </div>
+    <!-- Real-return multiplier insight box -->
+    <div id="m9-real-box" style="display:none;margin-bottom:14px;padding:14px 16px;background:var(--bg2);border-radius:8px;border-left:4px solid var(--teal)">
+      <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px">📐 At your real return — how long does each multiple last?</div>
+      <div id="m9-mult-table"></div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px">Real return = nominal return − inflation. Corpus lasts longer at higher real return, so you may need fewer than 35× your expenses.</div>
+    </div>
     <!-- 35X Rule -->
     <div class="card" style="margin-top:0;border-top:3px solid var(--gold)">
       <div class="card-title">🎯 35X Corpus Rule — Your Target Number</div>
       <div class="card-desc">Industry consensus: you need at least 35× your annual retirement expenses for a comfortable retirement. This ensures a safe ~3% withdrawal rate, well within the safety zone.</div>
       <div class="rg" id="m9-35x" style="grid-template-columns:repeat(auto-fill,minmax(175px,1fr))"></div>
       <div id="m9-35x-bar" style="margin-top:14px"></div>
+    </div>
+
+    <!-- Healthcare Corpus Buffer — NEW -->
+    <div class="card" style="margin-top:0;border-top:3px solid var(--coral)" id="m9-health-card">
+      <div class="card-title">🏥 Healthcare Corpus Buffer</div>
+      <div class="card-desc">Medical inflation in India runs at <strong>12–14% p.a.</strong> — far higher than general inflation. A dedicated healthcare reserve, separate from your retirement corpus, is essential. This estimate uses your current age, life expectancy, and a 14% medical inflation assumption.</div>
+      <div class="rg" id="m9-health-grid" style="grid-template-columns:repeat(auto-fill,minmax(175px,1fr));margin-bottom:12px"></div>
+      <div id="m9-health-note" style="font-size:11.5px;line-height:1.8;color:var(--text)"></div>
     </div>
 
     <!-- Retirement Age Sensitivity Table -->
@@ -1260,11 +1590,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="two-col" style="margin-top:16px">
       <div class="cw" style="margin-top:0">
         <div class="cw-title"><span>📊</span> Required Monthly Savings by Retirement Age</div>
-        <canvas id="chart-m9-sens" height="240"></canvas>
+        <canvas id="chart-m9-sens" width="400" height="240"></canvas>
       </div>
       <div class="cw" style="margin-top:0">
         <div class="cw-title"><span>🍕</span> Income Allocation Health</div>
-        <canvas id="chart-m9-alloc" height="240"></canvas>
+        <canvas id="chart-m9-alloc" width="400" height="240"></canvas>
       </div>
     </div>
     <div class="ib" id="m9-advice" style="background:rgba(29,78,216,.07);border:1px solid rgba(29,78,216,.2);color:var(--text);border-radius:var(--r-sm);padding:11px 15px;font-size:12px;line-height:1.7;margin-top:0"></div>
@@ -1305,7 +1635,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       </div>
     </div>
     <div style="color:rgba(255,255,255,.25);font-size:9.5px;line-height:1.7">
-      📋 <strong style="color:rgba(255,255,255,.35)">Disclaimer:</strong> For educational &amp; planning use only. Not investment advice. All projections assume constant returns — actual market returns vary. NPS annuity rates are illustrative; verify with your provider. NPS withdrawal: 60% lump sum tax-free, annuity taxed at income slab. Equity LTCG &gt;₹1.25L taxed @12.5%. PFRDA rules subject to change — confirm with your PoP/NPS intermediary before investing.
+      📋 <strong style="color:rgba(255,255,255,.35)">Disclaimer:</strong> For educational &amp; planning use only. Not investment advice. All projections assume constant returns — actual market returns vary. NPS annuity rates are illustrative; verify with your provider. NPS withdrawal: 60% lump sum tax-free (100% if corpus ≤₹5L); partial withdrawals are tax-free; annuity taxed at slab. Equity LTCG &gt;₹1.25L @12.5%. PFRDA rules subject to change — verify with your PoP/NPS intermediary or helpline 1800-222-080 before investing.
     </div>
   </div>
 </footer>
@@ -1318,12 +1648,12 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 const T = {
 en:{
   badge:'Pension Intelligence Suite',hero_sub:'India\'s most comprehensive NPS retirement planner. Nine intelligent modules — project corpus, find your goal, stress-test income, and retire with confidence.',
-  hero_disc:'Uses universal financial principles. PFRDA regulatory minimums (40% annuity, age 65 entry limit) are enforced. Verify current rules with your NPS intermediary.',
+  hero_disc:'Uses universal financial principles. PFRDA regulatory minimums (20% annuity amended 2024, age 70 entry limit extended 2021) are enforced. Verify current rules with your NPS intermediary.',
   pill1:'📈 NPS Simulator',pill2:'🎯 Goal Finder',pill3:'🧩 Holistic Planner',pill4:'🏦 Annuity Optimizer',pill5:'⚡ Risk Dashboard',pill6:'🔀 Scenario Lab',pill7:'🧬 Fund Optimizer',pill8:'⏳ Sustainability',pill9:'🏥 Health Check',
   tab1:'NPS Simulator',tab2:'Goal Finder',tab3:'Corpus Integrator',tab4:'Annuity Optimizer',tab5:'Risk Dashboard',tab6:'Scenario Lab',tab7:'Fund Optimizer',tab8:'Sustainability',tab9:'Health Check',
   // ld1-ld4 translation keys removed (live strip removed)
   m1tag:'Module 01',m1h:'NPS Growth Simulator',m1p:'Project your NPS corpus under three market scenarios. See the real power of compounding.',
-  m1ct1:'📊 Your NPS Profile',m1cd1:'Enter your details. Annuity % is editable from 40–100% — PFRDA mandates minimum 40% annuity purchase at NPS exit.',
+  m1ct1:'📊 Your NPS Profile',m1cd1:'Enter your details. Annuity % is editable from 20–100% — PFRDA mandates minimum 20% annuity purchase at NPS exit (amended 2024; was 40% before).',
   m2h:'Goal Finder — Reverse Calculator',m2p:'Set your desired monthly pension. We reverse-engineer corpus and contribution — and show cost of delay.',
   m2ct:'🎯 Your Pension Goal',m2cd:'Enter target monthly income in today\'s rupees. We inflate to retirement date automatically.',
   m3h:'Holistic Corpus Integrator',m3p:'Complete retirement picture across all savings. Calculate your true Pension Stability Index.',
@@ -1539,17 +1869,17 @@ function gsPropagate(key, val, sourceId){
   });
   // Refresh live strip since age/ret/mc/cc may have changed
   // live strip removed — no liveUp() needed
-  // PFRDA regulatory check: NPS entry must be before age 65
-  if(key==='age' && val>=65){
+  // PFRDA regulatory check: NPS entry must be before age 70 (extended from 65 in 2021)
+  if(key==='age' && val>=70){
     const gpsAgeEl=$('gps-age');
     if(gpsAgeEl && !gpsAgeEl.nextElementSibling?.classList.contains('gps-age-warn')){
       const warn=document.createElement('div');
       warn.className='gps-age-warn';
       warn.style='font-size:9px;color:#C2410C;margin-top:2px;line-height:1.4';
-      warn.textContent='⚖️ PFRDA: NPS entry must be before age 65. Plan accordingly.';
+      warn.textContent='⚖️ PFRDA: NPS entry must be before age 70 (extended from 65 in 2021). Plan accordingly.';
       gpsAgeEl.parentNode.appendChild(warn);
     }
-  } else if(key==='age' && val<65){
+  } else if(key==='age' && val<70){
     const existWarn=document.querySelector('.gps-age-warn');
     if(existWarn) existWarn.remove();
   }
@@ -1755,15 +2085,45 @@ function applyRatioBar(fillId,valId,val,max,warn,danger){
   const v=$(valId); v.textContent=val.toFixed(1)+'%'; v.style.color=col;
 }
 
-// Return rate guard: warn if > 20%, clamp at 25%
+
+// ── Toast notification system (replaces browser alert for UX) ──────────────
+function showToast(msg, type='info', title=''){
+  const c=document.getElementById('toast-container');
+  if(!c) return;
+  const icons={success:'✅',error:'❌',warn:'⚠️',info:'ℹ️'};
+  const titles={success:'Success',error:'Error',warn:'Warning',info:'Info'};
+  const t=document.createElement('div');
+  t.className='toast toast-'+type;
+  t.innerHTML=`<span class="toast-icon">${icons[type]||'ℹ️'}</span><div class="toast-body">${title||titles[type]?`<div class="toast-title">${title||titles[type]}</div>`:''}${msg?`<div class="toast-msg">${msg}</div>`:''}</div><button class="toast-close" onclick="dismissToast(this.parentElement)">✕</button>`;
+  c.appendChild(t);
+  setTimeout(()=>dismissToast(t), type==='error'?6000:4000);
+}
+function dismissToast(el){
+  if(!el||el.classList.contains('hiding'))return;
+  el.classList.add('hiding');
+  setTimeout(()=>el.remove(),280);
+}
+// Inline validation message helper (shows red text under an input)
+function showInlineError(inputId, msg){
+  let el=document.getElementById(inputId);
+  if(!el)return;
+  let err=el.parentElement.querySelector('.inline-err');
+  if(!err){err=document.createElement('div');err.className='inline-err';err.style.cssText='color:#DC2626;font-size:10.5px;margin-top:3px;font-weight:600';el.parentElement.appendChild(err);}
+  err.textContent=msg;
+  el.style.borderColor='#DC2626';
+  setTimeout(()=>{err.textContent='';el.style.borderColor='';},4000);
+}
+
+// Return rate guard: warn if > 15%, hard cap at 15%
+// Source: NPS Trust Annual Report 2023-24; Scheme E 5-yr CAGR ~14%, Scheme C ~9%, Scheme G ~8.5% (NPS Trust data)
 function safeReturnRate(raw){
   const r=parseFloat(raw)||10;
-  if(r>25){
-    alert('⚠️ Return Rate Capped: The entered return of '+r+'% exceeds 25% p.a., which is unrealistic for long-term planning. Value clamped to 25%.');
-    return 25;
+  if(r>15){
+    showToast('Return rate capped at 15% p.a. — even India\'s best equity funds average 12–14% CAGR over 10+ years. Using 15% for this calculation.','warn','Return Rate Capped');
+    return 15;
   }
-  if(r>20){
-    console.warn('Return rate '+r+'% above 20% — historically exceptional. Use with caution.');
+  if(r>12){
+    showToast('Return rate of '+r+'% is aggressive. Historical NPS Scheme E CAGR is ~12–14%. Results shown are optimistic — verify with conservative scenario too.','warn','High Return Assumption');
   }
   return r;
 }
@@ -1771,9 +2131,10 @@ function safeReturnRate(raw){
 // Chart base options
 const CO={responsive:false,maintainAspectRatio:false,
   animation:false,
+  interaction:{mode:'index',intersect:false},
   plugins:{
     legend:{labels:{color:'#64748B',font:{size:11,family:'Plus Jakarta Sans'},boxWidth:12,padding:12}},
-    tooltip:{animation:false}
+    tooltip:{animation:false,mode:'index',intersect:false}
   },
   scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#94A3B8',font:{size:10}}},
     y:{grid:{color:'rgba(0,0,0,0.04)'},beginAtZero:true,ticks:{color:'#94A3B8',font:{size:10,family:'JetBrains Mono'},callback:v=>fmt(v)}}}
@@ -1790,7 +2151,7 @@ function m1FundChange(){
 
 function getM1Rates(){
   const f=$('m1-fund').value;
-  if(f==='custom'){const raw=n('m1-cr');const cr=safeReturnRate(raw)/100;return [Math.max(0.01,cr-0.02),cr,Math.min(0.25,cr+0.02)];}
+  if(f==='custom'){const raw=n('m1-cr');const cr=safeReturnRate(raw)/100;return [Math.max(0.01,cr-0.02),cr,Math.min(0.17,cr+0.02)];} // agg capped at cr+2% ≤ 17%
   return FUND_RATES[f];
 }
 
@@ -1804,10 +2165,10 @@ function calcM1(){
   const exp=n('m1-exp')||40000, le=n('m1-le')||90;
   const apct=n('m1-apct')/100, ar=n('m1-ar')/100;
   // Validate AFTER all vars declared
-  if(yrs<=0){alert('Retirement age must exceed current age.');return;}
-  if(le<=ret){alert('Life expectancy must exceed retirement age.');return;}
-  if(mc<0){alert('Monthly contribution cannot be negative.');return;}
-  if(exp<0){alert('Monthly expenses cannot be negative.');return;}
+  if(yrs<=0){showToast('Retirement age must be greater than your current age. Please check your inputs.','error','Invalid Age');return;}
+  if(le<=ret){showToast('Plan-to age must be greater than retirement age. Adjust your inputs.','error','Invalid Age Range');return;}
+  if(mc<0){showToast('Monthly contribution cannot be negative.','error','Invalid Input');return;}
+  if(exp<0){showToast('Monthly expenses cannot be negative.','error','Invalid Input');return;}
   const rates=getM1Rates();
   const corps=rates.map(r=>calcCorpus(cc,mc,su,r,yrs));
   const realCorps=corps.map(c=>c/Math.pow(1+inf,yrs));
@@ -1836,7 +2197,7 @@ function calcM1(){
     {l:'Wealth Created (Base)',v:fmt(corps[1]-tc)},{l:'Wealth Multiplier',v:tc>0?(corps[1]/tc).toFixed(1)+'x':'∞ (lump sum only)'},
     {l:'NPS Annuity Income/mo (Base)',v:fmt(monthlyPension),hl:true},{l:'Lump Sum for SWP/Reinvestment',v:fmt(lumpSum)},
     {l:'Expenses at Retirement (Nominal ₹)',v:fmt(retExpAnnual)+'/yr'},{l:'Annuity Portion',v:fmt(corps[1]*apct),hl:true},
-  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}</div><div class="rc-val">${c.v}</div></div>`).join('');
+  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}${c.note?`<span style='font-size:9px;color:var(--muted);display:block;margin-top:1px'>${c.note}</span>`:''}</div><div class="rc-val">${c.v}</div></div>`).join('');
 
   // Gauge
   const gd=applyGaugeSWR('m1-gauge-arr','m1-verdict',swr);
@@ -1860,7 +2221,18 @@ function calcM1(){
   // I10: Tax disclaimer
   const taxNote=$('m1-tax-note');
   if(taxNote){
-    taxNote.innerHTML='<strong>⚠️ Tax not modelled:</strong> NPS withdrawal: 60% corpus is tax-free; annuity income is taxed at slab rate. Equity LTCG above ₹1.25L is taxed at 12.5%. <strong>Effective post-tax corpus may be 10–20% lower.</strong> Consult a tax advisor. | <strong>Nominal vs Real:</strong> All corpus figures above are in future (nominal) rupees. Real (today\'s purchasing power): <strong>'+fmt(realCorps[1])+'</strong>';
+    const apctVal=n('m1-apct')/100;
+    const annuityPct=Math.round(apctVal*100);
+    const lumpPct=100-annuityPct;
+    const taxFreeAmt=fmt(corps[1]*0.60);
+    const annualAnnuityEst=fmt(corps[1]*apctVal*0.06/12);
+    taxNote.innerHTML=`<strong>💰 Tax Impact (PFRDA 2024 rules):</strong>
+      <span style="display:inline-block;margin:0 6px">• <strong>60% lump sum tax-free</strong> (${taxFreeAmt} of moderate corpus)</span>
+      <span style="display:inline-block;margin:0 6px">• If annuity % is 20–40%: additional lump sum up to 80% total is allowed</span>
+      <span style="display:inline-block;margin:0 6px">• <strong style="color:#15803D">Small corpus rule:</strong> If total NPS corpus at exit is ≤₹5 Lakh, you may withdraw 100% as lump sum — no mandatory annuity purchase required</span>
+      <span style="display:inline-block;margin:0 6px">• <strong style="color:#B91C1C">Annuity income is fully taxable at your slab rate</strong> — est. ${annualAnnuityEst}/mo annuity income at ${annuityPct}% allocation will be taxed as salary income</span>
+      <span style="display:inline-block;margin:0 6px">• Equity LTCG above ₹1.25L taxed @12.5%</span>
+      &nbsp;|&nbsp; <strong>Real Corpus (today's ₹):</strong> ${fmt(realCorps[1])} — nominal corpus adjusted for ${n('m1-inf')}% inflation over ${yrs} years`;
     taxNote.style.display='';
   }
 
@@ -1923,6 +2295,7 @@ function sendToM2(){
   $('m2-age').value=n('m1-age'); $('m2-ret').value=n('m1-ret');
   $('m2-cc').value=n('m1-cc'); $('m2-mc').value=n('m1-mc');
   $('m2-inf').value=n('m1-inf');
+  $('m2-su').value=n('m1-su'); // transfer step-up so Goal Finder uses same growth assumption
   $('m2-apct').value=n('m1-apct'); updSl('m2-apct','m2-apct-v');
   $('m2-ar').value=n('m1-ar');
 }
@@ -1936,22 +2309,21 @@ function calcM2(){
   const cc=n('m2-cc'),mc=n('m2-mc'),inf=n('m2-inf')/100,rr=safeReturnRate(n('m2-rr'))/100;
   const apct=n('m2-apct')/100,ar=n('m2-ar')/100;
   const yrs=ret-age,postYrs=le-ret;
-  if(yrs<=0){alert('Retirement age must exceed current age.');return;}
-  if(le<=ret){alert('Life expectancy must exceed retirement age.');return;}
-  if(dp<=0){alert('Please enter a valid desired monthly pension.');return;}
-  if(ar<=0&&apct>0){alert('Annuity rate cannot be zero when annuity allocation is set.');return;}
-  if(mc<0){alert('Monthly contribution cannot be negative.');return;}
+  if(yrs<=0){showToast('Retirement age must be greater than your current age. Please check your inputs.','error','Invalid Age');return;}
+  if(le<=ret){showToast('Plan-to age must be greater than retirement age. Adjust your inputs.','error','Invalid Age Range');return;}
+  if(dp<=0){showToast('Please enter a valid desired monthly pension amount.','error','Invalid Input');return;}
+  if(ar<=0&&apct>0){showToast('Annuity rate cannot be zero when annuity allocation is set.','error','Invalid Input');return;}
+  if(mc<0){showToast('Monthly contribution cannot be negative.','error','Invalid Input');return;}
   const su=n('m2-su')/100;
   const futPension=dp*Math.pow(1+inf,yrs);
-  // FIXED: Use PV of annuity formula (not perpetuity).
-  // Annuity corpus = annual_income × [1 - (1+r)^(-n)] / r
-  // where n = postYrs (retirement duration), r = annuity rate per year.
-  // This correctly prices a fixed-term annuity product; the old perpetuity formula (income/r)
-  // overstated the required corpus by 15–30% for typical rates and horizons.
+  // CORRECT: NPS annuity corpus needed = annual income ÷ annuity rate
+  // Indian ASPs (LIC, HDFC Life, SBI Life) pay annual_income = corpus × annuityRate for life.
+  // So: corpus = annualIncome / annuityRate — a simple ratio, not a PV-of-finite-annuity.
+  // The old PV formula incorrectly treated the annuity rate as a discount rate.
   const annualIncomeFut = futPension * 12;
   let annCorpus;
-  if(ar > 0.001 && postYrs > 0) {
-    annCorpus = annualIncomeFut * (1 - Math.pow(1+ar, -postYrs)) / ar;
+  if(ar > 0.001) {
+    annCorpus = annualIncomeFut / ar;
   } else {
     annCorpus = annualIncomeFut * postYrs; // zero-rate fallback: simple sum
   }
@@ -1961,6 +2333,21 @@ function calcM2(){
   const currentCorpus=calcCorpus(cc,mc,su,rr,yrs);
   // Required PMT to bridge gap from existing corpus to target
   const reqMC=reqPMT(totalCorpus,cc,rr,yrs);
+  // Year-1 step-up SIP equivalent: same corpus with annual step-up su
+  // Formula: if flat SIP = F and step-up rate = g over n years,
+  // Y1 step-up SIP ≈ F * (n * g) / ((1+g)^n - 1) when g > 0, else = F
+  // Year-1 step-up SIP: binary search for Y1 such that fvGA(Y1, rr, su, yrs) = corpus needed
+  // (Previous approximation had up to 47% error — replaced with exact binary search)
+  let reqMC_y1 = reqMC; // default: flat SIP
+  if(su > 0.001 && yrs > 1 && reqMC > 0){
+    const targetFV = fvGA(reqMC, rr, 0, yrs); // flat SIP corpus
+    let lo1=0, hi1=reqMC*2;
+    for(let i=0;i<60;i++){
+      const mid=(lo1+hi1)/2;
+      if(fvGA(mid, rr, su, yrs) < targetFV) lo1=mid; else hi1=mid;
+    }
+    reqMC_y1 = (lo1+hi1)/2;
+  }
   const gap=totalCorpus-currentCorpus;
   const adequacy=Math.min(150,currentCorpus>0&&totalCorpus>0?(currentCorpus/totalCorpus)*100:0);
 
@@ -1977,11 +2364,11 @@ function calcM2(){
     {l:gap<=0?'Corpus Surplus ✅':'Corpus Gap ⚠️',v:fmt(Math.abs(gap))},
     {l:'Retirement Duration',v:postYrs+' yrs'},
     {l:'Lump Sum Available (60% non-annuity)',v:fmt(totalCorpus*(1-apct))},
-  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}</div><div class="rc-val">${c.v}</div></div>`).join('');
+  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}${c.note?`<span style='font-size:9px;color:var(--muted);display:block;margin-top:1px'>${c.note}</span>`:''}</div><div class="rc-val">${c.v}</div></div>`).join('');
 
   // Calculation chain info box
   const onTrack=currentCorpus>=totalCorpus;
-  $('m2-chain').innerHTML=`<strong>📐 Calculation Chain:</strong> Today ₹${dp.toLocaleString('en-IN')}/mo → inflated ${yrs}yr @ ${(inf*100).toFixed(0)}% → future pension <strong>${fmt(futPension)}/mo (nominal)</strong> → annual need <strong>${fmt(futPension*12)}</strong> → PV-annuity formula at ${(ar*100).toFixed(1)}% rate over ${postYrs}yr → annuity corpus <strong>${fmt(annCorpus)}</strong> → at ${(apct*100).toFixed(0)}% allocation → <strong>total corpus needed: ${fmt(totalCorpus)} (nominal)</strong> → current plan (${(su*100).toFixed(0)}% step-up): <strong>${fmt(currentCorpus)} (nominal)</strong> → ${onTrack?'<span style="color:#16A34A">✅ Already on track! No extra SIP needed.</span>':'required additional SIP: <strong>'+fmt(reqMC)+'</strong> <em style="font-size:10px;color:var(--faint)">(flat-SIP basis; with step-up your first-year SIP would be lower)</em>'} <br><span style="font-size:10px;color:#92400E">⚠️ All corpus values are in nominal future rupees. Post-tax corpus may be 10–20% lower. These projections are under base assumptions only — verify sustainability in Module 5 (Risk Dashboard).</span>`;
+  $('m2-chain').innerHTML=`<strong>📐 Calculation Chain:</strong> Today ₹${dp.toLocaleString('en-IN')}/mo → inflated ${yrs}yr @ ${(inf*100).toFixed(0)}% → future pension <strong>${fmt(futPension)}/mo (nominal)</strong> → annual need <strong>${fmt(futPension*12)}</strong> → NPS annuity corpus = annual income ÷ rate (${(ar*100).toFixed(1)}%) → annuity corpus <strong>${fmt(annCorpus)}</strong> → at ${(apct*100).toFixed(0)}% allocation → <strong>total corpus needed: ${fmt(totalCorpus)} (nominal)</strong> → current plan (${(su*100).toFixed(0)}% step-up): <strong>${fmt(currentCorpus)} (nominal)</strong> → ${onTrack?'<span style="color:#16A34A">✅ Already on track! No extra SIP needed.</span>':'required additional SIP: <strong>'+fmt(reqMC)+'</strong>/mo flat <em style="font-size:10px;color:var(--faint)">(or <strong>₹'+Math.round(reqMC_y1).toLocaleString('en-IN')+'/mo Year-1</strong> with '+Math.round(su*100)+'% annual step-up)</em>'} <br><span style="font-size:10px;color:#92400E">⚠️ All corpus values are in nominal future rupees. Post-tax corpus may be 10–20% lower. These projections are under base assumptions only — verify sustainability in Module 5 (Risk Dashboard).</span>`;
 
   // Arc gauge animation
   const arcLen=239;
@@ -2216,43 +2603,160 @@ const SOURCES=[
   {id:'prop', name:'Property (Investable)', type:'market',    bid:'s-prop-b', mid:'s-prop-m', rid:'s-prop-r', col:'#D97706'},
   {id:'fd',   name:'FD / Bonds',            type:'guaranteed',bid:'s-fd-b',   mid:'s-fd-m',   rid:'s-fd-r',   col:'#C8922A'},
   {id:'gold', name:'Gold / Commodities',    type:'market',    bid:'s-gold-b', mid:'s-gold-m', rid:'s-gold-r', col:'#F59E0B'},
-  {id:'intl', name:'International / Crypto',type:'market',    bid:'s-intl-b', mid:'s-intl-m', rid:'s-intl-r', col:'#EC4899'},
+  {id:'intl', name:'Intl. Funds / REITs', type:'market',    bid:'s-intl-b', mid:'s-intl-m', rid:'s-intl-r', col:'#EC4899'},
   {id:'oth',  name:'Other Savings',         type:'mixed',     bid:'s-oth-b',  mid:'s-oth-m',  rid:'s-oth-r',  col:'#94A3B8'},
+  {id:'scss', name:'SCSS (Post-Ret.)',       type:'guaranteed',bid:'s-scss-b', mid:'s-scss-m', rid:'s-scss-r', col:'#15803D'},
 ];
 
 let G3={}; // shared state from M3
+
+// ── Advanced panel UI helpers ─────────────────
+function toggleAdv(id){
+  const panel=document.getElementById('adv-'+id);
+  const btn=panel.previousElementSibling;
+  const open=panel.classList.toggle('open');
+  btn.classList.toggle('open',open);
+  btn.textContent=open?'⚙ Close':'⚙ Adv';
+}
+
+function addBreak(id){
+  const container=document.getElementById('breaks-'+id);
+  const row=document.createElement('div');
+  row.className='src-break-row';
+  row.innerHTML=`
+    <label>Age</label><input type="number" class="break-start" placeholder="e.g. 38" min="18" max="80" style="width:75px">
+    <label>for</label><input type="number" class="break-dur" placeholder="yrs" min="1" max="20" style="width:60px">
+    <label>years</label>
+    <button class="src-break-del" onclick="this.parentElement.remove()" title="Remove">✕</button>`;
+  container.appendChild(row);
+}
+
+function addLump(id){
+  const container=document.getElementById('lumps-'+id);
+  const row=document.createElement('div');
+  row.className='src-lump-row';
+  row.innerHTML=`
+    <label>₹</label><input type="number" class="lump-amt" placeholder="Amount" style="width:130px">
+    <label>at age</label><input type="number" class="lump-age" placeholder="Age" min="18" max="80" style="width:70px">
+    <button class="src-lump-del" onclick="this.parentElement.remove()" title="Remove">✕</button>`;
+  container.appendChild(row);
+}
+
+// ── Core year-by-year simulation per asset ────
+// Returns array of corpus values at end of each year (length = yrs)
+function simulateAsset(opts){
+  // opts: {balance, monthly, retRate, stepUp, untilAge, glideAge, glideRet, breaks, lumps, currentAge, years}
+  const {balance, monthly, retRate, stepUp=0, untilAge=null, glideAge=null, glideRet=null, breaks=[], lumps=[], currentAge, years} = opts;
+  let corpus = balance;
+  const yearlyCorpus = [];
+  let contrib = monthly * 12; // annual contribution
+  for(let y=0; y<years; y++){
+    const age = currentAge + y; // age at START of this year
+    // 1. Lump sum injections arriving this year (at start of year, before compounding)
+    lumps.forEach(l=>{ if(l.age===age) corpus+=l.amt; });
+    // 2. Determine return rate this year (glide path)
+    let r = retRate;
+    if(glideAge!==null && glideRet!==null && age>=glideAge) r=glideRet;
+    // 3. Determine contribution this year
+    let c = contrib;
+    // Stop contributing if past untilAge
+    if(untilAge!==null && age>=untilAge) c=0;
+    // Zero out during break periods
+    breaks.forEach(b=>{ if(age>=b.start && age<b.start+b.dur) c=0; });
+    // 4. Compound: corpus grows for the year with contributions added monthly
+    // Simplified: treat annual contribution as added mid-year (approx)
+    corpus = corpus*(1+r) + c*(1+r/2);
+    // 5. Apply step-up for next year's contribution (only when actively contributing)
+    if(c>0) contrib = contrib*(1+stepUp);
+    yearlyCorpus.push(Math.max(0,corpus));
+  }
+  return yearlyCorpus;
+}
+
+// Read advanced config for one source id
+function readAdvConfig(id, currentAge, retAge){
+  const stepUpEl=document.getElementById('s-'+id+'-su');
+  const untilEl=document.getElementById('s-'+id+'-until');
+  const gAgeEl=document.getElementById('s-'+id+'-g-age');
+  const gRetEl=document.getElementById('s-'+id+'-g-ret');
+  const stepUp = stepUpEl ? (parseFloat(stepUpEl.value)||0)/100 : 0;
+  const untilAge = untilEl && untilEl.value ? parseInt(untilEl.value) : null;
+  const glideAge = gAgeEl && gAgeEl.value ? parseInt(gAgeEl.value) : null;
+  const glideRet = gRetEl && gRetEl.value ? parseFloat(gRetEl.value)/100 : null;
+  // Read breaks
+  const breaks=[];
+  const breaksContainer=document.getElementById('breaks-'+id);
+  if(breaksContainer){
+    breaksContainer.querySelectorAll('.src-break-row').forEach(row=>{
+      const start=parseInt(row.querySelector('.break-start')?.value||0);
+      const dur=parseInt(row.querySelector('.break-dur')?.value||0);
+      if(start>=currentAge && dur>0) breaks.push({start,dur});
+    });
+  }
+  // Read lumps
+  const lumps=[];
+  const lumpsContainer=document.getElementById('lumps-'+id);
+  if(lumpsContainer){
+    lumpsContainer.querySelectorAll('.src-lump-row').forEach(row=>{
+      const amt=parseFloat(row.querySelector('.lump-amt')?.value||0);
+      const age=parseInt(row.querySelector('.lump-age')?.value||0);
+      if(amt>0 && age>=currentAge && age<retAge) lumps.push({amt,age});
+    });
+  }
+  // Build human-readable status notes
+  const notes=[];
+  if(stepUp!==0) notes.push((stepUp>0?'+':'')+Math.round(stepUp*100)+'% step-'+(stepUp>0?'up':'down')+'/yr');
+  if(untilAge!==null) notes.push('stop contrib age '+untilAge);
+  if(glideAge!==null && glideRet!==null) notes.push('glide to '+(glideRet*100).toFixed(1)+'% at age '+glideAge);
+  breaks.forEach(b=>notes.push('break age '+b.start+'–'+(b.start+b.dur)));
+  lumps.forEach(l=>notes.push('lump ₹'+Math.round(l.amt/1000)+'K at age '+l.age));
+  return {stepUp, untilAge, glideAge, glideRet, breaks, lumps, notes};
+}
 
 function calcM3(){
   const age=n('m3-age'),ret=n('m3-ret'),le=n('m3-le');
   const yrs=ret-age,postYrs=le-ret;
   const inf=n('m3-inf')/100,monthExp=n('m3-exp'),apct=n('m3-apct')/100;
-  if(yrs<=0){alert('Retirement age must exceed current age.');return;}
-  if(postYrs<=0){alert('Life expectancy must exceed retirement age.');return;}
+  if(yrs<=0){showToast('Retirement age must be greater than your current age. Please check your inputs.','error','Invalid Age');return;}
+  if(postYrs<=0){showToast('Plan-to age must be greater than retirement age. Adjust your inputs.','error','Invalid Age Range');return;}
   const retExp=monthExp*12*Math.pow(1+inf,yrs);
 
-  const proj=SOURCES.map(s=>({
-    ...s, balance:n(s.bid), monthly:n(s.mid), retRate:n(s.rid)/100,
-    corpus:calcCorpus(n(s.bid),n(s.mid),0,n(s.rid)/100,yrs)
-  }));
+  // ── Year-by-year simulation per asset ────────
+  const proj=SOURCES.map(s=>{
+    const balance=n(s.bid), monthly=n(s.mid), retRate=n(s.rid)/100;
+    const adv=readAdvConfig(s.id, age, ret);
+    const yearlyCorpus=simulateAsset({
+      balance, monthly, retRate,
+      stepUp: adv.stepUp,
+      untilAge: adv.untilAge,
+      glideAge: adv.glideAge,
+      glideRet: adv.glideRet,
+      breaks: adv.breaks,
+      lumps: adv.lumps,
+      currentAge: age,
+      years: yrs
+    });
+    const corpus = yearlyCorpus[yrs-1] || 0;
+    return {...s, balance, monthly, retRate, corpus, yearlyCorpus, adv};
+  });
 
   // Use id-based lookup — resilient to SOURCES array reordering
   const byId={}; proj.forEach(s=>byId[s.id]=s);
 
-  const totalCorpus=proj.reduce((a,s)=>a+s.corpus,0);
+  // Gratuity: lump sum at retirement added to corpus (max ₹20L tax-free)
+  const gratuity = Math.max(0, Math.min(2000000, n('m3-gratuity')||0));
+  const totalCorpus = proj.reduce((a,s)=>a+s.corpus,0) + gratuity;
   const npsC=byId['nps'].corpus;
 
   // NPS: annuity portion → guaranteed income using user-editable annuity rate
-  // FIXED: use PV-annuity (PMT) formula — not perpetuity — for finite post-retirement period.
-  const NPS_ANNUITY_RATE=Math.max(0.03, Math.min(0.12, (n('m3-ar')||6)/100));
+  // CORRECT: Indian NPS annuity (LIC/HDFC/SBI Life ASPs) pays a fixed % of purchase price
+  // annually for life. Income = corpus × annuityRate. This is NOT a corpus drawdown.
+  // The old PMT formula was wrong — it modelled depletion, not a lifetime annuity product.
+  const NPS_ANNUITY_RATE=Math.max(0.03, Math.min(0.09, (n('m3-ar')||6)/100)); // cap matches input max of 9%
   const npsAnnCorpus=npsC*apct;
   const npsLsCorpus=npsC*(1-apct);
-  // Annual annuity income = corpus × [r × (1+r)^n] / [(1+r)^n - 1]
-  function npsAnnPMT(corpus, rate, years){
-    if(corpus<=0||years<=0) return 0;
-    if(rate<0.001) return corpus/years;
-    return corpus * rate * Math.pow(1+rate,years) / (Math.pow(1+rate,years)-1);
-  }
-  const npsAnnIncome=npsAnnPMT(npsAnnCorpus, NPS_ANNUITY_RATE, postYrs);
+  // Annual annuity income = annuity corpus × annuity rate (simple product — lifetime income)
+  const npsAnnIncome = npsAnnCorpus > 0 ? npsAnnCorpus * NPS_ANNUITY_RATE : 0;
 
   // FIXED: EPF, PPF, FD post-retirement income uses annuity withdrawal (PMT) formula
   // Annual withdrawal = corpus × [r × (1+r)^n] / [(1+r)^n - 1]
@@ -2269,9 +2773,16 @@ function calcM3(){
   const ppfIncome  = annuityWithdrawal(byId['ppf'] ? byId['ppf'].corpus : 0, POST_RET_RATE, postYrs);
   const fdRate     = byId['fd'] ? byId['fd'].retRate : 0.07;
   const fdIncome   = annuityWithdrawal(byId['fd']  ? byId['fd'].corpus  : 0, fdRate,         postYrs);
-  const guarIncome=npsAnnIncome+epfIncome+ppfIncome+fdIncome;
+  // SCSS: pays quarterly interest (like an annuity), principal returned at end of 5-yr term
+  // Model as: annual interest income = corpus × rate, renewable for plan horizon
+  const scssRate   = byId['scss'] ? byId['scss'].retRate : 0.082;
+  const scssIncome = byId['scss'] ? (byId['scss'].corpus * scssRate) : 0; // annual interest income (SCSS pays quarterly interest; principal returned at 5-yr maturity, assumed renewable for plan horizon)
+  // EPS (Employee Pension Scheme) — guaranteed lifetime pension from EPFO
+  const epsMonthly = Math.max(0, Math.min(7500, n('m3-eps')||0));
+  const epsAnnual  = epsMonthly * 12;
+  const guarIncome = npsAnnIncome + epfIncome + ppfIncome + fdIncome + scssIncome + epsAnnual;
 
-  // Market-linked pool: NPS lump sum + MF + Stocks + Property + Gold + Intl/Crypto + Other
+  // Market-linked pool: NPS lump sum + MF + Stocks + Property + Gold + Intl Funds/REITs + Other
   const mktCorpus=npsLsCorpus
     +(byId['mf']  ?byId['mf'].corpus  :0)
     +(byId['stk'] ?byId['stk'].corpus :0)
@@ -2300,15 +2811,15 @@ function calcM3(){
   markModDone(2);
 
   $('m3-rg').innerHTML=[
-    {l:'Total Retirement Corpus',v:fmt(totalCorpus),hl:true},
+    {l:'Total Retirement Corpus',v:fmt(totalCorpus),hl:true,note:gratuity>0?'Incl. gratuity: '+fmt(gratuity):''},
     {l:'NPS Corpus',v:fmt(proj[0].corpus)},
-    {l:'Guaranteed Annual Income',v:fmt(guarIncome),hl:true},
+    {l:'Guaranteed Annual Income',v:fmt(guarIncome),hl:true,note:epsAnnual>0?'Incl. EPS ₹'+epsMonthly.toLocaleString('en-IN')+'/mo':''},
     {l:'Market-Linked Income (3% SWR, Yr 1)',v:fmt(mktIncome)},
     {l:'Total Annual Income (Yr 1)',v:fmt(totalIncome)},
     {l:'Annual Expenses at Retirement (Nominal ₹)',v:fmt(retExp)},
     {l:'PSI Score',v:psi.toFixed(1)+'%',hl:psi>=60},
     {l:'RSR Score',v:rsr.toFixed(1)+'%',hl:rsr>=100},
-  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}</div><div class="rc-val">${c.v}</div></div>`).join('');
+  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}${c.note?`<span style='font-size:9px;color:var(--muted);display:block;margin-top:1px'>${c.note}</span>`:''}</div><div class="rc-val">${c.v}</div></div>`).join('');
 
   applyGaugePSI('m3-gauge-arr','m3-verdict',psi);
   $('m3-psi-tag').textContent='PSI = Guaranteed '+fmt(guarIncome)+'/yr ÷ Expenses '+fmt(retExp)+'/yr = '+psi.toFixed(1)+'% | All values nominal. Post-ret. drawdown return: '+(POST_RET_RATE*100).toFixed(1)+'% p.a. (editable above).';
@@ -2318,6 +2829,9 @@ function calcM3(){
   $('m3-asset-tbody').innerHTML=proj.filter(s=>s.balance>0||s.monthly>0).map(s=>{
     const mult=s.balance>0?(s.corpus/s.balance).toFixed(2)+'×':'—';
     const pctTotal=totalCorpus>0?(s.corpus/totalCorpus*100).toFixed(1)+'%':'—';
+    const notesHtml=s.adv&&s.adv.notes&&s.adv.notes.length
+      ? s.adv.notes.map(n=>`<span class="src-status-pill src-status-limited">${n}</span>`).join(' ')
+      : '<span style="font-size:9.5px;color:var(--faint)">flat</span>';
     return `<tr style="border-bottom:1px solid var(--light)">
       <td style="padding:9px 13px;font-size:12px;font-weight:600;color:var(--navy)">${s.name}</td>
       <td style="padding:9px 13px;font-family:var(--mono);font-size:11.5px;text-align:right;color:var(--muted)">${fmt(s.balance)}</td>
@@ -2326,6 +2840,7 @@ function calcM3(){
       <td style="padding:9px 13px;font-family:var(--mono);font-size:12px;text-align:right;color:var(--navy);font-weight:700">${fmt(s.corpus)}</td>
       <td style="padding:9px 13px;font-family:var(--mono);font-size:11.5px;text-align:right;color:${s.corpus>s.balance*2?'var(--green)':'var(--muted)'}">${mult}</td>
       <td style="padding:9px 13px;font-family:var(--mono);font-size:11.5px;text-align:right;color:var(--purple)">${pctTotal}</td>
+      <td style="padding:7px 13px;font-size:9.5px;line-height:1.6">${notesHtml}</td>
     </tr>`;
   }).join('');
   $('m3-asset-tfoot').innerHTML=`<tr style="background:var(--bg2)">
@@ -2335,10 +2850,23 @@ function calcM3(){
     <td style="padding:10px 13px;font-family:var(--mono);font-size:13px;text-align:right;font-weight:900;color:var(--teal)">${fmt(totalCorpus)}</td>
     <td style="padding:10px 13px;font-family:var(--mono);font-size:12px;text-align:right;font-weight:700;color:var(--green)">${totalCurrentBal>0?(totalCorpus/totalCurrentBal).toFixed(2)+'×':'—'}</td>
     <td style="padding:10px 13px;font-family:var(--mono);font-size:11px;text-align:right;color:var(--muted)">100%</td>
+    <td style="padding:10px 13px;font-size:9.5px;color:var(--purple)"><span class="sim-badge">⚡ Simulated</span></td>
   </tr>`;
 
-  // Store proj for chart rendering
-  G3._proj=proj; G3.totalCurrentBal=totalCurrentBal; G3.yrs=yrs;
+  // Store proj for chart rendering + all cross-module shared state
+  G3._proj=proj;
+  G3.totalCurrentBal=totalCurrentBal;
+  G3.yrs=yrs;
+  // ── Critical: save all fields used by pushToM4/M5/M8/M9 pull functions ──
+  G3.totalCorpus=totalCorpus;
+  G3.guarIncome=guarIncome;
+  G3.totalIncome=totalIncome;
+  G3.retExp=retExp;
+  G3.ret=ret;
+  G3.le=le;
+  G3.inf=inf;
+  G3.apct=apct;
+  G3.mktCorpus=mktCorpus;
 
   setTimeout(()=>{
     dc('m3-donut');
@@ -2376,20 +2904,20 @@ function calcM3(){
       }
     }
 
-    // ── Growth Chart: each asset class corpus at each year milestone ──
+    // ── Growth Chart: each asset class corpus using simulated year-by-year data ──
     dc('m3-growth');
     const milestones=[];
     for(let y=0;y<=yrs;y+=Math.max(1,Math.floor(yrs/10))) milestones.push(y);
     if(milestones[milestones.length-1]!==yrs) milestones.push(yrs);
     const nonZeroProj=proj.filter(s=>s.balance>0||s.monthly>0);
     charts['m3-growth']=new Chart($('chart-m3-growth').getContext('2d'),{type:'line',data:{
-      labels:milestones.map(y=>`Age ${n('m3-age')+y}`),
+      labels:milestones.map(y=>`Age ${age+y}`),
       datasets:nonZeroProj.map(s=>({
-        label:s.name,
-        data:milestones.map(y=>calcCorpus(s.balance,s.monthly,s.type==='market'?GS.su/100:0,s.retRate,y)),
+        label:s.name+(s.adv&&s.adv.notes&&s.adv.notes.length?' ('+s.adv.notes.join(', ')+')':''),
+        data:milestones.map(y=>y===0?s.balance:(s.yearlyCorpus[y-1]||0)),
         borderColor:s.col,backgroundColor:s.col+'22',borderWidth:2.5,pointRadius:3,tension:.3,fill:false
       }))
-    },options:{...CO,scales:{x:{...CO.scales.x,title:{display:true,text:'Age (Years)',color:'#94A3B8',font:{size:10}},ticks:{...CO.scales.y.ticks,font:{size:9}}},y:{...CO.scales.y,title:{display:true,text:'Corpus (₹ Nominal)',color:'#94A3B8',font:{size:10}}}}}});
+    },options:{...CO,scales:{x:{...CO.scales.x,title:{display:true,text:'Age',color:'#94A3B8',font:{size:10}},ticks:{color:'#94A3B8',font:{size:9}}},y:{...CO.scales.y,title:{display:true,text:'Corpus (₹ Nominal)',color:'#94A3B8',font:{size:10}}}}}});
 
     // ── Allocation Shift Donut Charts ──
     dc('m3-alloc-now');dc('m3-alloc-ret');
@@ -2424,12 +2952,12 @@ function pushToM5(){
   $('m5-gi').value=Math.round(G3.guarIncome);
   $('m5-ti').value=Math.round(G3.totalIncome);
   $('m5-exp').value=Math.round(G3.retExp);
-  $('m5-ret').value=G3.ret||60;
-  $('m5-le').value=G3.le||90;
+  $('m5-ret').value=G3.ret||GS.ret||60;
+  $('m5-le').value=G3.le||GS.le||90;
   $('m5-inf').value=n('m3-inf');
 }
 function pushToM4(){
-  if(!G3.totalCorpus){alert('Please run the Corpus Integrator analysis first.');return;}
+  if(!G3.totalCorpus){showToast('Please run the Corpus Integrator (Module 3) first, then come back.','warn','Module 3 Required');return;}
   $('m4-corp').value=Math.round(G3.totalCorpus);
   $('m4-ret').value=G3.ret||60;
   $('m4-le').value=G3.le||90;
@@ -2464,8 +2992,8 @@ function calcM4(){
   const corp=n('m4-corp'),ar=n('m4-ar')/100,lr=n('m4-lr')/100;
   const inf=n('m4-inf')/100,ret=n('m4-ret'),le=n('m4-le');
   const postYrsRaw=le-ret, postYrs=Math.max(1,postYrsRaw),custApct=n('m4-apct')/100;
-  if(postYrsRaw<=0){alert('Life expectancy must exceed retirement age.');return;}
-  if(corp<=0){alert('Please enter a valid retirement corpus.');return;}
+  if(postYrsRaw<=0){showToast('Plan-to age must be greater than retirement age. Adjust your inputs.','error','Invalid Age Range');return;}
+  if(corp<=0){showToast('Please enter a valid retirement corpus amount.','error','Invalid Input');return;}
   const adjAr=m4AnnType==='joint'?ar*0.90:m4AnnType==='rop'?ar*0.92:m4AnnType==='inc'?ar*0.85:ar;
 
   // Sustainable withdrawal rate: based on post-retirement return (4% rule baseline)
@@ -2599,11 +3127,11 @@ function resetM4(){hide('m4-results');show('m4-ph');}
 function calcM5(){
   const corp=n('m5-corp'),gi=n('m5-gi'),ti=n('m5-ti'),exp=n('m5-exp');
   const pr=n('m5-pr')/100,inf=n('m5-inf')/100,le=n('m5-le'),ret=n('m5-ret');
-  if(le<=ret){alert('Life expectancy must exceed retirement age.');return;}
-  if(corp<=0){alert('Retirement corpus must be greater than zero.');return;}
-  if(exp<=0){alert('Annual expenses must be greater than zero.');return;}
-  if(gi>ti){alert('Guaranteed Income cannot exceed Total Income. Please check your inputs.');return;}
-  if(ti<0||gi<0){alert('Income values cannot be negative.');return;}
+  if(le<=ret){showToast('Plan-to age must be greater than retirement age. Adjust your inputs.','error','Invalid Age Range');return;}
+  if(corp<=0){showToast('Retirement corpus must be greater than zero.','error','Invalid Input');return;}
+  if(exp<=0){showToast('Annual expenses must be greater than zero.','error','Invalid Input');return;}
+  if(gi>ti){showToast('Guaranteed Income cannot exceed Total Income. Please check your inputs.','error','Input Error');return;}
+  if(ti<0||gi<0){showToast('Income values cannot be negative.','error','Invalid Input');return;}
   const postYrs=Math.max(1,le-ret);
 
   const psi=exp>0?(gi/exp)*100:0;
@@ -2750,6 +3278,44 @@ function calcM5(){
 }
 function resetM5(){hide('m5-results');}
 
+function pullM5fromM3(){
+  if(!G3.totalCorpus){showToast('Please run the Corpus Integrator (Module 3) first, then return here.','warn','Module 3 Required');return;}
+  $('m5-corp').value=Math.round(G3.totalCorpus);
+  $('m5-gi').value=Math.round(G3.guarIncome);
+  $('m5-ti').value=Math.round(G3.totalIncome);
+  $('m5-exp').value=Math.round(G3.retExp);
+  $('m5-ret').value=G3.ret||GS.ret;
+  $('m5-le').value=G3.le||90;
+  $('m5-inf').value=Math.round((G3.inf||0.06)*100);
+  showToast('Corpus: '+fmt(G3.totalCorpus)+' | Guaranteed: '+fmt(G3.guarIncome)+'/yr | Total: '+fmt(G3.totalIncome)+'/yr | Expenses: '+fmt(G3.retExp)+'/yr — now click Analyse Risk →','success','Pulled from Corpus Integrator (M3)');
+}
+
+function pullM5fromM1(){
+  const age=GS.age, ret=GS.ret, cc=GS.cc, mc=GS.mc, su=GS.su/100, inf=GS.inf/100;
+  const yrs=ret-age;
+  if(yrs<=0){showToast('Please set valid Age and Retirement Age in the User Profile bar first.','warn','Profile Incomplete');return;}
+  const rates=getM1Rates();
+  const corp=calcCorpus(cc,mc,su,rates[1],yrs);
+  const apct=(n('m1-apct')||40)/100;
+  const ar=(n('m1-ar')||6)/100;
+  const le=GS.le||90;
+  const postYrs=le-ret;
+  // NPS annuity income: corpus × annuityRate (Indian ASPs pay fixed % of purchase price for life)
+  const npsAnnCorpus=corp*apct;
+  const guarIncome = npsAnnCorpus > 0 && ar > 0.001 ? npsAnnCorpus * ar : 0;
+  const mktIncome=corp*(1-apct)*0.03; // 3% SWR on lump sum
+  const totalIncome=guarIncome+mktIncome;
+  const retExp=GS.exp*12*Math.pow(1+inf,yrs);
+  $('m5-corp').value=Math.round(corp);
+  $('m5-gi').value=Math.round(guarIncome);
+  $('m5-ti').value=Math.round(totalIncome);
+  $('m5-exp').value=Math.round(retExp);
+  $('m5-ret').value=ret;
+  $('m5-le').value=le;
+  $('m5-inf').value=GS.inf;
+  showToast('NPS Corpus: '+fmt(corp)+' | Annuity: '+fmt(guarIncome)+'/yr | Expenses: '+fmt(retExp)+'/yr. For full picture, run Module 3 first.','success','Pulled from NPS Simulator (M1)');
+}
+
 // ═══════════════════════════════════════════════
 // MODULE 6 — Scenario Lab
 // ═══════════════════════════════════════════════
@@ -2763,36 +3329,48 @@ function calcM6(){
       cc:Math.max(0,vNum(pfx+'-cc',0)),
       mc:Math.max(0,vNum(pfx+'-mc',0)),   // 0 is valid (lump sum only scenario)
       su:vNum(pfx+'-su',0)/100,
-      r:Math.max(0.001,vNum(pfx+'-r',10)/100),  // minimum 0.1% return
+      r:Math.max(0.001,Math.min(0.15,vNum(pfx+'-r',10)/100)),  // capped at 15% matching safeReturnRate
       inf:Math.max(0,vNum(pfx+'-inf',6)/100),
     };
   }
   const scs=[getSc('sca'),getSc('scb'),getSc('scc')];
   // Validate FIRST before any computation or DOM mutation
   for(const s of scs){
-    if(s.ret<=s.age){alert('Retirement age must exceed current age in all scenarios.');return;}
+    if(s.ret<=s.age){showToast('Retirement age must exceed current age in all scenarios.','error','Invalid Age');return;}
   }
   // Use M1 annuity settings if available, else sensible defaults
   const m6Apct=(n('m1-apct')||40)/100;
   const m6Ar=(n('m1-ar')||6)/100;
+  const m6Le=(n('m1-le')||90); // life expectancy for PMT calculation
+  const m6RetAge=Math.min(...scs.map(s=>s.ret)); // earliest retirement age across scenarios
+  const m6PostYrs=Math.max(1,m6Le-m6RetAge); // post-retirement years
+
+  // CORRECT NPS annuity formula: monthly pension = corpus × annuityRate / 12
+  // Indian ASPs (LIC, HDFC Life, SBI Life) pay a fixed % of purchase price annually for life.
+  // This is NOT a corpus drawdown — the PMT formula was incorrect here.
+  function annuityPMT(corpus,rate){
+    if(corpus<=0||rate<0.001) return 0;
+    return corpus * rate / 12; // monthly income = annual_rate × corpus ÷ 12
+  }
+
   const results=scs.map(s=>{
     const yrs=Math.max(1,s.ret-s.age);
-    if(yrs<1){return {name:s.name,age:s.age,ret:s.ret,cc:s.cc,mc:s.mc,su:s.su,r:s.r,inf:s.inf,yrs:0,corp:s.cc,realCorp:s.cc,pension:s.cc*m6Apct*m6Ar/12,tc:0,wm:1};}
+    const postYrs=Math.max(1,m6Le-s.ret);
+    if(yrs<1){return {name:s.name,age:s.age,ret:s.ret,cc:s.cc,mc:s.mc,su:s.su,r:s.r,inf:s.inf,yrs:0,corp:s.cc,realCorp:s.cc,pension:annuityPMT(s.cc*m6Apct,m6Ar),tc:0,wm:1,postYrs};}
     const corp=Math.max(0,calcCorpus(s.cc,s.mc,s.su,s.r,yrs));
     const realCorp=corp/Math.pow(1+s.inf,yrs);
-    // Pension = annuity portion of corpus * annuity rate / 12
-    const pension=corp*m6Apct*m6Ar/12;
+    // Correct NPS annuity: monthly income = corpus × annuityRate ÷ 12
+    const pension=annuityPMT(corp*m6Apct,m6Ar);
     let tc=0,pm=s.mc;
     for(let y=0;y<yrs;y++){tc+=pm*12;pm*=(1+s.su);}
-    tc+=s.cc; // include initial corpus in total invested
-    // Wealth multiplier: how many times corpus vs total invested (including initial)
+    tc+=s.cc;
     const wm=tc>0?corp/tc:corp>0?Infinity:1;
-    return {...s,yrs,corp,realCorp,pension,tc,wm:isFinite(wm)?wm:corp/1000};
+    return {...s,yrs,corp,realCorp,pension,tc,wm:isFinite(wm)?wm:corp/1000,postYrs};
   });
 
   const bestIdx=results.reduce((bi,r,i)=>r.corp>results[bi].corp?i:bi,0);
   const bestNames=['🔵','🟡','🟢'];
-  $('m6-winner').textContent=T[lang].winner_prefix+' '+bestNames[bestIdx]+' '+results[bestIdx].name+' — '+fmt(results[bestIdx].corp)+' corpus  |  Pension assumes '+Math.round(m6Apct*100)+'% annuity @ '+Math.round(m6Ar*100)+'%';
+  $('m6-winner').textContent=T[lang].winner_prefix+' '+bestNames[bestIdx]+' '+results[bestIdx].name+' — '+fmt(results[bestIdx].corp)+' corpus  |  Monthly pension = '+Math.round(m6Apct*100)+'% corpus × '+Math.round(m6Ar*100)+'% annuity rate ÷ 12';
 
   // Headers
   $('m6-h-a').textContent='🔵 '+results[0].name;
@@ -2852,26 +3430,29 @@ function calcM6(){
       }]
     },options:{...CO,plugins:{...CO.plugins,legend:{display:false},tooltip:{callbacks:{label:c=>' '+fmt(c.raw)}}}}});
 
-    // Real pension value over time
+    // Real pension value over time (uses PMT-based pension, deflated each year)
     dc('m6-real');
-    const postYrs=25;
-    const pYrs=Array.from({length:postYrs},(_,i)=>i+1);
+    const postYrsChart=Math.max(...results.map(r=>r.postYrs||25));
+    const pYrs=Array.from({length:Math.min(postYrsChart,35)},(_,i)=>i+1);
     charts['m6-real']=new Chart($('chart-m6-real').getContext('2d'),{type:'line',data:{labels:pYrs,datasets:results.map((r,i)=>({
-      label:r.name+' real pension',
+      label:r.name+' real pension (PMT)',
       data:pYrs.map(y=>r.pension/Math.pow(1+r.inf,y)),
       borderColor:cols[i],backgroundColor:'transparent',borderWidth:2.5,tension:.3,pointRadius:0
-    }))},options:{...CO,scales:{x:{...CO.scales.x,title:{display:true,text:'Years After Retirement',color:'#94A3B8',font:{size:10}}},y:{...CO.scales.y}}}});
+    }))},options:{...CO,scales:{x:{...CO.scales.x,title:{display:true,text:'Years After Retirement',color:'#94A3B8',font:{size:10}}},y:{...CO.scales.y,title:{display:true,text:'Real Monthly Pension (₹)',color:'#94A3B8',font:{size:10}}}}}});
 
     // ── Sequence-of-Returns Risk Panel ──
     // Shows impact of a bear market in early retirement years (same average return, bad ordering).
     // Uses Scenario A's settings. Bear years 1-5 return = 50% of normal, then recovery.
     const sr=results[0];
     if(sr&&sr.corp>0&&sr.ret>sr.age){
-      const initWithdrawal=sr.corp*m6Apct*m6Ar; // annual withdrawal = annuity portion income
+      // Use PMT-based annual withdrawal (same as pension calc — correct), not perpetuity
+      const initWithdrawal=sr.pension*12; // annuity PMT monthly × 12 = annual
       const baseR=sr.r; // average return
       const bearR=baseR*0.5-0.15; // bear market: deep negative (e.g. 10% normal → ~-10% in bear)
-      const recovR=baseR+(baseR-bearR)*5/25; // recovery compensates, same 25yr average
       const seqYrs=25;
+      // Correct recovery rate: ensures 25yr weighted average = baseR
+      // 5*bearR + 20*recovR = 25*baseR  →  recovR = (25*baseR - 5*bearR) / 20
+      const recovR=(seqYrs*baseR - 5*bearR)/(seqYrs-5);
       const baseCorpus=[sr.corp];
       const seqCorpus=[sr.corp];
       for(let y=0;y<seqYrs;y++){
@@ -2935,14 +3516,14 @@ function calcM7(){
   const age=n('m7-age'),ret=n('m7-ret'),cc=n('m7-cc'),mc=n('m7-mc'),su=n('m7-su')/100;
   const income=n('m7-income'), slab=n('m7-slab')/100, other80c=n('m7-other80c')||0;
   const yrs=ret-age;
-  if(yrs<=0){alert('Retirement age must exceed current age.');return;}
-  if(mc<=0){alert('Monthly NPS contribution must be greater than zero.');return;}
+  if(yrs<=0){showToast('Retirement age must be greater than your current age. Please check your inputs.','error','Invalid Age');return;}
+  if(mc<=0){showToast('Monthly NPS contribution must be greater than zero.','error','Invalid Input');return;}
 
   const ePct=parseInt($('m7-e').value)/100, cPct=parseInt($('m7-c').value)/100, gPct=parseInt($('m7-g').value)/100;
   const totalPct=Math.round((ePct+cPct+gPct)*100);
-  if(totalPct!==100){alert('E + C + G allocation must total 100%. Currently: '+totalPct+'%');return;}
+  if(totalPct!==100){showToast('E + C + G allocation must total exactly 100%. Currently: '+totalPct+'%','error','Allocation Error');return;}
 
-  const activeR=ePct*0.12+cPct*0.09+gPct*0.07;
+  const activeR=ePct*0.12+cPct*0.09+gPct*0.07; // E: 12%, C: 9%, G: 7% — based on NPS Trust 5-yr CAGR data
   const lc75R=Math.max(0.001,n('m7-lc75')/100), lc50R=Math.max(0.001,n('m7-lc50')/100), lc25R=Math.max(0.001,n('m7-lc25')/100);
   const strategies=[
     {name:'Active Choice (Your Mix)',r:activeR,col:'#6D28D9',tag:'Custom'},
@@ -2954,7 +3535,7 @@ function calcM7(){
   const best=results.reduce((b,r)=>r.corpus>b.corpus?r:b,results[0]);
 
   hide('m7-right-ph'); show('m7-results')
-  markModDone(6);;
+  markModDone(6);
 
   $('m7-rg').innerHTML=results.map(r=>`<div class="rc${r.name===best.name?' hl':''}">
     <div class="rc-lbl">${r.tag}</div>
@@ -2964,31 +3545,45 @@ function calcM7(){
     ${r.name===best.name?'<div style="margin-top:5px;font-size:9px;font-weight:700;color:#15803D;background:#dcfce7;padding:2px 8px;border-radius:20px;display:inline-block">★ BEST</div>':''}
   </div>`).join('');
 
-  // ── Tax benefit (corrected logic) ──
-  // 80C room available for NPS = 80C limit minus other 80C investments already used
+  // ── Tax benefit — regime-aware ──
+  const regime = ($('m7-regime') ? $('m7-regime').value : 'old');
+  const isNewRegime = (regime === 'new');
   const annualNPS=mc*12;
+  const empNPS=n('m7-emp-nps')||0; // employer contribution under 80CCD(2)
   const max80C=150000;
-  const nps80cRoom=Math.max(0, max80C - other80c);       // room left in 80C for NPS
-  const nps80cDeduction=Math.min(annualNPS, nps80cRoom); // NPS portion going into 80C
-  // 80CCD(1B): extra ₹50K for NPS independent of 80C, capped at remaining NPS contribution
-  const nps80ccdDeduction=Math.min(50000, Math.max(0, annualNPS - nps80cDeduction));
-  const totalDeduction=nps80cDeduction+nps80ccdDeduction;
+  // Under new regime: 80C and 80CCD(1B) are NOT allowed — only 80CCD(2) remains
+  // 80CCD(1): employee contribution — also capped at 10% of gross salary (separate from 80C limit)
+  const salary10pct = income > 0 ? income * 0.10 : Infinity; // 10% of gross annual salary
+  const nps80cDeduction    = isNewRegime ? 0 : Math.min(annualNPS, salary10pct, Math.max(0, max80C - other80c));
+  const nps80ccdDeduction  = isNewRegime ? 0 : Math.min(50000, Math.max(0, annualNPS - nps80cDeduction));
+  // 80CCD(2): employer contribution — capped at 14% of basic salary (use income as proxy for basic)
+  // Strict rule: 14% of *basic* salary; we use annual income as a conservative proxy (basic ≤ income)
+  // 80CCD(2) cap: 14% for Central/State Govt/PSU, 10% for private sector employers
+  const empType = ($('m7-emp-type') ? $('m7-emp-type').value : 'private');
+  const empCapPct = (empType === 'govt') ? 0.14 : 0.10;
+  const basic14pct = income > 0 ? income * empCapPct : empNPS; // cap based on employer type
+  const emp80ccd2Deduction=Math.max(0, Math.min(empNPS, basic14pct));
+  const totalDeduction=nps80cDeduction+nps80ccdDeduction+emp80ccd2Deduction;
   const taxSaved=totalDeduction*slab;
   const effectiveCost=Math.max(0,annualNPS-taxSaved);
   const totalTaxSaved=taxSaved*yrs;
   const effectiveReturn=annualNPS>0?((taxSaved/annualNPS)*100):0;
+  const regimeNote = isNewRegime ? ' ⚠️ New Regime: 80C & 80CCD(1B) not available' : ' ✅ Old Regime: all deductions applicable';
 
   $('m7-tax-grid').innerHTML=[
-    {l:'Annual NPS Contribution',v:fmt(annualNPS)},
+    {l:'Tax Regime',v:(isNewRegime?'New Regime':'Old Regime')+regimeNote,hl:isNewRegime},
+    {l:'Annual Employee NPS Contribution',v:fmt(annualNPS)},
+    {l:'Employer NPS Contribution (80CCD(2))',v:fmt(empNPS),hl:empNPS>0},
     {l:'Other 80C Investments',v:fmt(other80c)},
-    {l:'NPS via 80C Deduction',v:fmt(nps80cDeduction)},
-    {l:'NPS via 80CCD(1B) Exclusive',v:fmt(nps80ccdDeduction),hl:nps80ccdDeduction>0},
+    {l:'NPS via 80C/80CCD(1)'+(isNewRegime?' (N/A — new regime)':' — capped at lower of 80C room & 10% salary'),v:isNewRegime?'₹0 (not available)':fmt(nps80cDeduction)},
+    {l:'NPS via 80CCD(1B)'+(isNewRegime?' (N/A — new regime)':' — Extra ₹50K'),v:isNewRegime?'₹0 (not available)':fmt(nps80ccdDeduction),hl:nps80ccdDeduction>0},
+    {l:'Employer NPS 80CCD(2) — Both Regimes (cap: '+(empCapPct*100)+'% salary, '+empType+')',v:fmt(emp80ccd2Deduction),hl:emp80ccd2Deduction>0},
     {l:'Total NPS Tax Deduction',v:fmt(totalDeduction),hl:true},
-    {l:'Tax Saved Annually',v:fmt(taxSaved),hl:true},
-    {l:'Effective Cost of NPS',v:fmt(effectiveCost)},
+    {l:'Tax Saved Annually (at '+Math.round(slab*100)+'% slab)',v:fmt(taxSaved),hl:true},
+    {l:'Effective Cost of Your NPS',v:fmt(effectiveCost)},
     {l:'Total Tax Saved ('+yrs+' yrs)',v:fmt(totalTaxSaved),hl:true},
-    {l:'Instant Return via Tax',v:effectiveReturn.toFixed(1)+'%'},
-  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}</div><div class="rc-val">${c.v}</div></div>`).join('');
+    {l:'Instant Return via Tax Benefits',v:effectiveReturn.toFixed(1)+'%'},
+  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}${c.note?`<span style='font-size:9px;color:var(--muted);display:block;margin-top:1px'>${c.note}</span>`:''}</div><div class="rc-val">${c.v}</div></div>`).join('');
 
   // Table
   const annuityApct=n('m1-apct')/100||0.40, annuityAr=n('m1-ar')/100||0.06;
@@ -3055,12 +3650,12 @@ function calcM8(){
   const retR=n('m8-ret-r')/100, otherIncome=Math.max(0,n('m8-other'));
 
   // Input validation
-  if(corp<=0){alert('Please enter a valid retirement corpus.');return;}
-  if(retAge<=0){alert('Please enter a valid retirement age.');return;}
-  if(le<=retAge){alert('Life expectancy must exceed retirement age.');return;}
-  if(monthExp<0||monthMed<0){alert('Expenses cannot be negative.');return;}
-  if(inf<0){alert('Inflation cannot be negative.');return;}
-  if(retR<0){alert('Post-retirement return cannot be negative for this model.');return;}
+  if(corp<=0){showToast('Please enter a valid retirement corpus amount.','error','Invalid Input');return;}
+  if(retAge<=0){showToast('Please enter a valid retirement age.','error','Invalid Input');return;}
+  if(le<=retAge){showToast('Plan-to age must be greater than retirement age. Adjust your inputs.','error','Invalid Age Range');return;}
+  if(monthExp<0||monthMed<0){showToast('Expenses cannot be negative.','error','Invalid Input');return;}
+  if(inf<0){showToast('Inflation rate cannot be negative.','error','Invalid Input');return;}
+  if(retR<0){showToast('Post-retirement return cannot be negative for this model.','error','Invalid Input');return;}
 
   const postYrs=le-retAge;
 
@@ -3091,7 +3686,7 @@ function calcM8(){
     medExpAnnual*=(1+minf);
   }
 
-  // ── Sustainable inflation-adjusted withdrawal — binary search (FIXED) ──
+  // ── Sustainable inflation-adjusted withdrawal — binary search ──
   // Tests: if initial withdrawal grows with general inflation each year, does corpus survive?
   function testSustain(initAnnual){
     if(initAnnual<=0) return true;
@@ -3099,7 +3694,9 @@ function calcM8(){
     for(let i=0;i<postYrs;i++){
       const net=Math.max(0,ann-otherIncome);
       tc=tc*(1+retR)-net;
-      if(tc<=0) return false;
+      // Corpus may reach exactly 0 in the final year — that is still sustainable
+      if(tc<0 && i<postYrs-1) return false;
+      if(tc<0) return false; // depleted before end of final year
       ann*=(1+inf); // inflation-adjusted withdrawal grows each year
     }
     return true;
@@ -3126,16 +3723,20 @@ function calcM8(){
 
   const initMonthly=monthExp+monthMed;
   const vsRatio=sustainableMonthly>0?(initMonthly/sustainableMonthly*100).toFixed(0)+'%':'N/A';
+  const realCorpusM8=corp/Math.pow(1+inf,Math.max(0,retAge-(GS.age||32)));
+  const legacyCorpus=rows[rows.length-1]?rows[rows.length-1].cEnd:0;
   $('m8-rg').innerHTML=[
-    {l:'Total Corpus at Retirement',v:fmt(corp)},
+    {l:'Total Corpus at Retirement (Nominal)',v:fmt(corp)},
+    {l:'Real Corpus (Today\'s Purchasing Power)',v:fmt(realCorpusM8),hl:false},
     {l:'Corpus Runs Out At',v:depletedLabel,hl:!surplus},
     {l:'Retirement Duration',v:postYrs+' yrs (age '+retAge+'→'+le+')'},
     {l:'Sustainable Monthly Spend',v:fmt(sustainableMonthly),hl:true},
     {l:'Your Planned Monthly Budget',v:fmt(initMonthly)},
     {l:'Budget as % of Sustainable',v:vsRatio},
+    {l:'Legacy Corpus at Age '+le,v:legacyCorpus>0?fmt(legacyCorpus):'Depleted ⚠️',hl:legacyCorpus>0},
     {l:'Other Income/yr (pension etc.)',v:fmt(otherIncome)},
     {l:'Bucket 3 — Long-term Growth',v:fmt(b3)},
-  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}</div><div class="rc-val">${c.v}</div></div>`).join('');
+  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}${c.note?`<span style='font-size:9px;color:var(--muted);display:block;margin-top:1px'>${c.note}</span>`:''}</div><div class="rc-val">${c.v}</div></div>`).join('');
 
   // ── Runway table ──
   $('m8-tbody').innerHTML=rows.map(r=>{
@@ -3200,24 +3801,133 @@ function calcM8(){
     },options:{responsive:false,maintainAspectRatio:false,animation:false,cutout:'50%',
       plugins:{legend:{position:'bottom',labels:{color:'#64748B',font:{size:10},padding:10,boxWidth:12}},
         tooltip:{callbacks:{label:c=>' '+c.label+'\n  '+fmt(c.raw)+' ('+((c.raw/corp)*100).toFixed(0)+'%)'}}}}});
+
+    // ── Monte Carlo Simulation ─────────────────────────────────────────────
+    // 1,000 simulations with log-normal returns (mean=retR, std dev=17% for equity-ish portfolio)
+    dc('m8-mc');
+    const MC_RUNS=1000;
+    const MC_DISPLAY=60; // faint paths to draw on chart
+    const annWithd=(initMonthly+0)*12; // total annual withdrawal before other income offset
+    const netAnnWithd=Math.max(0,annWithd-otherIncome); // net from corpus
+    // Volatility: blended portfolio std dev. Conservative (7%→σ~8%), Moderate (10%→σ~13%), Aggressive(12%→σ~17%)
+    // Use retR to estimate appropriate sigma
+    const sigma=retR<=0.06?0.07:retR<=0.08?0.10:retR<=0.10?0.13:0.17;
+    const mu=retR; // mean annual return
+
+    let successCount=0;
+    const allPaths=[]; // store [year0..postYrs] for each run
+    const depletionAges=[];
+    for(let run=0;run<MC_RUNS;run++){
+      let c=corp;
+      const path=[c];
+      let depleted=false,depAge=null;
+      for(let i=0;i<postYrs;i++){
+        // Log-normal return: exp(μ_adj + σ·Z) where μ_adj = ln(1+mu) - σ²/2
+        const z=(()=>{let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);})();
+        const muAdj=Math.log(1+mu)-sigma*sigma/2;
+        const yearR=Math.exp(muAdj+sigma*z)-1;
+        const withdrawal=netAnnWithd*Math.pow(1+inf,i);
+        c=Math.max(0,c*(1+yearR)-withdrawal);
+        path.push(c);
+        if(c<=0&&!depleted){depleted=true;depAge=retAge+i+1;}
+      }
+      if(!depleted) successCount++;
+      allPaths.push(path);
+      if(depAge) depletionAges.push(depAge);
+    }
+    const successPct=(successCount/MC_RUNS*100).toFixed(0);
+    const p10Age=depletionAges.length>0?(depletionAges.sort((a,b)=>a-b)[Math.floor(depletionAges.length*0.10)]||null):null;
+    const medAge=depletionAges.length>MC_RUNS/2?null:(depletionAges.sort((a,b)=>a-b)[Math.floor(depletionAges.length*0.5)]||null);
+
+    // Score cards
+    const scColor=successPct>=85?'#15803D':successPct>=70?'#D97706':successPct>=50?'#C2410C':'#B91C1C';
+    const scBg=successPct>=85?'#dcfce7':successPct>=70?'#fef9c3':successPct>=50?'#fed7aa':'#fecaca';
+    $('m8-mc-scores').innerHTML=`
+      <div style="background:${scBg};border:1.5px solid ${scColor}44;border-radius:10px;padding:14px;text-align:center">
+        <div style="font-size:10px;font-weight:700;color:${scColor};text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Probability of Success</div>
+        <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:${scColor}">${successPct}%</div>
+        <div style="font-size:10px;color:${scColor};margin-top:3px">Corpus survives full retirement</div>
+        <div style="font-size:9px;color:${scColor};opacity:.7;margin-top:2px">${successPct>=85?'✅ Strong plan':successPct>=70?'⚠️ Acceptable — consider buffer':'🔴 Action needed'}</div>
+      </div>
+      <div style="background:var(--bg2);border:1.5px solid var(--light);border-radius:10px;padding:14px;text-align:center">
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Failed Scenarios</div>
+        <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:var(--coral)">${(100-parseInt(successPct)).toFixed(0)}%</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">of 1,000 simulations ran out of money</div>
+        <div style="font-size:9px;color:var(--faint);margin-top:2px">Based on ${Math.round(sigma*100)}% annual return volatility</div>
+      </div>
+      <div style="background:var(--bg2);border:1.5px solid var(--light);border-radius:10px;padding:14px;text-align:center">
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Worst 10% — Depletion By</div>
+        <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:var(--amber)">${p10Age?'Age '+p10Age:'Never ✅'}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">1 in 10 scenarios runs out this early</div>
+        <div style="font-size:9px;color:var(--faint);margin-top:2px">Plan for this — not just the average</div>
+      </div>`;
+
+    // Chart: show 60 random paths + percentile bands
+    const mcLabels=Array.from({length:postYrs+1},(_,i)=>retAge+i);
+    const mcDatasets=[];
+    // Faint individual paths (random subset)
+    const displayIdx=Array.from({length:MC_DISPLAY},()=>Math.floor(Math.random()*MC_RUNS));
+    displayIdx.forEach(i=>{
+      mcDatasets.push({data:allPaths[i],borderColor:'rgba(91,33,182,0.08)',borderWidth:1,pointRadius:0,tension:.3,fill:false,label:'',showInLegend:false});
+    });
+    // Percentile bands
+    const p10=[],p50=[],p90=[];
+    for(let yr=0;yr<=postYrs;yr++){
+      const vals=allPaths.map(p=>p[yr]).sort((a,b)=>a-b);
+      p10.push(vals[Math.floor(MC_RUNS*0.10)]);
+      p50.push(vals[Math.floor(MC_RUNS*0.50)]);
+      p90.push(vals[Math.floor(MC_RUNS*0.90)]);
+    }
+    mcDatasets.push({label:'10th Percentile (poor luck)',data:p10,borderColor:'#DC2626',borderWidth:2,pointRadius:0,tension:.3,fill:false,borderDash:[5,3]});
+    mcDatasets.push({label:'Median Outcome',data:p50,borderColor:'#0A7C6E',borderWidth:2.5,pointRadius:0,tension:.3,fill:false});
+    mcDatasets.push({label:'90th Percentile (good luck)',data:p90,borderColor:'#16A34A',borderWidth:2,pointRadius:0,tension:.3,fill:false,borderDash:[3,3]});
+    charts['m8-mc']=new Chart($('chart-m8-mc').getContext('2d'),{type:'line',data:{labels:mcLabels,datasets:mcDatasets},
+      options:{...CO,responsive:false,
+        plugins:{...CO.plugins,legend:{display:true,labels:{filter:item=>item.text!=='',color:'#64748B',font:{size:10},boxWidth:20}}},
+        scales:{x:{...CO.scales.x,title:{display:true,text:'Age',color:'#94A3B8',font:{size:10}}},y:{...CO.scales.y,title:{display:true,text:'Corpus (₹ Nominal)',color:'#94A3B8',font:{size:10}},min:0}}}});
   },80);
+}
+function runCrashStress(){
+  // Sequence of returns risk: 40% crash in Year 1 of retirement — worst case
+  const corp=n('m8-corp'), retAge=n('m8-ret'), le=n('m8-le');
+  const monthExp=n('m8-exp'), monthMed=n('m8-med');
+  const inf=n('m8-inf')/100, minf=n('m8-minf')/100;
+  const retR=safeReturnRate(n('m8-ret-r'))/100;
+  const otherIncome=Math.max(0,n('m8-other'));
+  if(!corp||corp<=0){showToast('Run the base Drawdown analysis first, then click this.','warn','Run Base First');return;}
+  const postYrs=le-retAge;
+  if(postYrs<=0){showToast('Plan-to age must exceed retirement age.','error','Invalid Input');return;}
+  let c=corp, depCrash=null;
+  let gExp=monthExp*12, mExp=monthMed*12;
+  for(let i=0;i<postYrs;i++){
+    const r = (i===0) ? -0.40 : retR;   // 40% crash ONLY in year 1
+    const net=Math.max(0, gExp+mExp-otherIncome);
+    c=Math.max(0, c*(1+r)-net);
+    if(c<=0 && !depCrash){ depCrash=retAge+i+1; break; }
+    gExp*=(1+inf); mExp*=(1+minf);
+  }
+  if(depCrash){
+    showToast('🔴 40% crash at retirement → corpus depletes at age '+depCrash+' ('+( depCrash-retAge)+'yr into retirement). Mitigation: keep 3yr expenses in FD/liquid funds as a "bucket" before investing the rest.','warn','Sequence of Returns Risk',8000);
+  } else {
+    showToast('✅ Even after a 40% crash at retirement, corpus survives to age '+le+'. Your guaranteed income (₹'+Math.round(otherIncome/12).toLocaleString('en-IN')+'/mo) and corpus size provide strong resilience.','success','Sequence of Returns: Resilient',6000);
+  }
 }
 function resetM8(){hide('m8-results');show('m8-right-ph');}
 function pullM8fromM1(){
   // Pull from M1: use GS corpus estimate (base scenario)
   const age=GS.age,ret=GS.ret,cc=GS.cc,mc=GS.mc,su=GS.su/100,inf=GS.inf/100;
   const yrs=ret-age;
-  if(yrs<=0){alert('Set valid Age and Retirement Age in the User Profile first.');return;}
+  if(yrs<=0){showToast('Please set valid Age and Retirement Age in the User Profile bar first.','warn','Profile Incomplete');return;}
   const rates=getM1Rates();
   const corp=calcCorpus(cc,mc,su,rates[1],yrs);
   $('m8-corp').value=Math.round(corp);
   $('m8-ret').value=ret;
   $('m8-inf').value=GS.inf;
   $('m8-exp').value=Math.round(GS.exp); // today's monthly expense — M8 inflates this itself
-  alert('✅ Pulled projected NPS corpus (base scenario) from Module 1: '+fmt(corp)+'\nExpenses set to today\'s value (₹'+Math.round(GS.exp).toLocaleString('en-IN')+'/mo) — Module 8 will inflate these to retirement date.');
+  showToast('NPS Corpus: '+fmt(corp)+' | Expenses: ₹'+Math.round(GS.exp).toLocaleString('en-IN')+'/mo (today\'s value — M8 inflates to retirement date)','success','Pulled from NPS Simulator (M1)');
 }
 function pullM8fromM3(){
-  if(!G3.totalCorpus){alert('Please run Corpus Integrator (Module 3) first.');return;}
+  if(!G3.totalCorpus){showToast('Please run the Corpus Integrator (Module 3) first.','warn','Module 3 Required');return;}
   $('m8-corp').value=Math.round(G3.totalCorpus);
   $('m8-ret').value=G3.ret||GS.ret;
   $('m8-inf').value=Math.round((G3.inf||0.06)*100);
@@ -3227,7 +3937,7 @@ function pullM8fromM3(){
   const todayExp=m8yrs>0&&G3.retExp?G3.retExp/Math.pow(1+(G3.inf||0.06),m8yrs):G3.retExp||0;
   $('m8-exp').value=Math.round(todayExp/12);
   $('m8-other').value=Math.round((G3.guarIncome||0)/12);
-  alert('✅ Pulled total corpus from Module 3: '+fmt(G3.totalCorpus)+'\nExpenses set to today\'s value (₹'+Math.round(todayExp/12).toLocaleString('en-IN')+'/mo) — Module 8 will inflate these.\nGuaranteed income set as other income: '+fmt(G3.guarIncome/12)+'/mo');
+  showToast('Total Corpus: '+fmt(G3.totalCorpus)+' | Expenses: ₹'+Math.round(todayExp/12).toLocaleString('en-IN')+'/mo | Other income: '+fmt(G3.guarIncome/12)+'/mo','success','Pulled from Corpus Integrator (M3)');
 }
 
 // ═══════════════════════════════════════════════
@@ -3240,11 +3950,11 @@ function calcM9(){
   const yrs=ret-age;
 
   // Input guards
-  if(age<=0||age>=100){alert('Please enter a valid current age.');return;}
-  if(ret<=age){alert('Retirement age must exceed current age.');return;}
-  if(income<0){alert('Income cannot be negative.');return;}
-  if(exp<0){alert('Expenses cannot be negative.');return;}
-  if(exp>income&&income>0){alert('Warning: Expenses exceed income. Check inputs — proceeding anyway.');}
+  if(age<=0||age>=100){showToast('Please enter a valid current age (18–70).','error','Invalid Input');return;}
+  if(ret<=age){showToast('Retirement age must be greater than your current age. Please check your inputs.','error','Invalid Age');return;}
+  if(income<0){showToast('Income cannot be negative.','error','Invalid Input');return;}
+  if(exp<0){showToast('Expenses cannot be negative.','error','Invalid Input');return;}
+  if(exp>income&&income>0){showToast('Expenses exceed income — please verify your inputs. Proceeding with the calculation.','warn','Check Inputs');}
 
   hide('m9-right-ph'); show('m9-results');
   markModDone(8);
@@ -3252,7 +3962,7 @@ function calcM9(){
   const earlyExitNote=$('m9-early-exit-note');
   if(ret<60){
     if(earlyExitNote){
-      earlyExitNote.innerHTML='<strong>⚖️ PFRDA Early Exit Rule:</strong> You plan to retire at age '+ret+', which is before age 60. Under PFRDA regulations, early exit from NPS (before 60) requires <strong>at least 80% of your corpus to be used to purchase annuity</strong> (vs. 40% at normal retirement). Only 20% can be withdrawn as lump sum. Plan your cash flow accordingly.';
+      earlyExitNote.innerHTML='<strong>⚖️ PFRDA Early Exit Rule:</strong> You plan to retire at age '+ret+', which is before age 60. Under PFRDA regulations, early exit from NPS (before 60) requires <strong>at least 80% of your corpus to be used to purchase annuity</strong> (vs. 20% minimum at normal retirement after age 60). Only 20% can be withdrawn as lump sum. Plan your cash flow accordingly.<br><strong style="color:#15803D">💡 Small Corpus Exception:</strong> If your total NPS corpus is ≤₹5 Lakh at exit, you can withdraw 100% as lump sum — the mandatory annuity rule does not apply.';
       earlyExitNote.style.display='';
     }
   } else if(earlyExitNote){
@@ -3306,6 +4016,31 @@ function calcM9(){
 
   // ── 35X Rule ──
   const retExpAnnual=exp*12*Math.pow(1+inf,yrs);
+  // ── Real-return multiplier table ──────────────────────────────
+  const le9 = GS.le || 90; // uses Plan-To Age from GPS bar
+  const rr_nom  = safeReturnRate(n('m9-rr'))/100;
+  const inf_m9  = n('m9-inf')/100;
+  const realRet = (1+rr_nom)/(1+inf_m9) - 1;
+  const multBox = $('m9-real-box'), multTable = $('m9-mult-table');
+  if(multBox && multTable && retExpAnnual > 0){
+    multBox.style.display = '';
+    const need_yrs = le9 - ret;  // years corpus must last
+    const rows = [20,25,30,35,40,50].map(m=>{
+      const corpusM = retExpAnnual * m;
+      // Simulate real-terms drawdown (1 unit = today's expense, grows at real return)
+      let c = corpusM, yr = 0;
+      while(c > 0 && yr < 120){
+        c = realRet > 0.0001 ? c*(1+realRet) - retExpAnnual
+          : realRet < -0.0001 ? c*(1+realRet) - retExpAnnual
+          : c - retExpAnnual;
+        yr++;
+      }
+      const lasts = yr >= 120 ? '∞' : yr + 'yr';
+      const ok = yr >= need_yrs;
+      return `<span style="display:inline-block;padding:4px 11px;margin:3px 3px;border-radius:20px;font-size:11px;font-weight:700;background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#15803D':'#991B1B'}">${m}× → ${lasts}${ok?' ✅':' ⚠️'}</span>`;
+    });
+    multTable.innerHTML = `<div style="font-size:11px;margin-bottom:6px">Real return: <strong>${(realRet*100).toFixed(1)}%</strong> &nbsp;(${(rr_nom*100).toFixed(1)}% nominal − ${(inf_m9*100).toFixed(1)}% inflation) &nbsp;|&nbsp; Need to last: <strong>${need_yrs}yr</strong></div>${rows.join('')}`;
+  }
   const target35x=retExpAnnual*35;
   const target40x=retExpAnnual*40;
   // Corpus projection uses current savings + monthly surplus invested — clarifies it's the
@@ -3325,7 +4060,7 @@ function calcM9(){
     {l:'Projected Corpus*',v:fmt(corpusOnTrack),hl:corpusOnTrack>=target35x},
     {l:'35X Readiness',v:pct35x.toFixed(1)+'%',hl:pct35x>=100},
     {l:'Monthly Saving Needed (35X)',v:fmt(needed35x),hl:true},
-  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}</div><div class="rc-val">${c.v}</div></div>`).join('');
+  ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}${c.note?`<span style='font-size:9px;color:var(--muted);display:block;margin-top:1px'>${c.note}</span>`:''}</div><div class="rc-val">${c.v}</div></div>`).join('');
 
   const barPct=Math.min(100,pct35x);
   const barColor=pct35x>=100?'#16A34A':pct35x>=70?'#D97706':'#DC2626';
@@ -3373,6 +4108,43 @@ function calcM9(){
 
   $('m9-advice').innerHTML=`<strong>📋 Summary:</strong> For a comfortable retirement at age <strong>${ret}</strong> you need <strong>${fmt(target35x)}</strong> (35× of ₹${fmt(retExpAnnual)}/yr). You are at <strong>${pct35x.toFixed(1)}% readiness</strong> (assuming full monthly surplus invested). ${pct35x>=100?'You are on track — now focus on protecting what you\'ve built with adequate insurance and gradual de-risking as you near retirement.':'To bridge the gap, target investing at least ₹'+fmt(needed35x)+'/mo across NPS and other instruments. Use Module 7 to maximise the NPS tax advantage.'}`;
 
+  // ── Healthcare Corpus Buffer ──────────────────────────────────────────────
+  // India medical inflation ~14% p.a. (Acko 2024). Model: ₹10K/mo base medical expense at retirement,
+  // growing at 14% for (le - ret) post-retirement years. Find PV at retirement to fully fund this.
+  const postYrs9 = Math.max(1, le9 - ret);
+  const medInf = 0.14; // India medical inflation
+  const baseMonthMed = 15000; // base medical expense at retirement in today's ₹ (urban India avg, 2026)
+  // Inflate base medical expense to retirement date at general inflation
+  const medAtRet = baseMonthMed * Math.pow(1 + inf, yrs) * 12; // annual at retirement
+  // PV at retirement of annuity with 14% growth each year, discounted at post-ret return 7%
+  const postR = 0.07;
+  // PV = Σ medAtRet*(1+medInf)^i / (1+postR)^(i+1) for i=0..postYrs9-1
+  let healthCorpus = 0;
+  for(let i = 0; i < postYrs9; i++) {
+    healthCorpus += medAtRet * Math.pow(1+medInf, i) / Math.pow(1+postR, i+1);
+  }
+  // Healthcare corpus as % of 35X target
+  const healthPct = target35x > 0 ? (healthCorpus/target35x*100).toFixed(0) : 0;
+  const totalHealthNeed = healthCorpus;
+  if($('m9-health-grid')){
+    $('m9-health-grid').innerHTML=[
+      {l:'Base Medical Expense at Retirement',v:fmt(medAtRet/12)+'/mo',hl:false},
+      {l:'Medical Inflation Assumed',v:'14% p.a. (India avg)'},
+      {l:'Post-Retirement Years',v:postYrs9+' yrs (age '+ret+'→'+le9+')'},
+      {l:'Healthcare Corpus Required',v:fmt(healthCorpus),hl:true},
+      {l:'As % of 35X Retirement Target',v:healthPct+'% of '+fmt(target35x)},
+      {l:'Recommendation',v:'Keep this separate',hl:true},
+    ].map(c=>`<div class="rc${c.hl?' hl':''}"><div class="rc-lbl">${c.l}${c.note?`<span style='font-size:9px;color:var(--muted);display:block;margin-top:1px'>${c.note}</span>`:''}</div><div class="rc-val">${c.v}</div></div>`).join('');
+  }
+  if($('m9-health-note')){
+    $('m9-health-note').innerHTML=`<strong>🏥 Why a Separate Healthcare Buffer?</strong>
+      Medical costs in India inflate at ~14% annually — far outpacing general inflation. Your ₹${fmt(medAtRet/12)}/mo medical budget at retirement (today's ₹${fmt(baseMonthMed)}/mo inflated ${yrs} years) becomes <strong>₹${fmt(medAtRet*Math.pow(1.14,postYrs9-1)/12)}/mo by age ${le9}</strong> — a ${((Math.pow(1.14,postYrs9)/1)-1).toFixed(0)}x increase.
+      <br><br>
+      <strong>Action:</strong> (1) Allocate <strong>${fmt(totalHealthNeed)}</strong> as a dedicated healthcare corpus in SCSS or liquid FDs — do not mix with regular retirement corpus, (2) Maintain a comprehensive health insurance plan (₹20–50L cover, ideally super top-up), (3) Premiums also inflate — budget for premium increases every 3–5 years, (4) Consider a critical illness rider for cancer, heart attack and stroke coverage.
+      <br><br>
+      <span style="font-size:10.5px;color:var(--muted)">Note: This estimate assumes ₹${Math.round(baseMonthMed/1000)}K/mo base medical spend at retirement. Actual costs depend heavily on health status and city. Add this amount to your overall savings target.</span>`;
+  }
+
   setTimeout(()=>{
     dc('m9-sens');
     const sensData=retAges.map(rAge=>{
@@ -3401,7 +4173,7 @@ function calcM9(){
     const nonZeroIdx=allocRaw.map((v,i)=>v>0?i:-1).filter(i=>i>=0);
     charts['m9-alloc']=new Chart($('chart-m9-alloc').getContext('2d'),{type:'doughnut',data:{
       labels:nonZeroIdx.map(i=>dataLabels[i]),
-      datasets:[{data:nonZeroIdx.map(i=>dataPoints[nonZeroIdx.indexOf(i)]),
+      datasets:[{data:nonZeroIdx.map(i=>allocRaw[i]),
         backgroundColor:nonZeroIdx.map(i=>dataColours[i]),borderWidth:3,borderColor:'#fff',hoverOffset:8}]
     },options:{responsive:false,maintainAspectRatio:false,animation:false,cutout:'50%',
       plugins:{legend:{position:'bottom',labels:{color:'#64748B',font:{size:11},padding:10,boxWidth:12}},
@@ -3409,6 +4181,52 @@ function calcM9(){
   },80);
 }
 function resetM9(){hide('m9-results');show('m9-right-ph');}
+
+function pullM9fromM3(){
+  if(!G3.totalCorpus){showToast('Please run the Corpus Integrator (Module 3) first, then return here.','warn','Module 3 Required');return;}
+  const age=n('m3-age')||GS.age, ret=G3.ret||GS.ret;
+  const m9yrs=ret-age;
+  // G3.totalCorpus is projected corpus at retirement — to use in M9 we need the *current* total balance
+  // Use sum of current balances across all sources as the "current savings" figure
+  const totalCurrentBal=G3.totalCurrentBal||0;
+  $('m9-savings').value=Math.round(totalCurrentBal);
+  $('m9-age').value=age;
+  $('m9-ret').value=ret;
+  $('m9-inf').value=Math.round((G3.inf||0.06)*100);
+  // Also sync return rate if available
+  if(G3.rr) $('m9-rr').value=Math.round(G3.rr*100);
+  // Reverse-inflate retExp to get today's monthly expense
+  if(G3.retExp&&m9yrs>0){
+    $('m9-exp').value=Math.round(G3.retExp/12/Math.pow(1+(G3.inf||0.06),m9yrs));
+  }
+  showToast('Current total savings: '+fmt(totalCurrentBal)+' | Age: '+age+' | Retire: '+ret+' — 35X analysis will use this total across all instruments.','success','Pulled from Corpus Integrator (M3)');
+}
+
+function pullM9fromM1(){
+  // Pull NPS-only current corpus from GPS
+  $('m9-savings').value=GS.cc||0;
+  $('m9-age').value=GS.age;
+  $('m9-ret').value=GS.ret;
+  $('m9-inf').value=GS.inf;
+  if(GS.exp) $('m9-exp').value=GS.exp;
+  showToast('NPS Corpus: '+fmt(GS.cc)+' pulled. Tip: Run Module 3 first to include EPF, MF, FD and all other savings.','success','Pulled NPS Corpus (M1)');
+}
+
+function pushToM9(){
+  if(!G3.totalCorpus){showToast('Please run the Corpus Integrator (Module 3) first.','warn','Module 3 Required');return;}
+  const age=n('m3-age')||GS.age, ret=G3.ret||GS.ret;
+  const m9yrs=ret-age;
+  const totalCurrentBal=G3.totalCurrentBal||0;
+  $('m9-savings').value=Math.round(totalCurrentBal);
+  $('m9-age').value=age;
+  $('m9-ret').value=ret;
+  $('m9-inf').value=Math.round((G3.inf||0.06)*100);
+  // Also sync return rate if available
+  if(G3.rr) $('m9-rr').value=Math.round(G3.rr*100);
+  if(G3.retExp&&m9yrs>0){
+    $('m9-exp').value=Math.round(G3.retExp/12/Math.pow(1+(G3.inf||0.06),m9yrs));
+  }
+}
 
 // ═══════════════════════════════════════════════
 // INITIALISATION
