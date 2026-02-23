@@ -9,7 +9,16 @@
 <meta property="og:description" content="From Retirement Corpus to Regular Pension: Plan Your Meaningful Retirement. Nine intelligent modules powered by real financial formulas.">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"
+  crossorigin="anonymous"
+  onerror="document.getElementById('offline-warn').style.display='flex'"></script>
+<div id="offline-warn" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  background:#7f1d1d;color:#fef2f2;font-family:sans-serif;font-size:13px;font-weight:600;
+  padding:10px 20px;gap:12px;align-items:center;justify-content:center;box-shadow:0 -2px 12px rgba(0,0,0,.4)">
+  ⚠️ Charts require internet connection. Please connect to Wi-Fi and reload.
+  &nbsp;<button onclick="location.reload()" style="background:#ef4444;border:none;color:#fff;padding:5px 14px;border-radius:5px;cursor:pointer;font-weight:700">Reload</button>
+  <button onclick="document.getElementById('offline-warn').style.display='none'" style="background:transparent;border:1px solid #fca5a5;color:#fca5a5;padding:5px 14px;border-radius:5px;cursor:pointer">Dismiss</button>
+</div>
 <style>
 :root{
   /* PFRDA-aligned palette: deep navy authority + saffron energy */
@@ -314,23 +323,128 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 20px;background:var(--bg2);border:2px dashed var(--light);border-radius:var(--r-sm);text-align:center;color:var(--faint);gap:9px}
 .placeholder .ph-icon{font-size:34px;opacity:.35}
 .placeholder p{font-size:12.5px;line-height:1.6}
+.page.print-visible{display:block!important}
 @media print{
-  .hdr,.tabs-bar,.gps-bar,.btn-row,.mod-progress,button,.tab-arrow,footer{display:none!important}
+  /* ── Page setup ── */
+  @page{size:A4 portrait;margin:14mm 12mm 16mm 12mm}
+
+  /* ── Hide interactive / nav chrome ── */
+  .hdr,.tabs-bar,.gps-bar,.mod-progress,
+  .btn-row,.btn-next,.btn-s,.print-btn,
+  .tab-arrow,footer,button,
+  .help-icon,.tooltip-box,
+  .lang-toggle{display:none!important}
+
+  /* ── Show print-only elements ── */
   .print-name-header{display:block!important}
-  .page{display:block!important;page-break-after:always}
-  body{background:#fff;font-size:12px}
-  .main{padding:10px}
-  .card,.cw,.rg,.sc-row{box-shadow:none!important;border:1px solid #ccc}
-  canvas{max-width:100%!important}
-  .two-col,.three-col,.score-grid,.compare-grid,.sc-row{grid-template-columns:1fr 1fr!important}
-  @page{margin:15mm}
-  .disclaimer-banner{display:block!important;font-size:9px}
+  .disclaimer-banner{display:block!important;font-size:8.5px;padding:6px 0;border:none;background:none}
+
+  /* ── Base reset ── */
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  html,body{background:#fff!important;font-size:11px!important;color:#1A2B3C!important;line-height:1.55}
+  body{background-image:none!important}
+
+  /* ── Layout ── */
+  .main{max-width:100%!important;padding:0!important;margin:0!important}
+
+  /* ── Hero — hide ── */
+  .hero{display:none!important}
+
+  /* ── Each module = its own page ── */
+  .page{
+    display:block!important;
+    page-break-before:always;
+    break-before:page;
+    padding:0;
+  }
+  .page:first-of-type{page-break-before:avoid;break-before:avoid}
+
+  /* ── Section headers ── */
+  .sec-hd{margin-bottom:12px!important}
+  .sec-hd h2{font-size:15px!important;padding-bottom:5px!important;border-bottom:2px solid #0A2342!important;display:block!important}
+  .sec-hd p{font-size:10px!important;max-width:100%!important}
+  .sec-tag{font-size:8px!important;letter-spacing:1.5px}
+
+  /* ── Cards ── */
+  .card{
+    box-shadow:none!important;
+    border:1px solid #D1D9E6!important;
+    border-radius:6px!important;
+    padding:11px 13px!important;
+    margin-bottom:10px!important;
+    page-break-inside:avoid;
+    break-inside:avoid;
+    overflow:visible!important;
+  }
+  .card::before{height:2px!important}
+  .card-title{font-size:13px!important;margin-bottom:3px!important}
+  .card-desc{font-size:10px!important;margin-bottom:10px!important}
+
+  /* ── Two / three column grids ── */
+  .two-col{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .three-col{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+  .score-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important;margin-top:8px!important}
+  .compare-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+
+  /* ── Result cells ── */
+  .rg{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(130px,1fr))!important;gap:7px!important;margin-top:8px!important}
+  .rc{padding:8px 10px!important;border-radius:5px!important;border:1px solid #D1D9E6!important;background:#F8FAFC!important;page-break-inside:avoid;break-inside:avoid}
+  .rc.hl{background:#EFF8F5!important;border-color:#A7D7CB!important;border-left:3px solid #0A7C6E!important}
+  .rc-lbl{font-size:8.5px!important;margin-bottom:3px!important}
+  .rc-val{font-size:13px!important;font-weight:700!important}
+  .rc-sub{font-size:8px!important}
+
+  /* ── Input grid ── */
+  .ig{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))!important;gap:7px!important;margin-bottom:10px!important}
+  .if label{font-size:8.5px!important}
+  .if input,.if select{font-size:11px!important;padding:4px 7px!important;background:#F8FAFC!important;border:1px solid #D1D9E6!important;border-radius:4px!important}
+  input[type=range]{display:none!important}
+
+  /* ── Chart wrappers ── */
+  .cw{
+    background:#F8FAFC!important;
+    border:1px solid #D1D9E6!important;
+    border-radius:6px!important;
+    padding:12px!important;
+    margin-top:8px!important;
+    page-break-inside:avoid;
+    break-inside:avoid;
+  }
+  .cw-title{font-size:10px!important;margin-bottom:8px!important;padding-left:8px!important;border-left:2px solid #E8640A!important}
+  canvas{max-width:100%!important;height:auto!important;display:block!important}
+
+  /* ── Tables ── */
+  table{width:100%!important;border-collapse:collapse!important;font-size:10px!important;page-break-inside:avoid;break-inside:avoid}
+  th{font-size:8.5px!important;padding:6px 8px!important;background:#EEF2F8!important;color:#5A6E82!important;border-bottom:1.5px solid #C4CFDD!important}
+  td{padding:7px 8px!important;border-bottom:1px solid #EEF2F8!important}
+  tr:last-child td{border-bottom:none!important}
+  div[style*="overflow-x"]{overflow:visible!important}
+
+  /* ── Info boxes ── */
+  .ib,.metric-explainer{font-size:10px!important;padding:9px 12px!important;border-radius:5px!important;page-break-inside:avoid;break-inside:avoid}
+
+  /* ── Placeholders — hide ── */
+  .placeholder{display:none!important}
+
+  /* ── Scenario / other rows ── */
+  .sc-row{box-shadow:none!important;border:1px solid #D1D9E6!important;border-radius:5px!important;padding:8px 10px!important;page-break-inside:avoid;break-inside:avoid}
+
+  /* ── Print report header ── */
+  .print-name-header{padding:8px 0 6px!important;border-bottom:2px solid #0A2342!important;margin-bottom:14px!important}
+  .print-name-header .pnh-brand{font-size:15px!important;font-weight:900!important;color:#0A2342!important}
+  .print-name-header .pnh-user{font-size:11px!important;color:#5A6E82!important;margin-top:2px!important}
+  .print-name-header .pnh-meta{font-size:9px!important;color:#8FA3B8!important;margin-top:1px!important}
+
+  /* ── Keep key blocks together ── */
+  .sec-hd,.card,.cw,.rg,.ib,.gauge-wrap,.radar-wrap{page-break-inside:avoid;break-inside:avoid}
 }
 .print-name-header{display:none;padding:10px 0 6px;border-bottom:2px solid #0A2342;margin-bottom:12px;font-family:'Plus Jakarta Sans',sans-serif}
 .print-name-header .pnh-brand{font-size:18px;font-weight:900;color:#0A2342;letter-spacing:.5px}
 .print-name-header .pnh-user{font-size:13px;color:#5A6E82;margin-top:2px}
 .print-name-header .pnh-meta{font-size:10px;color:#8FA3B8;margin-top:1px}
 </style>
+
+<noscript><div style="position:fixed;inset:0;z-index:99999;background:#1a2b3c;color:#fff;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:18px;text-align:center;padding:30px">⚠️ Retirometer V requires JavaScript to be enabled. Please enable JavaScript in your browser settings.</div></noscript>
 </head>
 <body>
 <!-- PRINT HEADER — only visible when printing -->
@@ -351,7 +465,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <button type="button" class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
       <button type="button" class="lang-btn" id="btn-hi" onclick="setLang('hi')">हिंदी</button>
     </div>
-    <button type="button" class="print-btn" onclick="if(typeof updatePrintHeader==='function')updatePrintHeader();window.print()" title="Print / Export">🖨️</button>
+    <button type="button" class="print-btn" onclick="preparePrint()" title="Print / Export">🖨️</button>
   </div>
 </header>
 
@@ -687,7 +801,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="src-icon">🏢</div>
         <div class="src-name-wrap"><div class="src-name" data-t="src_epf">EPF / Gratuity</div><div class="src-type" style="color:var(--green)" data-t="src_epf_t">Guaranteed</div></div>
         <div class="src-inputs"><input class="src-input" type="number" id="s-epf-b" value="300000" placeholder="Balance"><input class="src-input" type="number" id="s-epf-m" value="4500" placeholder="Monthly"></div>
-        <input class="src-input src-ret" type="number" id="s-epf-r" type="number" value="8.25" step="0.25" min="1" max="9.5" title="EPF rate is government-set. Typically 8–8.5%">
+        <input class="src-input src-ret" type="number" id="s-epf-r" type="number" value="8.25" step="0.25" min="1" max="9.5" title="EPF rate is government-set. Current rate: 8.25% p.a. (EPFO Board, FY 2023-24)">
         <button class="src-adv-btn" onclick="toggleAdv('epf')">⚙ Adv</button>
         <div class="src-adv-panel" id="adv-epf">
           <div class="src-adv-grid">
@@ -705,7 +819,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="src-icon">📮</div>
         <div class="src-name-wrap"><div class="src-name" data-t="src_ppf">PPF</div><div class="src-type" style="color:var(--green)" data-t="src_ppf_t">Guaranteed</div></div>
         <div class="src-inputs"><input class="src-input" type="number" id="s-ppf-b" value="100000" placeholder="Balance"><input class="src-input" type="number" id="s-ppf-m" value="2000" placeholder="Monthly"></div>
-        <input class="src-input src-ret" type="number" id="s-ppf-r" type="number" value="7.1" step="0.1" min="1" max="8.5" title="PPF rate is government-set. Typically 7.1–7.5%">
+        <input class="src-input src-ret" type="number" id="s-ppf-r" type="number" value="7.1" step="0.1" min="1" max="8.5" title="PPF rate is government-set. Current rate: 7.1% p.a. (MoF notification, Q1 FY 2024-25)">
         <button class="src-adv-btn" onclick="toggleAdv('ppf')">⚙ Adv</button>
         <div class="src-adv-panel" id="adv-ppf">
           <div class="src-adv-grid">
@@ -1925,6 +2039,21 @@ function updatePrintHeader(){
 }
 
 // ── Tab scroll arrows ──
+function preparePrint(){
+  if(typeof updatePrintHeader==='function') updatePrintHeader();
+  // Make all module pages visible so charts render
+  document.querySelectorAll('.page').forEach(p=>p.classList.add('print-visible'));
+  // Small delay lets Chart.js repaint any hidden canvases
+  setTimeout(function(){
+    window.print();
+    // Restore after dialog closes
+    setTimeout(function(){
+      document.querySelectorAll('.page.print-visible').forEach(p=>p.classList.remove('print-visible'));
+    }, 1000);
+  }, 200);
+}
+
+
 function scrollTabs(dir){
   const el = $('tabs-scroll');
   el.scrollBy({left: dir * 180, behavior:'smooth'});
@@ -1997,7 +2126,7 @@ function fvGA(pmt, rAnn, gAnn, nYears){
 const calcCorpus=(cc,mc,su,r,yrs)=>fvL(cc,r,yrs)+fvGA(mc,r,su,yrs);
 
 // reqPMT: SIP needed to reach target from existing corpus.
-// FIX: allows mild negative returns (down to -10%); warns user instead of silently clamping.
+// Allows mild negative returns (down to -10%); warns user for awareness.
 function reqPMT(target,existing,r,years){
   if(years<=0) return Math.max(0,target-existing);
   const safeR=Math.max(-0.10,r); // allow mild negative; warn above
@@ -2014,7 +2143,7 @@ function reqPMT(target,existing,r,years){
 
 // WCR: what fraction of the full retirement period does the corpus sustain inflation-growing
 // withdrawals? Returns 0–100 (%). Accounts for post-retirement investment returns.
-// FIX C1: replaces the old broken formula (corpus / undiscounted-total-expenses).
+// Corpus Coverage Ratio: simulates year-by-year depletion accounting for post-retirement return.
 function computeWCR(corpus, annWithdrawal, postReturnRate, inf, postYrs){
   if(corpus<=0||annWithdrawal<=0||postYrs<=0) return corpus>0?100:0;
   let c=corpus;
@@ -2027,8 +2156,8 @@ function computeWCR(corpus, annWithdrawal, postReturnRate, inf, postYrs){
 }
 
 // projectMarketIncome: model corpus depletion for market-linked assets.
-// FIX C3: replaces permanently-flat mktIncome display with year-by-year depletion model.
-// Returns array of annual income values (shrinks as corpus depletes).
+// projectMarketIncome: models year-by-year corpus depletion for market-linked assets.
+// Returns array of annual income values that shrinks as corpus is drawn down.
 function projectMarketIncome(mktCorpus, postReturnRate, annualWithdrawal, inf, postYrs){
   const income=[];
   let c=mktCorpus;
@@ -2077,10 +2206,17 @@ function applyGaugePSI(arrId,verdictId,psi){
   return d;
 }
 
-function applyRatioBar(fillId,valId,val,max,warn,danger){
+function applyRatioBar(fillId,valId,val,max,warn,danger,higherIsBetter=false){
   if(isNaN(val)||!isFinite(val)){val=0;}
   const pct=max>0?Math.min(100,(val/max)*100):0;
-  const col=val<warn?'#16A34A':val<danger?'#D97706':'#DC2626';
+  let col;
+  if(higherIsBetter){
+    // Higher is better: val>=warn=green, danger<=val<warn=amber, val<danger=red
+    col=val>=warn?'#16A34A':val>=danger?'#D97706':'#DC2626';
+  } else {
+    // Lower is better (default, e.g. SWR): val<warn=green, warn<=val<danger=amber, val>=danger=red
+    col=val<warn?'#16A34A':val<danger?'#D97706':'#DC2626';
+  }
   const f=$(fillId); f.style.width=pct+'%'; f.style.background=col;
   const v=$(valId); v.textContent=val.toFixed(1)+'%'; v.style.color=col;
 }
@@ -2179,8 +2315,8 @@ function calcM1(){
   // SWR = first-year withdrawal needed / corpus (as %) — lower is safer
   const swr=corps[1]>0?(retExpAnnual/corps[1])*100:999;
   // WCR: % of retirement period corpus can sustain inflation-growing withdrawals.
-  // FIX: uses proper PMT-based depletion test accounting for post-retirement return.
-  // Uses post-retirement return of ~7% (conservative balanced fund assumption).
+  // Corpus Coverage Ratio: year-by-year depletion test with post-retirement return.
+  // Uses 7% post-retirement return (conservative balanced fund assumption).
   const postYrs=le-ret;
   const postRetR=0.07; // conservative post-retirement portfolio return
   const wcr=computeWCR(corps[1],retExpAnnual,postRetR,inf,postYrs);
@@ -2298,6 +2434,7 @@ function sendToM2(){
   $('m2-su').value=n('m1-su'); // transfer step-up so Goal Finder uses same growth assumption
   $('m2-apct').value=n('m1-apct'); updSl('m2-apct','m2-apct-v');
   $('m2-ar').value=n('m1-ar');
+  $('m2-le').value=n('m1-le'); // transfer life expectancy so Goal Finder uses same plan-to age
 }
 function resetM1(){hide('m1-results');show('m1-right-ph');}
 
@@ -2758,10 +2895,10 @@ function calcM3(){
   // Annual annuity income = annuity corpus × annuity rate (simple product — lifetime income)
   const npsAnnIncome = npsAnnCorpus > 0 ? npsAnnCorpus * NPS_ANNUITY_RATE : 0;
 
-  // FIXED: EPF, PPF, FD post-retirement income uses annuity withdrawal (PMT) formula
+  // EPF, PPF, FD post-retirement income: PMT drawdown formula (corpus depletes over postYrs)
   // Annual withdrawal = corpus × [r × (1+r)^n] / [(1+r)^n - 1]
-  // This correctly models drawing down the corpus over postYrs years at the given rate.
-  // The old model (corpus × rate) was a perpetuity — incorrect for finite-life instruments.
+  // Models drawing down corpus over the retirement horizon at the instrument's credited rate.
+  // Note: SCSS uses interest-only model (principal returned at 5yr maturity, assumed renewable).
   function annuityWithdrawal(corpus, rate, years) {
     if (corpus <= 0 || years <= 0) return 0;
     if (rate < 0.001) return corpus / years; // zero-rate: simple division
@@ -2791,20 +2928,22 @@ function calcM3(){
     +(byId['intl']?byId['intl'].corpus:0)
     +(byId['oth'] ?byId['oth'].corpus :0);
 
-  const mktSWR=0.03; // FIX C7: 3% SWR is more appropriate for Indian context & long horizons
+  const mktSWR=0.03; // 3% SWR: India-appropriate for market-linked corpus (higher inflation vs US)
   const mktIncomeY1=mktCorpus*mktSWR; // Year-1 income for PSI/RSR/summary metrics
   const mktIncome=mktIncomeY1; // used for scorecard display (Year 1 figure)
   const totalIncome=guarIncome+mktIncome;
   const psi=retExp>0?(guarIncome/retExp)*100:0;
   const rsr=retExp>0?(totalIncome/retExp)*100:0;
 
-  // FIX C3: compute year-by-year depleting market income for the chart
+  // Year-by-year market income projection — corpus depletes as withdrawals are taken
   // Market portfolio post-ret return: use a slightly higher assumption than guaranteed (equity-heavy)
   // Using 8% for equity/MF/NPS-lump sum corpus; EPF/PPF/FD uses user-editable POST_RET_RATE
   const POST_MKT_RET = Math.max(POST_RET_RATE, 0.08); // market assets earn ≥ guaranteed rate
   const mktIncomeByYear = projectMarketIncome(mktCorpus, POST_MKT_RET, mktIncomeY1, inf, Math.min(postYrs,25));
 
-  G3={totalCorpus,guarIncome,totalIncome,retExp,psi,rsr,npsAnnIncome,mktIncome,mktIncomeY1,mktIncomeByYear,mktCorpus,ret,le,inf,postYrs};
+  // Store NPS return rate for M9 cross-module sync
+  const m3RrNps = (byId['nps'] ? byId['nps'].retRate : 0) * 100; // as percentage
+  G3={totalCorpus,guarIncome,totalIncome,retExp,psi,rsr,npsAnnIncome,mktIncome,mktIncomeY1,mktIncomeByYear,mktCorpus,ret,le,inf,postYrs,rr:m3RrNps};
   // updateLD removed
 
   show('m3-results');
@@ -3009,8 +3148,8 @@ function calcM4(){
     {name:'SWP + Partial',    desc:'35% annuity + SWP at '+(swpRate*100).toFixed(0)+'% SWR',      apct:0.35, col:'#6D28D9', tag:'Hybrid Strategy'},
   ];
 
-  // FIXED: corpAtYr now uses fixed inflation-adjusted annual withdrawal (not % of grown corpus).
-  // Old bug: c*(1+lr)*(1-swpRate) meant withdrawal grew with the portfolio — overstated sustainability.
+  // corpAtYr: withdraws a fixed rupee amount (inflation-adjusted each year), not a % of corpus.
+  // This correctly models SWP drawdown where withdrawal amount is predetermined, not portfolio-relative.
   // Correct model: withdraw a fixed rupee amount that grows only with inflation each year.
   // Initial annual withdrawal = lumpSum * swpRate; each year it inflates by inf.
   function corpAtYr(apct,yr){
@@ -3175,8 +3314,8 @@ function calcM5(){
   // Main PSI gauge
   applyGaugePSI('m5-gauge-arr','m5-verdict',psi);
   $('m5-gauge-sub').textContent='PSI: '+psi.toFixed(1)+'%  ·  RSR: '+rsr.toFixed(1)+'%  ·  SWR: '+swr.toFixed(2)+'%';
-  applyRatioBar('m5-psi-fill','m5-psi-val',Math.min(psi,100),100,60,40);
-  applyRatioBar('m5-rsr-fill','m5-rsr-val',Math.min(rsr,150),150,100,80);
+  applyRatioBar('m5-psi-fill','m5-psi-val',Math.min(psi,100),100,60,40,true); // higher PSI=better
+  applyRatioBar('m5-rsr-fill','m5-rsr-val',Math.min(rsr,150),150,100,80,true); // higher RSR=better
   applyRatioBar('m5-swr-fill','m5-swr-val',Math.min(swr,15),15,4,7);  // SWR: green<4%, amber 4-7%, red>7%
 
   // PSI card
@@ -3223,8 +3362,8 @@ function calcM5(){
   // 2. Longevity Coverage: fraction of postYrs covered under stress
   const longevityScore=Math.min(10,Math.max(0,(lcsYrs/Math.max(1,postYrs))*10));
   // 3. FIXED Inflation Shield: two-component score.
-  //    Old bug: score peaked at PSI=55% and penalised PSI=100% same as PSI=0%.
-  //    In reality PSI=100% (all guaranteed) beats PSI=0% (no guaranteed floor).
+  //    (a) Guaranteed floor component scores PSI linearly — more guaranteed income = more stable.
+  //    (b) Growth hedge component: market-linked fraction prevents inflation erosion.
   //    (a) Guaranteed floor component: scores PSI linearly — more guaranteed = more stable. Caps at 7/10.
   //    (b) Growth hedge component: market-linked fraction prevents inflation erosion. Adds up to 3/10.
   //    Total = floor_score + growth_score, capped at 10.
@@ -3402,8 +3541,8 @@ function calcM6(){
     ${vals.map((v,i)=>`<td style="padding:10px 14px;font-family:var(--mono);font-size:12px;text-align:right;color:${['#1D4ED8','#C8922A','#16A34A'][i]}">${v}</td>`).join('')}
   </tr>`).join('');
 
-  show('m6-results')
-  markModDone(5);;
+  show('m6-results');
+  markModDone(5);
 
   setTimeout(()=>{
     // Growth chart
@@ -3523,7 +3662,7 @@ function calcM7(){
   const totalPct=Math.round((ePct+cPct+gPct)*100);
   if(totalPct!==100){showToast('E + C + G allocation must total exactly 100%. Currently: '+totalPct+'%','error','Allocation Error');return;}
 
-  const activeR=ePct*0.12+cPct*0.09+gPct*0.07; // E: 12%, C: 9%, G: 7% — based on NPS Trust 5-yr CAGR data
+  const activeR=ePct*0.12+cPct*0.09+gPct*0.07; // E: 12%, C: 9%, G: 7% (conservative; NPS Trust 5yr ~8.5%) — based on NPS Trust CAGR data
   const lc75R=Math.max(0.001,n('m7-lc75')/100), lc50R=Math.max(0.001,n('m7-lc50')/100), lc25R=Math.max(0.001,n('m7-lc25')/100);
   const strategies=[
     {name:'Active Choice (Your Mix)',r:activeR,col:'#6D28D9',tag:'Custom'},
@@ -3577,7 +3716,7 @@ function calcM7(){
     {l:'Other 80C Investments',v:fmt(other80c)},
     {l:'NPS via 80C/80CCD(1)'+(isNewRegime?' (N/A — new regime)':' — capped at lower of 80C room & 10% salary'),v:isNewRegime?'₹0 (not available)':fmt(nps80cDeduction)},
     {l:'NPS via 80CCD(1B)'+(isNewRegime?' (N/A — new regime)':' — Extra ₹50K'),v:isNewRegime?'₹0 (not available)':fmt(nps80ccdDeduction),hl:nps80ccdDeduction>0},
-    {l:'Employer NPS 80CCD(2) — Both Regimes (cap: '+(empCapPct*100)+'% salary, '+empType+')',v:fmt(emp80ccd2Deduction),hl:emp80ccd2Deduction>0},
+    {l:'Employer NPS 80CCD(2) — Both Regimes (cap: '+(empCapPct*100)+'% of basic salary, '+empType+' — use basic pay, not CTC)',v:fmt(emp80ccd2Deduction),hl:emp80ccd2Deduction>0},
     {l:'Total NPS Tax Deduction',v:fmt(totalDeduction),hl:true},
     {l:'Tax Saved Annually (at '+Math.round(slab*100)+'% slab)',v:fmt(taxSaved),hl:true},
     {l:'Effective Cost of Your NPS',v:fmt(effectiveCost)},
@@ -4045,9 +4184,8 @@ function calcM9(){
   const target40x=retExpAnnual*40;
   // Corpus projection uses current savings + monthly surplus invested — clarifies it's the
   // MAXIMUM possible if the entire surplus is invested (not just NPS contribution)
-  // FIXED: Use step-up from GPS (GS.su/100) instead of hardcoded 0.
-  // Old bug: calcCorpus(savings, monthlySurplus, 0, rr, yrs) ignored annual step-up entirely,
-  // understating projected corpus by up to 55% for users with a positive step-up rate.
+  // Corpus projection: uses GPS step-up rate so annual contribution growth is correctly modelled.
+  // Without step-up, projected corpus would be understated for users who grow contributions annually.
   const su9 = (n('m9-su') || GS.su) / 100;
   const corpusOnTrack=calcCorpus(savings, monthlySurplus, su9, rr, yrs);
   const pct35x=Math.min(200, target35x>0?(corpusOnTrack/target35x)*100:0);
@@ -4138,7 +4276,7 @@ function calcM9(){
   }
   if($('m9-health-note')){
     $('m9-health-note').innerHTML=`<strong>🏥 Why a Separate Healthcare Buffer?</strong>
-      Medical costs in India inflate at ~14% annually — far outpacing general inflation. Your ₹${fmt(medAtRet/12)}/mo medical budget at retirement (today's ₹${fmt(baseMonthMed)}/mo inflated ${yrs} years) becomes <strong>₹${fmt(medAtRet*Math.pow(1.14,postYrs9-1)/12)}/mo by age ${le9}</strong> — a ${((Math.pow(1.14,postYrs9)/1)-1).toFixed(0)}x increase.
+      Medical costs in India inflate at ~14% annually (urban average; tier-2/rural users may see lower costs) — far outpacing general inflation. Your ₹${fmt(medAtRet/12)}/mo medical budget at retirement (today's ₹${fmt(baseMonthMed)}/mo inflated ${yrs} years) becomes <strong>₹${fmt(medAtRet*Math.pow(1.14,postYrs9-1)/12)}/mo by age ${le9}</strong> — a ${((Math.pow(1.14,postYrs9)/1)-1).toFixed(0)}x increase.
       <br><br>
       <strong>Action:</strong> (1) Allocate <strong>${fmt(totalHealthNeed)}</strong> as a dedicated healthcare corpus in SCSS or liquid FDs — do not mix with regular retirement corpus, (2) Maintain a comprehensive health insurance plan (₹20–50L cover, ideally super top-up), (3) Premiums also inflate — budget for premium increases every 3–5 years, (4) Consider a critical illness rider for cancer, heart attack and stroke coverage.
       <br><br>
@@ -4193,8 +4331,8 @@ function pullM9fromM3(){
   $('m9-age').value=age;
   $('m9-ret').value=ret;
   $('m9-inf').value=Math.round((G3.inf||0.06)*100);
-  // Also sync return rate if available
-  if(G3.rr) $('m9-rr').value=Math.round(G3.rr*100);
+  // Also sync return rate if available (G3.rr stored as %, e.g. 10 for 10%)
+  if(G3.rr) $('m9-rr').value=Math.round(G3.rr);
   // Reverse-inflate retExp to get today's monthly expense
   if(G3.retExp&&m9yrs>0){
     $('m9-exp').value=Math.round(G3.retExp/12/Math.pow(1+(G3.inf||0.06),m9yrs));
@@ -4222,7 +4360,7 @@ function pushToM9(){
   $('m9-ret').value=ret;
   $('m9-inf').value=Math.round((G3.inf||0.06)*100);
   // Also sync return rate if available
-  if(G3.rr) $('m9-rr').value=Math.round(G3.rr*100);
+  if(G3.rr) $('m9-rr').value=Math.round(G3.rr); // G3.rr is already in %
   if(G3.retExp&&m9yrs>0){
     $('m9-exp').value=Math.round(G3.retExp/12/Math.pow(1+(G3.inf||0.06),m9yrs));
   }
